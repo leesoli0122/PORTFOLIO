@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- 가이드CSS -->
+    <!-- 공통CSS -->
     <link rel="stylesheet" type="text/css" href="../../assets/css/guide.css" />
-    <link rel="stylesheet" type="text/css" href="../../assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="../../assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
+
+    <!-- 뱃지CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/css/badge.css" />
 
     <!-- 공통JS -->
     <script type="text/javascript" src="../../assets/js/jquery-1.9.1.min.js"></script>
@@ -25,9 +29,230 @@
         </div>
     </div>
     <div class="preview-content">
-        <div class="placeholder">
-            <p>🚧 Accordion 컴포넌트</p>
-            <p>여기에 컴포넌트가 렌더링됩니다.</p>
+        <div class="badge-header">
+            <h1>Badge 컴포넌트</h1>
+            <p>상태나 카테고리를 표시하는 작은 라벨 컴포넌트입니다.</p>
+        </div>
+        <div class="badge-body">
+            <h2>WCAG 2.1 기준 · 배경색 / 보더색 / 파스텔색 · FAIL 제외</h2>
+            <div class="badge-wrap color">
+                <div class="badge-group red">
+                    <p class="tit">빨강 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">레드</li>
+                                <li class="badge square">레드</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">레드</li>
+                                <li class="badge-line square">레드</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">레드</li>
+                                <li class="badge-pastel square">레드</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="badge-group orange">
+                    <p class="tit">주황 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">오렌지</li>
+                                <li class="badge square">오렌지</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">오렌지</li>
+                                <li class="badge-line square">오렌지</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">오렌지</li>
+                                <li class="badge-pastel square">오렌지</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="badge-group yellow">
+                    <p class="tit">노랑 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">노랑</li>
+                                <li class="badge square">노랑</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">노랑</li>
+                                <li class="badge-line square">노랑</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">노랑</li>
+                                <li class="badge-pastel square">노랑</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="badge-group green">
+                    <p class="tit">초록 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">초록</li>
+                                <li class="badge square">초록</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">초록</li>
+                                <li class="badge-line square">초록</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">초록</li>
+                                <li class="badge-pastel square">초록</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="badge-group blue">
+                    <p class="tit">파랑 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">파랑</li>
+                                <li class="badge square">파랑</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">파랑</li>
+                                <li class="badge-line square">파랑</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">파랑</li>
+                                <li class="badge-pastel square">파랑</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="badge-group indigo">
+                    <p class="tit">남색 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">남색</li>
+                                <li class="badge square">남색</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">남색</li>
+                                <li class="badge-line square">남색</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">남색</li>
+                                <li class="badge-pastel square">남색</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="badge-group purple">
+                    <p class="tit">보라 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">보라</li>
+                                <li class="badge square">보라</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">보라</li>
+                                <li class="badge-line square">보라</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">보라</li>
+                                <li class="badge-pastel square">보라</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="badge-group gray">
+                    <p class="tit">회색 <span class="primary">primary</span><span class="secondary">secondary</span></p>
+                    <ul>
+                        <li>
+                            <p>배경색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge">회색</li>
+                                <li class="badge square">회색</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>보더색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-line">회색</li>
+                                <li class="badge-line square">회색</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>파스텔색 : </p>
+                            <ul class="badge-item">
+                                <li class="badge-pastel">회색</li>
+                                <li class="badge-pastel square">회색</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="badge-wrap">
+                <div class="badge-group">
+                    <p>사이즈</p>
+                    <span class="status status-primary status-small">small</span>
+                    <span class="status status-primary status-medium">medium</span>
+                    <span class="status status-primary status-large">large</span>
+                </div>
+            </div>
         </div>
     </div>
 </body>

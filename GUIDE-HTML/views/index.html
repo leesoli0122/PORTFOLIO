@@ -9,9 +9,9 @@
     <meta name="author" content="이솔" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
     <!-- 가이드CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/guide.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/guide.css" />
 
     <!-- 공통JS -->
     <script type="text/javascript" src="../assets/js/jquery-1.9.1.min.js"></script>
@@ -20,40 +20,75 @@
     <script type="text/javascript" src="../assets/js/common.js"></script>
 
     <script>
-      $(document).ready(function () {
-        /* a요소를 클릭 했을 시 */
-        $("a.component-info").click(function () {
-          /* iframe 요소의 src 속성값을 a 요소의 data-url 속성값으로 변경 */
+        $(document).ready(function () {
+            /* a요소를 클릭 했을 시 */
+            $("a.component-info").click(function () {
+            /* iframe 요소의 src 속성값을 a 요소의 data-url 속성값으로 변경 */
 
-          $("#iframe").attr("src", $(this).attr("data-url"));
+            $("#iframe").attr("src", $(this).attr("data-url"));
+            });
+
+            // 다크/라이트 모드
+            const btnLight = document.getElementById('btn-light');
+            const btnDark  = document.getElementById('btn-dark');
+
+            function setMode(mode) {
+                document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : '');
+                btnLight.classList.toggle('active', mode === 'light');
+                btnDark.classList.toggle('active',  mode === 'dark');
+            }
+
+            btnLight.addEventListener('click', () => setMode('light'));
+            btnDark.addEventListener('click',  () => setMode('dark'));
         });
-      });
     </script>
 </head>
 <body>
     <div id="root">
         <header class="guide-header">
             <h1>Design System Guide</h1>
-            <p>공통 컴포넌트 가이드 워크리스트</p>
+            <p>공통 컴포넌트 가이드 워크리스트(웹접근성 적용)</p>
+            <div class="mode-toggle">
+                <button class="mode-btn active" id="btn-light">☀ 라이트</button>
+                <button class="mode-btn" id="btn-dark">🌙 다크</button>
+            </div>
         </header>
         <div class="guide-container">
             <aside class="component-list">
                 <h2 class="status-item">Components <span id="totCnt"></span>개</h2>
 				<ul class="status-summary">
-					<li class="status-item"><span class="status-dot">완료</span> <span id="compCnt"></span>개</li>
-					<li class="status-item"><span class="status-dot">진행중</span> <span id="progressCnt"></span>개</li>
-					<li class="status-item"><span class="status-dot">대기</span> <span id="atmosphere"></span>개</li>
+					<li class="status-item"><span class="status-dot">완료</span> <span id="compCnt"></span></li>
+					<li class="status-item"><span class="status-dot">진행중</span> <span id="progressCnt"></span></li>
+					<li class="status-item"><span class="status-dot">대기</span> <span id="atmosphere"></span></li>
 				</ul>
                 <ul class="component-items">
+                    <li class="component-item ing">
+                        <a class="component-info" data-main-title="구조화 목록" data-url="./guide/STRUCTURED-LIST.html">
+                            <span class="component-name">구조화 목록(Structured list)</span>
+                            <span class="status-badge"></span>
+                        </a>
+                    </li>
                     <li class="component-item non">
-                        <a class="component-info" data-url="./guide/ACCORDION.html">
-                            <span class="component-name">Accordion</span>
+                        <a class="component-info" data-main-title="긴급 공지" data-url="./guide/CRITICAL-ALERTS.html">
+                            <span class="component-name">긴급 공지(Critical alerts)</span>
+                            <span class="status-badge"></span>
+                        </a>
+                    </li>
+                    <li class="component-item non">
+                        <a class="component-info" data-main-title="달력" data-url="./guide/CALENDAR.html">
+                            <span class="component-name">달력 (Calendar)</span>
                             <span class="status-badge"></span>
                         </a>
                     </li>
                     <li class="component-item ing">
-                        <a class="component-info" data-url="./guide/BADGE.html">
-                            <span class="component-name">Badge</span>
+                        <a class="component-info" data-main-title="배지"  data-url="./guide/BADGE.html">
+                            <span class="component-name">배지(Badge)</span>
+                            <span class="status-badge"></span>
+                        </a>
+                    </li>
+                    <li class="component-item non">
+                        <a class="component-info" data-main-title="아코디언" data-url="./guide/ACCORDION.html">
+                            <span class="component-name">아코디언(Accordion)</span>
                             <span class="status-badge"></span>
                         </a>
                     </li>

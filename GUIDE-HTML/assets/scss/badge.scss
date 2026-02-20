@@ -1,0 +1,368 @@
+// Badge.scss
+.badge {
+    &-header {
+        margin-bottom: 2rem;
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            color: #6b7280;
+        }
+    }
+    &-group {
+        margin-bottom:24px;
+        .tit {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            padding-bottom:10px;
+            font-size:22px;
+            font-weight:600;
+            color:#333333;
+            span {
+                display:inline-block;
+                font-size:0;
+                width:14px;
+                height:14px;
+                border-radius:3px;
+            }
+        }
+        > ul > li {
+            display:flex;
+            align-items: center;
+            p {
+                font-size:18px;
+                color:#666666;
+            }
+            .badge-item {
+                margin-left:10px;
+                li {
+                    display:inline-block;
+                    + li {
+                        margin-left:10px;
+                    }
+                    &[class*="badge"] {
+                        padding:4px 10px;
+                        border-radius:30px;
+                        font-size:var(--font16);
+                        font-weight:var(--font-w-m);
+                        &.square {
+                            border-radius:10px;
+                        }
+                    }
+                }
+            }
+            + li {
+                margin-top:16px;
+            }
+        }
+    }
+}
+
+// 색상별
+.color {
+    display:flex;
+    flex-wrap: wrap;
+    gap:20px;
+    .badge-group {
+        max-width:250px;
+        width:100%;
+        max-height:190px;
+        height:100%;
+        padding:14px;
+        margin-bottom:0;
+        border:1px solid #e1e5e9;
+        border-radius:20px;
+    }
+}
+
+.red {
+    .primary {
+        background-color:var(--red-primary);
+    }
+    .secondary {
+        background-color:var(--red-secondary);
+    }
+    .badge {
+        background-color:var(--red-primary);
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid var(--red-primary);
+            color:var(--red-primary);
+        }
+        &-pastel {
+            background-color:var(--red-secondary);
+            color:var(--red-text);
+        }
+    }
+}
+.orange {
+    .primary {
+        background-color:var(--orange-primary);
+    }
+    .secondary {
+        background-color:var(--orange-secondary);
+    }
+    .badge {
+        background-color:var(--orange-primary);
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid var(--orange-primary);
+            color:var(--orange-primary);
+        }
+        &-pastel {
+            background-color:var(--orange-secondary);
+            color:var(--orange-text);
+        }
+    }
+}
+.yellow {
+    .primary {
+        background-color:var(--yellow-primary);
+    }
+    .secondary {
+        background-color:var(--yellow-secondary);
+    }
+    .badge {
+        background-color:var(--yellow-primary);
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid var(--yellow-primary);
+            color:var(--yellow-primary);
+        }
+        &-pastel {
+            background-color:var(--yellow-secondary);
+            color:var(--yellow-text);
+        }
+    }
+}
+.green {
+    .primary {
+        background-color:var(--green-primary);
+    }
+    .secondary {
+        background-color:var(--green-secondary);
+    }
+    .badge {
+        background-color:var(--green-primary);
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid var(--green-primary);
+            color:var(--green-primary);
+        }
+        &-pastel {
+            background-color:var(--green-secondary);
+            color:var(--green-text);
+        }
+    }
+}
+.blue {
+    .primary {
+        background-color:var(--blue-primary);
+    }
+    .secondary {
+        background-color:var(--blue-secondary);
+    }
+    .badge {
+        background-color:var(--blue-primary);
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid var(--blue-primary);
+            color:var(--blue-primary);
+        }
+        &-pastel {
+            background-color:var(--blue-secondary);
+            color:var(--blue-text);
+        }
+    }
+}
+.indigo {
+    .primary {
+        background-color:#1F3A8F;
+    }
+    .secondary {
+        background-color:#EEF2FA;
+    }
+    .badge {
+        background-color:#1F3A8F;
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid #1F3A8F;
+            color:#1F3A8F;
+        }
+        &-pastel {
+            background-color:#EEF2FA;
+            color:#16275E;
+        }
+    }
+}
+.purple {
+    .primary {
+        background-color:var(--violet-primary);
+    }
+    .secondary {
+        background-color:var(--violet-secondary);
+    }
+    .badge {
+        background-color:var(--violet-primary);
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid var(--violet-primary);
+            color:var(--violet-primary);
+        }
+        &-pastel {
+            background-color:var(--violet-secondary);
+            color:var(--violet-text);
+        }
+    }
+}
+.gray {
+    .primary {
+        background-color:var(--gray-primary);
+    }
+    .secondary {
+        background-color:var(--gray-secondary);
+    }
+    .badge {
+        background-color:var(--gray-primary);
+        color:var(--white);
+        &-line {
+            background-color:transparent;
+            border:2px solid var(--gray-primary);
+            color:var(--gray-primary);
+        }
+        &-pastel {
+            background-color:var(--gray-secondary);
+            color:var(--gray-text);
+        }
+    }
+}
+// 사이즈
+.status {
+    display:inline-block;
+    padding:4px 10px;
+    font-size:14px;
+    line-height:20px;
+    border-radius:16px;
+    // 사이즈
+    &-small {
+        padding: 0.125rem 0.5rem;
+        font-size: 14px;
+        line-height: 1rem;
+    }
+    
+    &-medium {
+        padding: 0.25rem 0.625rem;
+        font-size: 16px;
+        line-height: 1.25rem;
+    }
+    
+    &-large {
+        padding: 0.375rem 0.75rem;
+        font-size: 18px;
+        line-height: 1.5rem;
+    }
+}
+
+// 데모 페이지 스타일
+.badge {
+    &-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        
+        &-blue {
+        background-color: #3b82f6;
+        color: white;
+        
+        &:hover {
+            background-color: #2563eb;
+        }
+        }
+        
+        &-gray {
+        background-color: #6b7280;
+        color: white;
+        
+        &:hover {
+            background-color: #4b5563;
+        }
+        }
+    }
+
+    &-table {
+        width: 100%;
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        
+        thead {
+        background-color: #f9fafb;
+        
+        th {
+            padding: 0.75rem 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        }
+        
+        tbody {
+        background-color: white;
+        
+        tr {
+            border-top: 1px solid #e5e7eb;
+            
+            td {
+            padding: 1rem 1.5rem;
+            white-space: nowrap;
+            font-size: 0.875rem;
+            
+            &:first-child {
+                font-weight: 500;
+                color: #111827;
+            }
+            
+            &:not(:first-child) {
+                color: #6b7280;
+            }
+            }
+        }
+        }
+    }
+
+    &-code-block {
+        background-color: #111827;
+        color: #10b981;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        font-size: 0.875rem;
+        overflow-x: auto;
+        
+        pre {
+        white-space: pre;
+        margin: 0;
+        }
+    }
+}

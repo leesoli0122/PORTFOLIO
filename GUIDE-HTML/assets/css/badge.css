@@ -1,0 +1,335 @@
+.badge-header {
+  margin-bottom: 2rem;
+}
+.badge-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+.badge-header p {
+  color: #6b7280;
+}
+.badge-group {
+  margin-bottom: 24px;
+}
+.badge-group .tit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333333;
+}
+.badge-group .tit span {
+  display: inline-block;
+  font-size: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+.badge-group > ul > li {
+  display: flex;
+  align-items: center;
+}
+.badge-group > ul > li p {
+  font-size: 18px;
+  color: #666666;
+}
+.badge-group > ul > li .badge-item {
+  margin-left: 10px;
+}
+.badge-group > ul > li .badge-item li {
+  display: inline-block;
+}
+.badge-group > ul > li .badge-item li + li {
+  margin-left: 10px;
+}
+.badge-group > ul > li .badge-item li[class*=badge] {
+  padding: 4px 10px;
+  border-radius: 30px;
+  font-size: var(--font16);
+  font-weight: var(--font-w-m);
+}
+.badge-group > ul > li .badge-item li[class*=badge].square {
+  border-radius: 10px;
+}
+.badge-group > ul > li + li {
+  margin-top: 16px;
+}
+
+.color {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.color .badge-group {
+  max-width: 250px;
+  width: 100%;
+  max-height: 190px;
+  height: 100%;
+  padding: 14px;
+  margin-bottom: 0;
+  border: 1px solid #e1e5e9;
+  border-radius: 20px;
+}
+
+.red .primary {
+  background-color: var(--red-primary);
+}
+.red .secondary {
+  background-color: var(--red-secondary);
+}
+.red .badge {
+  background-color: var(--red-primary);
+  color: var(--white);
+}
+.red .badge-line {
+  background-color: transparent;
+  border: 2px solid var(--red-primary);
+  color: var(--red-primary);
+}
+.red .badge-pastel {
+  background-color: var(--red-secondary);
+  color: var(--red-text);
+}
+
+.orange .primary {
+  background-color: var(--orange-primary);
+}
+.orange .secondary {
+  background-color: var(--orange-secondary);
+}
+.orange .badge {
+  background-color: var(--orange-primary);
+  color: var(--white);
+}
+.orange .badge-line {
+  background-color: transparent;
+  border: 2px solid var(--orange-primary);
+  color: var(--orange-primary);
+}
+.orange .badge-pastel {
+  background-color: var(--orange-secondary);
+  color: var(--orange-text);
+}
+
+.yellow .primary {
+  background-color: var(--yellow-primary);
+}
+.yellow .secondary {
+  background-color: var(--yellow-secondary);
+}
+.yellow .badge {
+  background-color: var(--yellow-primary);
+  color: var(--white);
+}
+.yellow .badge-line {
+  background-color: transparent;
+  border: 2px solid var(--yellow-primary);
+  color: var(--yellow-primary);
+}
+.yellow .badge-pastel {
+  background-color: var(--yellow-secondary);
+  color: var(--yellow-text);
+}
+
+.green .primary {
+  background-color: var(--green-primary);
+}
+.green .secondary {
+  background-color: var(--green-secondary);
+}
+.green .badge {
+  background-color: var(--green-primary);
+  color: var(--white);
+}
+.green .badge-line {
+  background-color: transparent;
+  border: 2px solid var(--green-primary);
+  color: var(--green-primary);
+}
+.green .badge-pastel {
+  background-color: var(--green-secondary);
+  color: var(--green-text);
+}
+
+.blue .primary {
+  background-color: var(--blue-primary);
+}
+.blue .secondary {
+  background-color: var(--blue-secondary);
+}
+.blue .badge {
+  background-color: var(--blue-primary);
+  color: var(--white);
+}
+.blue .badge-line {
+  background-color: transparent;
+  border: 2px solid var(--blue-primary);
+  color: var(--blue-primary);
+}
+.blue .badge-pastel {
+  background-color: var(--blue-secondary);
+  color: var(--blue-text);
+}
+
+.indigo .primary {
+  background-color: #1F3A8F;
+}
+.indigo .secondary {
+  background-color: #EEF2FA;
+}
+.indigo .badge {
+  background-color: #1F3A8F;
+  color: var(--white);
+}
+.indigo .badge-line {
+  background-color: transparent;
+  border: 2px solid #1F3A8F;
+  color: #1F3A8F;
+}
+.indigo .badge-pastel {
+  background-color: #EEF2FA;
+  color: #16275E;
+}
+
+.purple .primary {
+  background-color: var(--violet-primary);
+}
+.purple .secondary {
+  background-color: var(--violet-secondary);
+}
+.purple .badge {
+  background-color: var(--violet-primary);
+  color: var(--white);
+}
+.purple .badge-line {
+  background-color: transparent;
+  border: 2px solid var(--violet-primary);
+  color: var(--violet-primary);
+}
+.purple .badge-pastel {
+  background-color: var(--violet-secondary);
+  color: var(--violet-text);
+}
+
+.gray .primary {
+  background-color: var(--gray-primary);
+}
+.gray .secondary {
+  background-color: var(--gray-secondary);
+}
+.gray .badge {
+  background-color: var(--gray-primary);
+  color: var(--white);
+}
+.gray .badge-line {
+  background-color: transparent;
+  border: 2px solid var(--gray-primary);
+  color: var(--gray-primary);
+}
+.gray .badge-pastel {
+  background-color: var(--gray-secondary);
+  color: var(--gray-text);
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 16px;
+}
+.status-small {
+  padding: 0.125rem 0.5rem;
+  font-size: 14px;
+  line-height: 1rem;
+}
+.status-medium {
+  padding: 0.25rem 0.625rem;
+  font-size: 16px;
+  line-height: 1.25rem;
+}
+.status-large {
+  padding: 0.375rem 0.75rem;
+  font-size: 18px;
+  line-height: 1.5rem;
+}
+
+.badge-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.badge-button-blue {
+  background-color: #3b82f6;
+  color: white;
+}
+.badge-button-blue:hover {
+  background-color: #2563eb;
+}
+.badge-button-gray {
+  background-color: #6b7280;
+  color: white;
+}
+.badge-button-gray:hover {
+  background-color: #4b5563;
+}
+.badge-table {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.badge-table thead {
+  background-color: #f9fafb;
+}
+.badge-table thead th {
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-table tbody {
+  background-color: white;
+}
+.badge-table tbody tr {
+  border-top: 1px solid #e5e7eb;
+}
+.badge-table tbody tr td {
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+}
+.badge-table tbody tr td:first-child {
+  font-weight: 500;
+  color: #111827;
+}
+.badge-table tbody tr td:not(:first-child) {
+  color: #6b7280;
+}
+.badge-code-block {
+  background-color: #111827;
+  color: #10b981;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+}
+.badge-code-block pre {
+  white-space: pre;
+  margin: 0;
+}

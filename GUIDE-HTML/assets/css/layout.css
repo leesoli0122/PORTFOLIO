@@ -1,0 +1,3 @@
+[class*="-content"] { margin-bottom: 2rem; }
+[class*="-content"] h2 { font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 1rem; }
+[class*="-content"] h3 { font-size: 1.125rem; font-weight:var(--font-w-m); color: #374151; margin-bottom: 0.75rem; }
