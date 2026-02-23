@@ -94,19 +94,12 @@ a, a:hover, a:focus, a:active { text-decoration: none; cursor: pointer; }
 .txt-tit04 { font-size:1.3rem; font-weight:bold; }
 .txt-tit05 { font-size:1.4rem; font-weight:bold; }
 
-/* 폰트 */
-.fw-bold { font-weight:bold!important; }
-
-.txt-red { color:#dd0000; }
-.txt-blue { color:#0000dd; }
-.txt-gold { color:#dddd00; }
-.txt-gray { color:#666666; }
-
+/* 말줄임표 */
 .txt-ellip { position:relative; display:inline-block; float:left; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 table .txt-ellip { display:table; table-layout:fixed; width:100%; }
 .txt-ellip > * { display:table-cell; overflow:hidden; text-overflow:ellipsis; }
 
-
+/* 텍스트 위치 */
 .ta-c { text-align:center!important;}
 .ta-r { text-align:right!important;}
 .ta-l { text-align:left!important;}
@@ -150,7 +143,3 @@ textarea { position:relative; display:inline-block; float:left; width:100%; padd
 
 input[type="checkbox"],
 input[type="radio"] { display:none; }
-
-.form-wrap { position:relative; padding:5px 0; }
-.form-wrap label { display:inline-block; float:left; width:100%; padding:5px 0; font-size:0.9rem; font-weight:bold; }
-.form-wrap > div { position:relative; display:inline-block; float:left; width:100%; }

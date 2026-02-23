@@ -1,4 +1,22 @@
 // Badge.scss
+
+.mode-toggle {
+    text-align:right;
+    font-size:0;
+    .mode-btn {
+        padding:4px 10px;
+        border:1px solid #333;
+        border-radius:16px;
+        &:hover,
+        &.active {
+            background-color:#007bff;
+            color:#fff;
+        }
+        &+ .mode-btn {
+            margin-left:10px;
+        }
+    }
+}
 .badge {
     &-group {
         margin-bottom:24px;
@@ -274,7 +292,6 @@
         &-blue {
         background-color: #3b82f6;
         color: white;
-        
         &:hover {
             background-color: #2563eb;
         }
@@ -284,9 +301,9 @@
         background-color: var(--muted);
         color: white;
         
-        &:hover {
-            background-color: #4b5563;
-        }
+            &:hover {
+                background-color: #4b5563;
+            }
         }
     }
 

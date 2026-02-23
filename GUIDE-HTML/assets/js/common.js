@@ -9,35 +9,8 @@
     4?? loadInitial() → 첫 화면 로딩
 ========================================= */
 $(document).ready(function () {
-
-    /* ===============================
-        1. 다크 / 라이트 모드
-    =============================== */
-
-    const btnLight = document.getElementById('btn-light');
-    const btnDark  = document.getElementById('btn-dark');
-
-    function setMode(mode) {
-        document.documentElement.setAttribute(
-            'data-theme',
-            mode === 'dark' ? 'dark' : ''
-        );
-
-        btnLight.classList.toggle('active', mode === 'light');
-        btnDark.classList.toggle('active',  mode === 'dark');
-
-        localStorage.setItem("guide_theme", mode);
-    }
-
-    // 저장된 테마 복원
-    const savedTheme = localStorage.getItem("guide_theme");
-    if (savedTheme) setMode(savedTheme);
-
-    btnLight?.addEventListener('click', () => setMode('light'));
-    btnDark?.addEventListener('click', () => setMode('dark'));
-    
     /* =========================================
-        2. 상태 복원
+        1. 상태 복원
     ========================================= */
     function restoreStatus() {
         $(".component-item").each(function () {
@@ -59,7 +32,7 @@ $(document).ready(function () {
     }
 
     /* ===============================
-        3. 컴포넌트 로드
+        2. 컴포넌트 로드
     =============================== */
 
     function loadComponent($el) {
@@ -96,7 +69,7 @@ $(document).ready(function () {
     }
 
     /* =========================================
-        4. 상태 버튼 -> 사이드 메뉴 반영
+        3. 상태 버튼 -> 사이드 메뉴 반영
     ========================================= */
     function bindStatusControl(componentName) {
         const $activeMenu = $(".component-info.active").closest(".component-item");
@@ -137,7 +110,7 @@ $(document).ready(function () {
     }
 
     /* ===============================
-        5. 첫 화면 자동 로딩
+        4. 첫 화면 자동 로딩
     =============================== */
 
     function loadInitial() {
@@ -163,7 +136,7 @@ $(document).ready(function () {
     }
 
     /* ===============================
-        6. 메뉴 클릭
+        5. 메뉴 클릭
     =============================== */
 
     $(".component-info").on("click", function (e) {
@@ -172,7 +145,7 @@ $(document).ready(function () {
     });
 
     /* ===============================
-        7. 초기 실행 순서
+        6. 초기 실행 순서
     =============================== */
 
     restoreStatus(); // 먼저 복원
@@ -183,8 +156,13 @@ $(document).ready(function () {
 
     loadInitial(); // 화면 로딩
 
+    // 미리보기 탭 전환
+    if (typeof initPreviewTabs === "function") {
+        initPreviewTabs();
+    }
+
     /* ===============================
-        8. 뒤로가기 지원
+        7. 뒤로가기 지원
     =============================== */
 
     $(window).on("hashchange", function () {
@@ -209,3 +187,5 @@ function runComponentInit(name) {
         window[fnName]();
     }
 }
+
+

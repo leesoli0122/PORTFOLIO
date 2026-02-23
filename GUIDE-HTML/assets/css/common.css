@@ -1,0 +1,64 @@
+/* 스크린리더 전용 클래스 */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow: hidden;  border:0; clip:rect(0, 0, 0, 0); white-space: nowrap; }
+
+/*---------------------------------------------
+	#리셋
+---------------------------------------------*/
+/* 인풋 */
+input,
+.se-select select { display:block; width:100%; line-height:initial; box-sizing:border-box; border:none; border-radius: 0; background-color: none; -o-appearance:none; -webkit-appearance:none; -moz-appearance: none; appearance: none; white-space: nowrap; overflow:hidden; outline:none; cursor: pointer; }
+input:disabled { cursor: initial; }
+/** Firefox Browser **/
+input[type=number],
+input[type=number] { -moz-appearance: textfield; }
+/** Webkit Browser (예: Chrome, Safari) **/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+/** Edge Browser **/
+input[type="password"]::-ms-reveal { display: none; }
+input[type="radio"],
+input[type="checkbox"] {  box-sizing: border-box; padding:0; }
+input::-ms-clear,
+input::-ms-reveal { display: none;}
+/* Chrome의 autofill 관련 기본 스타일 제거 */
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:hover { -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important; box-shadow: 0 0 0 1000px #FFFFFF inset !important;}
+
+/*-----------------------------------------------------------------------*/
+/* 폼 */
+.form-content > .form-wrap { display:flex; gap:40px; margin-bottom:40px; }
+.form-content > .form-wrap:first-of-type { margin-top:0; }
+.form-content > .form-wrap:last-of-type:not(.search-form, .noti-search),
+.form-content > .form-wrap:last-of-type > .form-group:last-of-type{ margin-bottom:0; }
+.form-content > .form-wrap > .form-group { flex:1; position:relative; }
+.form-content > .form-wrap > .form-group:only-of-type { flex:0 0 calc(50% - 20px); }
+.form-content > .form-wrap > .form-group > .flex-row,
+.form-content > .form-wrap > .form-group > .flex-row > div { position:relative; display:flex; align-items:center; gap:10px; flex:1; }
+.form-content > .form-wrap > .form-group > .flex-row > div:only-of-type { flex:1; width:100%; }
+.form-content > .form-wrap > .form-group .mo-column .flex-row > div { flex:1; }
+.form-content > .form-wrap > .form-group .mo-column .flex-row .se-select,
+.form-content > .form-wrap > .form-group .mo-column > .col:last-of-type { flex:0 0 152px; }
+/* 테이블 */
+table{  border-spacing:0; border-collapse: collapse; table-layout:fixed; max-width:1200px; }
+
+table thead tr:first-child,
+table tbody tr:first-child { border-top:1px solid var(--border); }
+table thead + tbody tr:first-child { border-top:0; }
+
+
+table tr:first-of-type th { border-top:var(--border); }
+table tr:first-of-type td { border-top:var(--border); }
+table th,
+table td { padding:var(--table-pd); text-align:center; color:var(--default-color); font-size:var(--font18); font-weight:var(--font-w-r); border-bottom:var(--table-border); word-break:keep-all !important; }
+table th { background:var(--table-th); border-left:var(--table-border); font-weight:var(--font-w-m); color:var(--border); }
+table td { border-left:var(--table-border); border-top:var(--border); }
+
+table .bor-l { border-left:var(--table-border) !important; }
+table .bor-r { border-right:var(--table-border) !important; }
+table th label { font-weight:var(--font-w-m); }
+table td.title { text-align:left; }
+table tbody tr:has(td[rowspan]) + tr th:first-of-type,
+table tbody tr:has(td[rowspan]) + tr td:first-of-type { border-left:var(--table-border); }
