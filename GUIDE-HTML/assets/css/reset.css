@@ -1,6 +1,6 @@
 @charset "UTF-8";
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-text-size-adjust: none; word-break:keep-all;  word-wrap:break-word; transition: all .2s;}
-html { font-size:18px; overflow-y:auto; }/*  기본 폰트 사이즈 18px */
+html { font-size:18px; overflow: hidden; }/*  기본 폰트 사이즈 18px */
 body { font-size:1rem;; font-weight:400; line-height: normal; font-family:'Noto Sans KR', 'Pretendard', 'Spoqa Han Sans Neo', "Apple SD Gothic Neo", sans-serif; color: var(--default-color); }
 body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, li, table, caption, th, td, form, fieldset, legend, address, div, p, span, a { margin:0; padding:0; }
 ul,ol,li,dl,dt,dd { list-style: none; }

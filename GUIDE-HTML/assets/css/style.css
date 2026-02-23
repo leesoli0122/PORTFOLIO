@@ -39,193 +39,168 @@ body {
 ──────────────────────────────────────────── */
 :root {
     /* 페이지 */
-    --bg:      #F7F7FA;
-    --surface: #FFFFFF;
-    --border:  #E4E4EE;
-    --text:    #111120;
-    --muted:   #888899;
+    --bg:#F7F7FA;
+    --border:#E4E4EE;
+    --text:#111120;
+    --muted:#4a4a5d;
+    --tit3:#333333;
+    --tit45:#454545;
   
     /* 레드 */
-    --red-primary:      #C0392B;
-    --red-secondary:     #FDEDEC;
-    --red-text:   #7B241C;
-  
+    --red-primary:#C0392B;
+    --red-primary-text:#FFFFFF;
+    --red-outline-bg:#FFFFFF;
+    --red-outline-text:#C0392B;
+    --red-outline-border:#C0392B;
+    --red-secondary:#FDEDEC;
+    --red-pastel-text:#7B241C;
+
     /* 오렌지 */
-    --orange-primary:       #C95E00;
-    --orange-secondary:      #FEF0E7;
-    --orange-text:    #7D3C00;
-  
+    --orange-primary:#C95E00;
+    --orange-primary-text:#FFFFFF;
+    --orange-outline-bg:#FFFFFF;
+    --orange-outline-text:#C95E00;
+    --orange-outline-border:#C95E00;
+    --orange-secondary:#FEF0E7;
+    --orange-pastel-text:#7D3C00;
+
     /* 옐로 */
-    --yellow-solid-bg:       #7D6608;
-    --yellow-solid-text:     #FFFFFF;
-    --yellow-outline-bg:     #FFFFFF;
-    --yellow-outline-text:   #7D6608;
-    --yellow-outline-border: #7D6608;
-    --yellow-pastel-bg:      #FEFBD8;
-    --yellow-pastel-text:    #5D4E00;
-  
+    --yellow-primary:#7D6608;
+    --yellow-primary-text:#FFFFFF;
+    --yellow-outline-bg:#FFFFFF;
+    --yellow-outline-text:#7D6608;
+    --yellow-outline-border:#7D6608;
+    --yellow-secondary:#FEFBD8;
+    --yellow-pastel-text:#5D4E00;
+
     /* 그린 */
-    --green-solid-bg:       #1E8449;
-    --green-solid-text:     #FFFFFF;
-    --green-outline-bg:     #FFFFFF;
-    --green-outline-text:   #1E8449;
-    --green-outline-border: #1E8449;
-    --green-pastel-bg:      #E9F7EF;
-    --green-pastel-text:    #145A32;
-  
+    --green-primary:#1E8449;
+    --green-primary-text:#FFFFFF;
+    --green-outline-bg:#FFFFFF;
+    --green-outline-text:#1E8449;
+    --green-outline-border:#1E8449;
+    --green-secondary:#E9F7EF;
+    --green-pastel-text:#145A32;
+
     /* 블루 */
-    --blue-solid-bg:       #1A5276;
-    --blue-solid-text:     #FFFFFF;
-    --blue-outline-bg:     #FFFFFF;
-    --blue-outline-text:   #1A5276;
-    --blue-outline-border: #1A5276;
-    --blue-pastel-bg:      #EBF5FB;
-    --blue-pastel-text:    #154360;
-  
+    --blue-primary:#1A5276;
+    --blue-primary-text:#FFFFFF;
+    --blue-outline-bg:#FFFFFF;
+    --blue-outline-text:#1A5276;
+    --blue-outline-border:#1A5276;
+    --blue-secondary:#EBF5FB;
+    --blue-pastel-text:#154360;
+
     /* 인디고 */
-    --indigo-solid-bg:       #1F3A8F;
-    --indigo-solid-text:     #FFFFFF;
-    --indigo-outline-bg:     #FFFFFF;
-    --indigo-outline-text:   #1F3A8F;
-    --indigo-outline-border: #1F3A8F;
-    --indigo-pastel-bg:      #EEF2FA;
-    --indigo-pastel-text:    #16275E;
-  
+    --indigo-primary:#1F3A8F;
+    --indigo-primary-text:#FFFFFF;
+    --indigo-outline-bg:#FFFFFF;
+    --indigo-outline-text:#1F3A8F;
+    --indigo-outline-border:#1F3A8F;
+    --indigo-secondary:#EEF2FA;
+    --indigo-pastel-text:#16275E;
+
     /* 바이올렛 */
-    --violet-solid-bg:       #6C3483;
-    --violet-solid-text:     #FFFFFF;
-    --violet-outline-bg:     #FFFFFF;
-    --violet-outline-text:   #6C3483;
-    --violet-outline-border: #6C3483;
-    --violet-pastel-bg:      #F5EEF8;
-    --violet-pastel-text:    #512E5F;
-  
-    /* 블랙 */
-    --black-solid-bg:       #1A1A1A;
-    --black-solid-text:     #FFFFFF;
-    --black-outline-bg:     #FFFFFF;
-    --black-outline-text:   #1A1A1A;
-    --black-outline-border: #1A1A1A;
-    --black-pastel-bg:      #F5F5F5;
-    --black-pastel-text:    #1A1A1A;
-  
+    --violet-primary:#6C3483;
+    --violet-primary-text:#FFFFFF;
+    --violet-outline-bg:#FFFFFF;
+    --violet-outline-text:#6C3483;
+    --violet-outline-border:#6C3483;
+    --violet-secondary:#F5EEF8;
+    --violet-pastel-text:#512E5F;
+
     /* 그레이 */
-    --gray-solid-bg:       #424242;
-    --gray-solid-text:     #FFFFFF;
-    --gray-outline-bg:     #FFFFFF;
-    --gray-outline-text:   #424242;
-    --gray-outline-border: #616161;
-    --gray-pastel-bg:      #F0F0F0;
-    --gray-pastel-text:    #212121;
-  
-    /* 화이트 */
-    --white-solid-bg:       #E0E0E0;
-    --white-solid-text:     #1A1A1A;
-    --white-outline-bg:     #FFFFFF;
-    --white-outline-text:   #424242;
-    --white-outline-border: #9E9E9E;
-    --white-pastel-bg:      #FAFAFA;
-    --white-pastel-text:    #212121;
-  }
+    --gray-primary: #424242;
+    --gray-primary-text:#FFFFFF;
+    --gray-outline-bg:#FFFFFF;
+    --gray-outline-text:#424242;
+    --gray-outline-border:#616161;
+    --gray-secondary:#F0F0F0;
+    --gray-pastel-text: #212121;
+}
   
   /* ────────────────────────────────────────────
      CSS Variables ? 다크
   ──────────────────────────────────────────── */
   [data-theme="dark"] {
     /* 페이지 */
-    --bg:      #0E0E16;
-    --surface: #18181F;
-    --border:  #2A2A38;
-    --text:    #E8E8F4;
-    --muted:   #666688;
+    --bg:#0E0E16;
+    --surface:#18181F;
+    --border:#2A2A38;
+    --text: #f5f5f5;
+    --muted: #b0b486;
+    --tit3:#f5f5f5;
+    --tit6:#b0b486;
   
     /* 레드 */
-    --red-solid-bg:      #E74C3C;
-    --red-solid-text:    #FFFFFF;
-    --red-outline-bg:    #0E0E16;
-    --red-outline-text:  #F1948A;
+    --red-primary:#E74C3C;
+    --red-primary-text:#FFFFFF;
+    --red-outline-bg:#0E0E16;
+    --red-outline-text:#F1948A;
     --red-outline-border:#F1948A;
-    --red-pastel-bg:     #3B1010;
-    --red-pastel-text:   #F9C0BB;
+    --red-secondary:#3B1010;
+    --red-pastel-text:#F9C0BB;
   
     /* 오렌지 */
-    --orange-solid-bg:       #E67E22;
-    --orange-solid-text:     #FFFFFF;
-    --orange-outline-bg:     #0E0E16;
-    --orange-outline-text:   #F0B27A;
-    --orange-outline-border: #F0B27A;
-    --orange-pastel-bg:      #3B2000;
-    --orange-pastel-text:    #FDD5A8;
+    --orange-primary:#E67E22;
+    --orange-primary-text:#FFFFFF;
+    --orange-outline-bg:#0E0E16;
+    --orange-outline-text:#F0B27A;
+    --orange-outline-border:#F0B27A;
+    --orange-secondary:#3B2000;
+    --orange-pastel-text:#FDD5A8;
   
     /* 옐로 */
-    --yellow-solid-bg:       #B7950B;
-    --yellow-solid-text:     #FFFFFF;
-    --yellow-outline-bg:     #0E0E16;
-    --yellow-outline-text:   #F4D03F;
-    --yellow-outline-border: #F4D03F;
-    --yellow-pastel-bg:      #2E2800;
-    --yellow-pastel-text:    #FAE97A;
+    --yellow-primary:#B7950B;
+    --yellow-primary-text:#FFFFFF;
+    --yellow-outline-bg:#0E0E16;
+    --yellow-outline-text:#F4D03F;
+    --yellow-outline-border:#F4D03F;
+    --yellow-secondary:#2E2800;
+    --yellow-pastel-text:#FAE97A;
   
     /* 그린 */
-    --green-solid-bg:       #27AE60;
-    --green-solid-text:     #FFFFFF;
-    --green-outline-bg:     #0E0E16;
-    --green-outline-text:   #82E0AA;
-    --green-outline-border: #82E0AA;
-    --green-pastel-bg:      #0A2B18;
-    --green-pastel-text:    #A9DFBF;
+    --green-primary:#27AE60;
+    --green-primary-text:#FFFFFF;
+    --green-outline-bg:#0E0E16;
+    --green-outline-text:#82E0AA;
+    --green-outline-border:#82E0AA;
+    --green-secondary:#0A2B18;
+    --green-pastel-text:#A9DFBF;
   
     /* 블루 */
-    --blue-solid-bg:       #2980B9;
-    --blue-solid-text:     #FFFFFF;
-    --blue-outline-bg:     #0E0E16;
-    --blue-outline-text:   #7FB3D3;
-    --blue-outline-border: #7FB3D3;
-    --blue-pastel-bg:      #0A1E30;
-    --blue-pastel-text:    #A8D1E9;
+    --blue-primary:#2980B9;
+    --blue-primary-text:#FFFFFF;
+    --blue-outline-bg:#0E0E16;
+    --blue-outline-text:#7FB3D3;
+    --blue-outline-border:#7FB3D3;
+    --blue-secondary:#0A1E30;
+    --blue-pastel-text:#A8D1E9;
   
     /* 인디고 */
-    --indigo-solid-bg:       #3455C1;
-    --indigo-solid-text:     #FFFFFF;
-    --indigo-outline-bg:     #0E0E16;
-    --indigo-outline-text:   #7B96D8;
-    --indigo-outline-border: #7B96D8;
-    --indigo-pastel-bg:      #0D1535;
-    --indigo-pastel-text:    #A4B8E8;
+    --indigo-primary:#3455C1;
+    --indigo-primary-text:#FFFFFF;
+    --indigo-outline-bg:#0E0E16;
+    --indigo-outline-text:#7B96D8;
+    --indigo-outline-border:#7B96D8;
+    --indigo-secondary:#0D1535;
+    --indigo-pastel-text:#A4B8E8;
   
     /* 바이올렛 */
-    --violet-solid-bg:       #8E44AD;
-    --violet-solid-text:     #FFFFFF;
-    --violet-outline-bg:     #0E0E16;
-    --violet-outline-text:   #C39BD3;
-    --violet-outline-border: #C39BD3;
-    --violet-pastel-bg:      #250F31;
-    --violet-pastel-text:    #D7B8E0;
-  
-    /* 블랙 */
-    --black-solid-bg:       #E8E8E8;
-    --black-solid-text:     #111111;
-    --black-outline-bg:     #0E0E16;
-    --black-outline-text:   #CCCCCC;
-    --black-outline-border: #AAAAAA;
-    --black-pastel-bg:      #222222;
-    --black-pastel-text:    #DDDDDD;
+    --violet-primary:#8E44AD;
+    --violet-primary-text:#FFFFFF;
+    --violet-outline-bg:#0E0E16;
+    --violet-outline-text:#C39BD3;
+    --violet-outline-border:#C39BD3;
+    --violet-secondary:#250F31;
+    --violet-pastel-text:#D7B8E0;
   
     /* 그레이 */
-    --gray-solid-bg:       #9E9E9E;
-    --gray-solid-text:     #111111;
-    --gray-outline-bg:     #0E0E16;
-    --gray-outline-text:   #BDBDBD;
-    --gray-outline-border: #9E9E9E;
-    --gray-pastel-bg:      #2A2A2A;
-    --gray-pastel-text:    #D4D4D4;
-  
-    /* 화이트 */
-    --white-solid-bg:       #FFFFFF;
-    --white-solid-text:     #111111;
-    --white-outline-bg:     #0E0E16;
-    --white-outline-text:   #E0E0E0;
-    --white-outline-border: #E0E0E0;
-    --white-pastel-bg:      #1E1E1E;
-    --white-pastel-text:    #ECECEC;
+    --gray-primary:#9E9E9E;
+    --gray-primary-text:#111111;
+    --gray-outline-bg:#0E0E16;
+    --gray-outline-text:#BDBDBD;
+    --gray-outline-border:#9E9E9E;
+    --gray-secondary:#2A2A2A;
+    --gray-pastel-text:#D4D4D4;
   }
