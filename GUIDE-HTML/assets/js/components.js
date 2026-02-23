@@ -1,7 +1,6 @@
-function initBADGE() {
-    console.log("Badge 초기화");
-
+function initAspectRatio() {
+    console.log("Aspect Ratio 초기화");
     $(".badge").on("click", function () {
-        console.log("Badge 클릭");
+        console.log("클릭");
     });
 }
