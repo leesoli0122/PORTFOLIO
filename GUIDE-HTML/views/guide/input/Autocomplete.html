@@ -8,143 +8,145 @@
     </div>
 </div>
 <div class="preview-content">
-    <div class="preview-title">
-        <h1>자동 완성</h1>
-        <p>텍스트 입력 중 가능한 옵션을 드롭다운으로 제안해주는 컴포넌트입니다. jQuery UI autocomplete()를 기반으로 구현합니다.</p>
-    </div>
-    <div class="autocomplete-body">
-        <div class="autocomplete-content">
-            <h2>기본 사용법</h2>
-            <div class="form-content">
-                <div class="form-wrap">
-                    <div class="form-group">
-                        <p class="label-tit">기본 검색</p>
-                        <label for="ac-basic" class="sr-only">검색</label>
-                        <input type="text" id="ac-basic" placeholder="입력해보세요" autocomplete="off">
-                    </div>
-                </div>
-                <div class="view-wrap">
-                    <div class="view-button">
-                        <button class="view-tab active" data-tab="tab-html">HTML</button>
-                        <button class="view-tab" data-tab="tab-js">JS</button>
-                      </div>
-                    <div class="auto-view">
-                        <div class="view-pannel active" id="tab-html">
-                            <pre class="code-block"><span class="t-tag">&lt;input</span> <span class="t-attr">id</span>=<span class="t-str">"ac-basic"</span> <span class="t-attr">placeholder</span>=<span class="t-str">"입력해보세요"</span> <span class="t-attr">autocomplete</span>=<span class="t-str">"off"</span> <span class="t-tag">/&gt;</span></pre>
+    <div>
+        <div class="preview-title">
+            <h1>자동 완성</h1>
+            <p>텍스트 입력 중 가능한 옵션을 드롭다운으로 제안해주는 컴포넌트입니다. jQuery UI autocomplete()를 기반으로 구현합니다.</p>
+        </div>
+        <div class="autocomplete-body">
+            <div class="autocomplete-content">
+                <h2>기본 사용법</h2>
+                <div class="form-content">
+                    <div class="form-wrap">
+                        <div class="form-group">
+                            <p class="label-tit">기본 검색</p>
+                            <label for="ac-basic" class="sr-only">검색</label>
+                            <input type="text" id="ac-basic" placeholder="입력해보세요" autocomplete="off">
                         </div>
-                        <div class="view-pannel" id="tab-js">
-                            <pre class="code-block"><span class="t-fn">$</span>(<span class="t-str">"#ac-basic"</span>).<span class="t-fn">autocomplete</span>({
-            <span class="t-attr">source</span>: [<span class="t-str">"React"</span>, <span class="t-str">"Vue"</span>, <span class="t-str">"Angular"</span>, <span class="t-str">"Svelte"</span>, <span class="t-str">"Solid"</span>],
-            <span class="t-attr">minLength</span>: <span class="t-num">1</span>,   <span class="t-cmt">// 최소 입력 글자 수</span>
-            <span class="t-attr">delay</span>: <span class="t-num">200</span>       <span class="t-cmt">// 입력 후 제안까지 딜레이(ms)</span>
-        });</pre>
+                    </div>
+                    <div class="view-wrap">
+                        <div class="view-button">
+                            <button class="view-tab active" data-tab="tab-html">HTML</button>
+                            <button class="view-tab" data-tab="tab-js">JS</button>
+                          </div>
+                        <div class="auto-view">
+                            <div class="view-pannel active" id="tab-html">
+                                <pre class="code-block"><span class="t-tag">&lt;input</span> <span class="t-attr">id</span>=<span class="t-str">"ac-basic"</span> <span class="t-attr">placeholder</span>=<span class="t-str">"입력해보세요"</span> <span class="t-attr">autocomplete</span>=<span class="t-str">"off"</span> <span class="t-tag">/&gt;</span></pre>
+                            </div>
+                            <div class="view-pannel" id="tab-js">
+                                <pre class="code-block"><span class="t-fn">$</span>(<span class="t-str">"#ac-basic"</span>).<span class="t-fn">autocomplete</span>({
+                <span class="t-attr">source</span>: [<span class="t-str">"React"</span>, <span class="t-str">"Vue"</span>, <span class="t-str">"Angular"</span>, <span class="t-str">"Svelte"</span>, <span class="t-str">"Solid"</span>],
+                <span class="t-attr">minLength</span>: <span class="t-num">1</span>,   <span class="t-cmt">// 최소 입력 글자 수</span>
+                <span class="t-attr">delay</span>: <span class="t-num">200</span>       <span class="t-cmt">// 입력 후 제안까지 딜레이(ms)</span>
+            });</pre>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="autocomplete-content">
-            <h2>서버 데이터 연동</h2>
-            <div class="form-content">
-                <div class="form-wrap">
-                    <div class="form-group">
-                        <p class="label-tit">기본 검색</p>
-                        <label for="ac-basic" class="sr-only">검색</label>
-                        <input type="text" id="ac-basic" class="custom-input ui-autocomplete-input" placeholder="입력해보세요" autocomplete="off">
-                        <div class="spinner" id="remote-spinner" style="display:none"></div>
-                    </div>
-                </div>
-                <div class="view-wrap">
-                    <div class="view-button">
-                        <button class="view-tab active" data-tab="tab-html">HTML</button>
-                        <button class="view-tab" data-tab="tab-js">JS</button>
-                      </div>
-                    <div class="auto-view">
-                        <div class="view-pannel active" id="tab-html">
-                            <pre class="code-block"><span class="t-tag">&lt;input</span> <span class="t-attr">id</span>=<span class="t-str">"ac-basic"</span> <span class="t-attr">placeholder</span>=<span class="t-str">"입력해보세요"</span> <span class="t-attr">autocomplete</span>=<span class="t-str">"off"</span> <span class="t-tag">/&gt;</span>
-<span>&lt;div</span> class="spinner" id="remote-spinner" style="display:none"<span class="t-tag">/&gt;</span></pre>
+            <div class="autocomplete-content">
+                <h2>서버 데이터 연동</h2>
+                <div class="form-content">
+                    <div class="form-wrap">
+                        <div class="form-group">
+                            <p class="label-tit">기본 검색</p>
+                            <label for="ac-basic" class="sr-only">검색</label>
+                            <input type="text" id="ac-basic" class="custom-input ui-autocomplete-input" placeholder="입력해보세요" autocomplete="off">
+                            <div class="spinner" id="remote-spinner" style="display:none"></div>
                         </div>
-                        <div class="view-pannel" id="tab-js">
-                            <pre class="code-block"><span class="t-fn">$</span>(<span class="t-str">"#myInput"</span>).<span class="t-fn">autocomplete</span>({
-                                <span class="t-attr">source</span>: <span class="t-kw">function</span>(request, response) {
-                                  <span class="t-fn">$.ajax</span>({
-                                    url: <span class="t-str">"/api/search"</span>,
-                                    data: { term: request.term },
-                                    <span class="t-attr">success</span>: <span class="t-kw">function</span>(data) {
-                                      response(data); <span class="t-cmt">// 배열 or [{label, value}] 형태</span>
-                                    }
-                                  });
-                                },
-                                <span class="t-attr">minLength</span>: <span class="t-num">2</span>
-                              });</pre>
+                    </div>
+                    <div class="view-wrap">
+                        <div class="view-button">
+                            <button class="view-tab active" data-tab="tab-html">HTML</button>
+                            <button class="view-tab" data-tab="tab-js">JS</button>
+                          </div>
+                        <div class="auto-view">
+                            <div class="view-pannel active" id="tab-html">
+                                <pre class="code-block"><span class="t-tag">&lt;input</span> <span class="t-attr">id</span>=<span class="t-str">"ac-basic"</span> <span class="t-attr">placeholder</span>=<span class="t-str">"입력해보세요"</span> <span class="t-attr">autocomplete</span>=<span class="t-str">"off"</span> <span class="t-tag">/&gt;</span>
+    <span>&lt;div</span> class="spinner" id="remote-spinner" style="display:none"<span class="t-tag">/&gt;</span></pre>
+                            </div>
+                            <div class="view-pannel" id="tab-js">
+                                <pre class="code-block"><span class="t-fn">$</span>(<span class="t-str">"#myInput"</span>).<span class="t-fn">autocomplete</span>({
+                                    <span class="t-attr">source</span>: <span class="t-kw">function</span>(request, response) {
+                                      <span class="t-fn">$.ajax</span>({
+                                        url: <span class="t-str">"/api/search"</span>,
+                                        data: { term: request.term },
+                                        <span class="t-attr">success</span>: <span class="t-kw">function</span>(data) {
+                                          response(data); <span class="t-cmt">// 배열 or [{label, value}] 형태</span>
+                                        }
+                                      });
+                                    },
+                                    <span class="t-attr">minLength</span>: <span class="t-num">2</span>
+                                  });</pre>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="autocomplete-content">
-            <h2>주요 Props (옵션) <span>jQuery UI Autocomplete의 자주 쓰는 옵션들</span></h2>
-            <div class="table-group">
-                <table>
-                    <thead>
-                        <tr>
-                        <th>옵션</th>
-                        <th>타입</th>
-                        <th>기본값</th>
-                        <th>설명</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td><span class="prop-name">source</span></td>
-                        <td><span class="prop-type">Array | String | Function</span></td>
-                        <td><span class="prop-default">—</span></td>
-                        <td class="prop-desc">제안 데이터. 배열, URL 문자열, 또는 비동기 함수로 전달</td>
-                        </tr>
-                        <tr>
-                        <td><span class="prop-name">minLength</span></td>
-                        <td><span class="prop-type">Number</span></td>
-                        <td><span class="prop-default">1</span></td>
-                        <td class="prop-desc">제안이 표시되기 위한 최소 입력 글자 수</td>
-                        </tr>
-                        <tr>
-                        <td><span class="prop-name">delay</span></td>
-                        <td><span class="prop-type">Number</span></td>
-                        <td><span class="prop-default">300</span></td>
-                        <td class="prop-desc">마지막 키 입력 후 제안 표시까지의 딜레이(ms)</td>
-                        </tr>
-                        <tr>
-                        <td><span class="prop-name">disabled</span></td>
-                        <td><span class="prop-type">Boolean</span></td>
-                        <td><span class="prop-default">false</span></td>
-                        <td class="prop-desc">true일 때 자동완성 비활성화</td>
-                        </tr>
-                        <tr>
-                        <td><span class="prop-name">select</span></td>
-                        <td><span class="prop-type">Function</span></td>
-                        <td><span class="prop-default">null</span></td>
-                        <td class="prop-desc">항목 선택 시 콜백. <code style="font-family:var(--mono);color:var(--accent2)">ui.item.value</code>로 선택값 접근</td>
-                        </tr>
-                        <tr>
-                        <td><span class="prop-name">focus</span></td>
-                        <td><span class="prop-type">Function</span></td>
-                        <td><span class="prop-default">null</span></td>
-                        <td class="prop-desc">항목에 포커스 이동 시 콜백</td>
-                        </tr>
-                        <tr>
-                        <td><span class="prop-name">open</span></td>
-                        <td><span class="prop-type">Function</span></td>
-                        <td><span class="prop-default">null</span></td>
-                        <td class="prop-desc">드롭다운이 열릴 때 콜백</td>
-                        </tr>
-                        <tr>
-                        <td><span class="prop-name">close</span></td>
-                        <td><span class="prop-type">Function</span></td>
-                        <td><span class="prop-default">null</span></td>
-                        <td class="prop-desc">드롭다운이 닫힐 때 콜백</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="autocomplete-content">
+                <h2>주요 Props (옵션) <span>jQuery UI Autocomplete의 자주 쓰는 옵션들</span></h2>
+                <div class="table-group">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>옵션</th>
+                            <th>타입</th>
+                            <th>기본값</th>
+                            <th>설명</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td><span class="prop-name">source</span></td>
+                            <td><span class="prop-type">Array | String | Function</span></td>
+                            <td><span class="prop-default">—</span></td>
+                            <td class="prop-desc">제안 데이터. 배열, URL 문자열, 또는 비동기 함수로 전달</td>
+                            </tr>
+                            <tr>
+                            <td><span class="prop-name">minLength</span></td>
+                            <td><span class="prop-type">Number</span></td>
+                            <td><span class="prop-default">1</span></td>
+                            <td class="prop-desc">제안이 표시되기 위한 최소 입력 글자 수</td>
+                            </tr>
+                            <tr>
+                            <td><span class="prop-name">delay</span></td>
+                            <td><span class="prop-type">Number</span></td>
+                            <td><span class="prop-default">300</span></td>
+                            <td class="prop-desc">마지막 키 입력 후 제안 표시까지의 딜레이(ms)</td>
+                            </tr>
+                            <tr>
+                            <td><span class="prop-name">disabled</span></td>
+                            <td><span class="prop-type">Boolean</span></td>
+                            <td><span class="prop-default">false</span></td>
+                            <td class="prop-desc">true일 때 자동완성 비활성화</td>
+                            </tr>
+                            <tr>
+                            <td><span class="prop-name">select</span></td>
+                            <td><span class="prop-type">Function</span></td>
+                            <td><span class="prop-default">null</span></td>
+                            <td class="prop-desc">항목 선택 시 콜백. <code style="font-family:var(--mono);color:var(--accent2)">ui.item.value</code>로 선택값 접근</td>
+                            </tr>
+                            <tr>
+                            <td><span class="prop-name">focus</span></td>
+                            <td><span class="prop-type">Function</span></td>
+                            <td><span class="prop-default">null</span></td>
+                            <td class="prop-desc">항목에 포커스 이동 시 콜백</td>
+                            </tr>
+                            <tr>
+                            <td><span class="prop-name">open</span></td>
+                            <td><span class="prop-type">Function</span></td>
+                            <td><span class="prop-default">null</span></td>
+                            <td class="prop-desc">드롭다운이 열릴 때 콜백</td>
+                            </tr>
+                            <tr>
+                            <td><span class="prop-name">close</span></td>
+                            <td><span class="prop-type">Function</span></td>
+                            <td><span class="prop-default">null</span></td>
+                            <td class="prop-desc">드롭다운이 닫힐 때 콜백</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -47,7 +47,7 @@ li:nth-child(3) .status-dot:before { background-color: rgb(108, 117, 125); }
 .preview-title { padding-left:20px; margin-bottom: 2rem; border-left:3px solid var(--blue-primary); }
 .preview-title h1 { font-size: 1.875rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
 .preview-title p { color: var(--muted); }
-.placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; text-align: center; }
+.placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
 .placeholder p { margin: 8px 0; color: #6c757d; }
 .placeholder p:first-child { font-size: 18px; font-weight: 600; color: #495057; }
 .no-selection { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; color: #6c757d; }
@@ -59,6 +59,7 @@ li:nth-child(3) .status-dot:before { background-color: rgb(108, 117, 125); }
 
 
 /* 미리보기 */
+.preview-content > div { padding:20px; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; }
 .preview-content [class*="-content"] h2 { padding-bottom:10px; margin-bottom:30px; border-bottom:1px solid var(--gray-outline-border); }
 .preview-content [class*="-content"] h2 span { font-size:var(--font18); color:var(--muted); }
 .preview-content .form-content .form-wrap .form-group .label-tit { margin-bottom:10px; }
