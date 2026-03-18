@@ -20,7 +20,7 @@ li:nth-child(3) .status-dot:before { background-color: rgb(108, 117, 125); }
 .component-items > ul > li ul { padding:10px 0; }
 
 .component-info { padding:8px 0; border-bottom:2px solid transparent; }
-.component-info:hover { border-color:#007bff; }
+.component-info:hover { border-color:#007bff; background-color:inherit; }
 .component-info.active { border-color: #007bff; }
 .component-info.active .status-badge { background: rgba(255,255,255,0.2) !important; color: #fff; }
 
@@ -67,3 +67,6 @@ li:nth-child(3) .status-dot:before { background-color: rgb(108, 117, 125); }
 .preview-content .view-button { font-size:0; }
 .preview-content .view-tab { padding:5px 10px; background-color:var(--gray-secondary); color:var(--gray-outline-text); }
 .preview-content .view-tab.active { background-color:var(--gray-primary); color:var(--yellow-secondary); }
+
+/* 코드 넣을 때 */
+code { padding:4px 6px; border-radius:10px; background-color:#504f49; font-size:var(--font14); color:#fe8181; }

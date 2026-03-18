@@ -1,0 +1,62 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/tokens' as *;
+
+/* button 공통 */
+:where(a, button) {
+    position: relative;
+    @include hover;
+    @include focus;
+}
+
+$btns: ".button-group a", ".button-group button";
+
+@each $btn in $btns {
+    #{$btn} {
+        display:inline-block;
+        height:56px;
+        padding:18px 20px;
+        border-radius:10px;
+        font-size:var(--font18);
+        line-height:18px;
+        text-align:center;
+        @include hover;
+        @include focus;
+        &.btn-primary {
+            background-color:var(--blue-primary);
+            color:var(--blue-primary-text);
+        }
+        &.btn-secondary {
+            background-color:var(--blue-secondary);
+            color:var(--blue-pastel-text);
+        }
+        &.btn-line {
+            border:1px solid var(--blue-primary);
+            background-color:transparent;
+            color:var(--blue-pastel-text);
+        }
+    }
+}
+
+.button-group {
+    display:flex;
+    flex-wrap: wrap;
+    gap:20px;
+    font-size:0;
+}
+
+.btn-sm {
+    a,button {
+        height:40px;
+        padding:12px 18px;
+        font-size:var(--font16);
+        line-height:16px;
+    }
+}
+
+/* ㅇ */
+.rnd {
+    a,
+    button {
+        border-radius:6px;
+    }
+}

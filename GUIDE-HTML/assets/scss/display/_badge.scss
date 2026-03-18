@@ -1,5 +1,7 @@
-// Badge.scss
+@use '../abstracts/mixins' as *;
+@use '../abstracts/tokens' as *;
 
+/* Badge */
 .mode-toggle {
     text-align:right;
     font-size:0;

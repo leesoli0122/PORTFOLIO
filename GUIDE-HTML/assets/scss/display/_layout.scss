@@ -1,0 +1,64 @@
+@use '../abstracts/mixins' as *;
+/* 레이아웃 */
+[class*="-content"] {
+    margin-bottom:38px;
+    h2 { font-size:var(--font22);
+        font-weight:var(--font-w-b);
+        color: var(--text);
+        margin-bottom:16px;
+    }
+    h3 { 
+        font-size:var(--font20);
+        font-weight:var(--font-w-m);
+        color: var(--text);
+        margin-bottom: 14px;
+    }
+    [class*="-group"] {
+        margin-bottom:52px;
+    }
+}
+
+// 폼
+.form-content {
+    &> .form-wrap {
+        display:flex;
+        gap:40px;
+        margin-bottom:40px;
+        &:first-of-type {
+            margin-top:0;
+        }
+        &:last-of-type {
+            &> .form-group:last-of-type {
+                margin-bottom:0;
+            }
+        }
+        &> .form-group {
+            flex:1;
+            position:relative;
+            &:only-of-type {
+                flex:0 0 calc(50% - 20px);
+            }
+            &> .flex-row,
+            &> .flex-row > div {
+                position:relative;
+                display:flex;
+                align-items:center;
+                gap:10px;
+                flex:1;
+            }
+            &> .flex-row > div:only-of-type {
+                flex:1;
+                width:100%;
+            }
+            .mo-column {
+                .flex-row > div {
+                    flex:1;
+                }
+                .flex-row .se-select,
+                &> .col:last-of-type {
+                    flex:0 0 152px;
+                }
+            }
+        }
+    }
+}

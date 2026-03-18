@@ -1,0 +1,209 @@
+/* ────────────────────────────────────────────
+    모바일 폰트 사이즈 기준 [html::18px]
+    짝수 단위로 할 경우 소수점 최대 3자리까지
+──────────────────────────────────────────── */
+:root {
+    // font
+    --font12: 0.667rem;  
+    --font13: 0.722rem; 
+    --font14: 0.778rem;  
+    --font16: 0.889rem; 
+    --font18: 1rem;      
+    --font20: 1.111rem;  
+    --font22: 1.222rem;  
+    --font24: 1.333rem;  
+    --font26: 1.444rem;  
+    --font28: 1.556rem;  
+    --font30: 1.667rem;  
+    --font32: 1.778rem;  
+    --font34: 1.889rem;  
+    --font36: 2rem;     
+    --font38: 2.111rem;  
+    --font40: 2.222rem; 
+    --font42: 2.333rem; 
+    --font45: 2.5rem;
+    
+    // font-weight
+    --font-w-b: 700;
+    --font-w-m: 500;
+    --font-w-r: 400;
+    --font-w-l: 300;
+
+}
+
+body {
+    /* 색상 */
+    --white:#ffffff;
+    --color9:#999999;
+}
+
+/* ────────────────────────────────────────────
+   CSS Variables — 라이트 (기본)
+──────────────────────────────────────────── */
+:root {
+    /* 페이지 */
+    --bg:#F7F7FA;
+    --border:#E4E4EE;
+    --text:#111120;
+    --muted:#4a4a5d;
+    --tit3:#333333;
+    --tit45:#454545;
+  
+    /* 레드 */
+    --red-primary:#C0392B;
+    --red-primary-text:#FFFFFF;
+    --red-outline-bg:#FFFFFF;
+    --red-outline-text:#C0392B;
+    --red-outline-border:#C0392B;
+    --red-secondary:#FDEDEC;
+    --red-pastel-text:#7B241C;
+
+    /* 오렌지 */
+    --orange-primary:#C95E00;
+    --orange-primary-text:#FFFFFF;
+    --orange-outline-bg:#FFFFFF;
+    --orange-outline-text:#C95E00;
+    --orange-outline-border:#C95E00;
+    --orange-secondary:#FEF0E7;
+    --orange-pastel-text:#7D3C00;
+
+    /* 옐로 */
+    --yellow-primary:#7D6608;
+    --yellow-primary-text:#FFFFFF;
+    --yellow-outline-bg:#FFFFFF;
+    --yellow-outline-text:#7D6608;
+    --yellow-outline-border:#7D6608;
+    --yellow-secondary:#FEFBD8;
+    --yellow-pastel-text:#5D4E00;
+
+    /* 그린 */
+    --green-primary:#1E8449;
+    --green-primary-text:#FFFFFF;
+    --green-outline-bg:#FFFFFF;
+    --green-outline-text:#1E8449;
+    --green-outline-border:#1E8449;
+    --green-secondary:#E9F7EF;
+    --green-pastel-text:#145A32;
+
+    /* 블루 */
+    --blue-primary:#1A5276;
+    --blue-primary-text:#FFFFFF;
+    --blue-outline-bg:#FFFFFF;
+    --blue-outline-text:#1A5276;
+    --blue-outline-border:#1A5276;
+    --blue-secondary:#EBF5FB;
+    --blue-pastel-text:#154360;
+
+    /* 인디고 */
+    --indigo-primary:#1F3A8F;
+    --indigo-primary-text:#FFFFFF;
+    --indigo-outline-bg:#FFFFFF;
+    --indigo-outline-text:#1F3A8F;
+    --indigo-outline-border:#1F3A8F;
+    --indigo-secondary:#EEF2FA;
+    --indigo-pastel-text:#16275E;
+
+    /* 바이올렛 */
+    --violet-primary:#6C3483;
+    --violet-primary-text:#FFFFFF;
+    --violet-outline-bg:#FFFFFF;
+    --violet-outline-text:#6C3483;
+    --violet-outline-border:#6C3483;
+    --violet-secondary:#F5EEF8;
+    --violet-pastel-text:#512E5F;
+
+    /* 그레이 */
+    --gray-primary: #424242;
+    --gray-primary-text:#FFFFFF;
+    --gray-outline-bg:#FFFFFF;
+    --gray-outline-text:#424242;
+    --gray-outline-border:#616161;
+    --gray-secondary:#F0F0F0;
+    --gray-pastel-text: #212121;
+}
+  
+/* ────────────────────────────────────────────
+    CSS Variables — 다크
+──────────────────────────────────────────── */
+[data-theme="dark"] {
+    /* 페이지 */
+    --bg:#0E0E16;
+    --surface:#18181F;
+    --border:#2A2A38;
+    --text: #f5f5f5;
+    --muted: #b0b486;
+    --tit3:#f5f5f5;
+    --tit6:#b0b486;
+
+    /* 레드 */
+    --red-primary:#E74C3C;
+    --red-primary-text:#FFFFFF;
+    --red-outline-bg:#0E0E16;
+    --red-outline-text:#F1948A;
+    --red-outline-border:#F1948A;
+    --red-secondary:#3B1010;
+    --red-pastel-text:#F9C0BB;
+
+    /* 오렌지 */
+    --orange-primary:#E67E22;
+    --orange-primary-text:#FFFFFF;
+    --orange-outline-bg:#0E0E16;
+    --orange-outline-text:#F0B27A;
+    --orange-outline-border:#F0B27A;
+    --orange-secondary:#3B2000;
+    --orange-pastel-text:#FDD5A8;
+
+    /* 옐로 */
+    --yellow-primary:#B7950B;
+    --yellow-primary-text:#FFFFFF;
+    --yellow-outline-bg:#0E0E16;
+    --yellow-outline-text:#F4D03F;
+    --yellow-outline-border:#F4D03F;
+    --yellow-secondary:#2E2800;
+    --yellow-pastel-text:#FAE97A;
+
+    /* 그린 */
+    --green-primary:#27AE60;
+    --green-primary-text:#FFFFFF;
+    --green-outline-bg:#0E0E16;
+    --green-outline-text:#82E0AA;
+    --green-outline-border:#82E0AA;
+    --green-secondary:#0A2B18;
+    --green-pastel-text:#A9DFBF;
+
+    /* 블루 */
+    --blue-primary:#2980B9;
+    --blue-primary-text:#FFFFFF;
+    --blue-outline-bg:#0E0E16;
+    --blue-outline-text:#7FB3D3;
+    --blue-outline-border:#7FB3D3;
+    --blue-secondary:#0A1E30;
+    --blue-pastel-text:#A8D1E9;
+
+    /* 인디고 */
+    --indigo-primary:#3455C1;
+    --indigo-primary-text:#FFFFFF;
+    --indigo-outline-bg:#0E0E16;
+    --indigo-outline-text:#7B96D8;
+    --indigo-outline-border:#7B96D8;
+    --indigo-secondary:#0D1535;
+    --indigo-pastel-text:#A4B8E8;
+
+    /* 바이올렛 */
+    --violet-primary:#8E44AD;
+    --violet-primary-text:#FFFFFF;
+    --violet-outline-bg:#0E0E16;
+    --violet-outline-text:#C39BD3;
+    --violet-outline-border:#C39BD3;
+    --violet-secondary:#250F31;
+    --violet-pastel-text:#D7B8E0;
+
+    /* 그레이 */
+    --gray-primary:#9E9E9E;
+    --gray-primary-text:#111111;
+    --gray-outline-bg:#0E0E16;
+    --gray-outline-text:#BDBDBD;
+    --gray-outline-border:#9E9E9E;
+    --gray-secondary:#2A2A2A;
+    --gray-pastel-text:#D4D4D4;
+}
