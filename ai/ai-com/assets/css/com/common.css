@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+:root{
+    --ico-back:  url("../../images/com/svg/ico_back.svg");
+    --ico-menu:  url("../../images/com/svg/ico_menu.svg");
+    --ico-close: url("../images/com/svg/ico_close.svg");
+    --ico-close-toggle: url("../../images/com/svg/ico_toggle_up.svg");
+    --ico-search: url("../../images/com/svg/ico_search.svg");
+    --ico-clear: url("../../images/com/svg/ico_clear.svg");
+    --ico-info: url("../../images/com/svg/ico_info.svg");
+    --ico-check: url("../../images/com/svg/ico_check.svg");
+    --ico-se-arrow: url("../../images/com/svg/ico_se_arrow.svg");
+    --ico-file: url("../../images/com/svg/ico_file.svg");
+    --ico-date: url("../../images/com/svg/ico_date.svg");
+
+    --ico-w-plus: url("../../images/com/ico_w_plus.png");
+    --ico-top: url("../../images/com/ico_scrollTop.png")
+}
+
+/* 필수 표시 :: * */
+.essential { position: relative; }
+.essential::after { content:'*'; color:var(--error); padding-left:3px; }
+
+/* 스크린리더 전용 클래스 */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow: hidden;  border:0; clip:rect(0, 0, 0, 0); white-space: nowrap; }
+/* 인풋 하이픈 :: -, ~ */
+.ipt-hyphen { display:flex; justify-content: center; align-items: center; font-size:var(--font14); }
+
+/* 인풋 오른쪽 : 텍스트, 아이콘콘*/
+input.form-control.ipt-pd-r { padding:0 32px 0 15px; }
+.ipt-right { position: absolute; transform: translateY(-50%); top:50%; right:15px; }
+
+/* 인풋 오른쪽  + 인풋 텍스트 :: 원, 개월, % */
+.amount { line-height: 1; font-size:var(--font16); font-weight: var(--font-w-b); color:var(--txt-primary); }
+/* 인풋 오른쪽  + 아이콘 */
+.ipt-right.ico button { width:20px; height:20px; }
+.ipt-right.ico-date { width:30px; height:30px; }
+
+/* 인풋 주민등록번호 뒷자리 */
+.id-mask { position: absolute;  transform: translateY(-50%); top:50%; left:34px; line-height: 1; font-size:var(--font16); font-weight: var(--font-w-r); color:var(--txt-primary); }
+
+/* 인풋 달력 아이콘 */
+.ico-date { background-color: var(--ipt-date); mask-image: var(--ico-date); mask-position: center; mask-size:24px auto; --webkit-mask-image:var(--ico-date); --webkit-mask-position:center; --webkit-mask-size:24px auto; }
+
+/* 필수 정보 아이콘 */
+.info { padding-left:24px; }
+.info li{ position: relative; margin:5px 0; line-height: 20px; font-size:var(--font14); color:var(--txt-color-6); }
+.info li::before { content:''; position: absolute; transform: translateY(-50%); top:10px; left:-24px; width:18px; height:18px;}
+.info li::before { background-color: var(--info-color); mask-image: var(--ico-info); -webkit-mask-image:var(--ico-info);  mask-size:auto 18px; -webkit-mask-size: auto 18px; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; }
+
+/* 텍스트 줄바꿈 */
+.txt-prewrap { white-space: pre-wrap; }
+
+/* none */
+.dp-none { display:none; }
+
+/* 퀵메뉴 dim */
+.overlay::before { position: relative;  }
+.overlay.on::before { content: ''; position:fixed; top:0; bottom:0; right:0; left:0; background:rgba(0, 0, 0, 0.65);  z-index: 11; }
+
+@media (max-width:767px) {
+    .sr-only.mo { position:relative; width:auto; height:auto; clip:auto; color:var(--color-6); font-size:var(--font-w-m);  }
+}

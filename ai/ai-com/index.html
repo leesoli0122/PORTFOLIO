@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>ai 공통</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta name="keywords" content="Mobile UX/UI" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.mgcap.co.kr/favicon.ico" />
+        <!-- 웹 앱 매니페스트 (PWA) -->
+        <link rel="manifest" href="./assets/icons/site.webmanifest" />
+
+        <link rel="stylesheet" type="text/css" href="./guide/css/pub-worklist.css" />
+        <script src="./guide/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="./guide/js/jquery.form.min.js"></script>
+        <style>
+            .header .etc {
+                color: yellowgreen;
+            }
+            .cont table {
+                display: none;
+            }
+            .cont .tit {
+                cursor: pointer;
+            }
+            .cont .tit.on ~ table {
+                display: table;
+            }
+            td.delete { text-decoration:line-through; }
+
+            tr.new-end { background:#b1d087; }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper pc">
+            <section class="ifr_view">
+                <iframe id="iframe" width="100%" height="100%" src="./button.html"></iframe>
+            </section>
+            <section class="container">
+                <div class="header">
+                    <h1>ai 공통 정리</h1>
+                    <ul class="stateArea">
+                        <li><strong>진행상태 :</strong></li>
+                        <li class="typeCommon"><span>공통</span></li>
+                        <li class="typeIng"><span>진행 중</span></li>
+                        <li class="typeComp"><span>완료</span></li>
+                        <li class="typeNon"><span>삭제</span></li>
+                    </ul>
+                    <ul class="stateCnt">
+                        <li>총 <span id="totCnt"></span>개</li>
+                        <li>작업중 <span id="progressCnt"></span>개</li>
+                        <li>완료 <span id="compCnt"></span>개</li>
+                    </ul>
+                    <ul class="etc">
+                        <li>테이블 열 진행 클래스(tr에 적용) : 완료 [comp], 비활성화 [non], 완료 [ing] <br />** ui-util.css, ui-utill.js 공통으로 들어갑니다.</li>
+                    </ul>
+                </div>
+
+                <div class="cont guide">
+                    <h3 class="tit on">공통 가이드</h3>
+                    <table>
+                        <summary></summary>
+                        <caption></caption>
+                        <colgroup>
+                            <col width="8%" />
+                            <col width="8%" />
+                            <col width="20%" />
+                            <col width="6%" />
+                            <col width="6%" />
+                            <col width="10%" />
+                            <col width="8%" />
+                            <col width="4%" />
+                            <col width="6%" />
+                            <col width="24%" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">depth1</th>
+                                <th scope="col">depth2</th>
+                                <th scope="col">depth3</th>
+                                <th scope="col">depth4</th>
+                                <th scope="col">depth5</th>
+                                <th scope="col" class="fileName">화면ID</th>
+                                <th scope="col">형태</th>
+                                <th scope="col">담당</th>
+                                <th scope="col">상태</th>
+                                <th scope="col">비고</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="comp">
+                                <td>[공통]약관</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/terms.html" target="_blank">terms</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="comp">
+                                <td>[공통]input</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/input.html" target="_blank">input</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="comp">
+                                <td>[공통]toggle</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/toggle.html" target="_blank">toggle</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="comp">
+                                <td>[공통]테이블</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/table.html" target="_blank">table</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="comp">
+                                <td>[공통]버튼</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/button.html" target="_blank">button</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="comp">
+                                <td>[공통]탭</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/tab.html" target="_blank">tab</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="comp">
+                                <td>[공통]알럿</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/alert.html" target="_blank">알럿</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="comp">
+                                <td>[공통]팝업</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/popup.html" target="_blank">팝업</a></td>
+                                <td></td>
+                                <td></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cont page">
+                    <h3 class="tit on">sample</h3>
+                    <table>
+                        <summary></summary>
+                        <caption></caption>
+                        <colgroup>
+                            <col width="8%" />
+                            <col width="8%" />
+                            <col width="10%" />
+                            <col width="6%" />
+                            <col width="6%" />
+                            <col width="10%" />
+                            <col width="8%" />
+                            <col width="4%" />
+                            <col width="5%" />
+                            <col width="5%" />
+                            <col width="6%" />
+                            <col width="24%" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">depth1</th>
+                                <th scope="col">depth2</th>
+                                <th scope="col">depth3</th>
+                                <th scope="col">depth4</th>
+                                <th scope="col">depth5</th>
+                                <th scope="col" class="fileName">화면ID</th>
+                                <th scope="col">형태</th>
+                                <th scope="col">담당</th>
+                                <th scope="col">시작일자</th>
+                                <th scope="col">종료일자</th>
+                                <th scope="col">상태</th>
+                                <th scope="col">비고</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/layout.html" target="_blank">layout</a></td>
+                                <td>페이지</td>
+                                <td></td>
+                                <td class="fromDate"></td>
+                                <td class="toDate"></td>
+                                <td class="state"></td>
+                                <td>terms, input, toggle, table, popup, button 사용</td>
+                            </tr>
+                            <tr class="">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="./guide/sample/layout2.html" target="_blank">layout2</a></td>
+                                <td>페이지</td>
+                                <td></td>
+                                <td class="fromDate"></td>
+                                <td class="toDate"></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="fileName"><a href="#" target="_blank"></a></td>
+                                <td>페이지</td>
+                                <td></td>
+                                <td class="fromDate"></td>
+                                <td class="toDate"></td>
+                                <td class="state"></td>
+                                <td></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                /*---------------------------------------------
+                    ready, load
+                ---------------------------------------------*/
+                // 모든 리소스(이미지 등)가 로드된 후 fnPreload()를 호출하여 초기화
+                $(window).on("load", function () {
+                    fnPreload();
+                });
+        
+                /*---------------------------------------------
+                    preload, init
+                ---------------------------------------------*/
+                /* preload */
+                function fnPreload() {
+                    tableStateManager.init();
+                }
+        
+                /*---------------------------------------------
+                    tableStateManager 모듈 정의
+                ---------------------------------------------*/
+                var tableStateManager = (function () {
+                    // 날짜 관련 배열 (필요시 활용)
+                    var fromDate = [],
+                        toDate = [],
+                        dateGap = [];
+        
+                    // 상태별 개수 변수
+                    var progressCnt = 0, // 진행 중 개수
+                        compCnt = 0, // 완료 개수
+                        delCnt = 0; // 삭제 개수
+        
+                    return {
+                        // 테이블 각 행의 상태를 업데이트하는 함수
+                        updateStates: function () {
+                            // 호출 시마다 카운트 초기화
+                            progressCnt = 0;
+                            compCnt = 0;
+                            delCnt = 0;
+        
+                            $(".cont table tbody tr").each(function () {
+                                var $row = $(this);
+                                var $stateCell = $row.find(".state");
+        
+                                if ($row.hasClass("non")) {
+                                    $stateCell.html("<span>삭제</span>");
+                                    delCnt++;
+                                } else if ($row.hasClass("ing")) {
+                                    $stateCell.html("<span>진행 중</span>");
+                                    progressCnt++;
+                                } else if ($row.hasClass("comp")) {
+                                    $stateCell.html("<span>완료</span>");
+                                    compCnt++;
+                                } else {
+                                    $stateCell.text("");
+                                }
+                            });
+                        },
+        
+                        // 상태별 카운트를 업데이트
+                        updateCounts: function () {
+                            // 전체 행 중에서 .non(삭제) 제외하고 세기
+                            var totCnt = $(".page table tbody tr").not(".non").length;
+        
+                            $("#compCnt").text(compCnt);
+                            $("#totCnt").text(totCnt);
+                            $("#progressCnt").text(progressCnt);
+                        },
+        
+                        // 레이아웃(마진) 조정
+                        adjustLayout: function () {
+                            var headerH = $(".container .header").outerHeight();
+                            $(".container .guide").css("margin-top", headerH + "px");
+                        },
+        
+                        // 전체 초기화: 상태 업데이트, 카운트 갱신, 레이아웃 조정 실행
+                        init: function () {
+                            this.updateStates();
+                            this.updateCounts();
+                            this.adjustLayout();
+                        },
+        
+                        // 상태와 카운트만 갱신
+                        update: function () {
+                            this.updateStates();
+                            this.updateCounts();
+                        },
+                    };
+                })();
+        
+                /**
+                 * #테이블 토글
+                 **/
+                var tableListToggle = function (el) {
+                    var $el = $(el);
+                    return {
+                        open: function () {
+                            $el.addClass("on");
+                        },
+                        close: function () {
+                            $el.removeClass("on");
+                        },
+                        toggle: function () {
+                            if ($el.hasClass("on")) {
+                                this.close();
+                            } else {
+                                this.open();
+                            }
+                        },
+                    };
+                };
+        
+                // event
+                $(document).on("click", ".cont .tit", function () {
+                    tableListToggle(this).toggle();
+                });
+            });
+        </script>
+        
+    </body>
+</html>

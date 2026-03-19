@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>폼&gt;샘플&gt;mg캐피탈</title>
+
+    <meta name="keywords" content="MG캐피탈" />
+    <meta name="copyright" content="copyrights 2025 MG캐피탈" />
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:image" content="http://gallery2gate.kr/resources/images/common/ui-maeta-img"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="No-Cache" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.mgcap.co.kr/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/css/com/default.css" />
+    <link rel="stylesheet" href="../../assets/css/com/common.css" />
+    <link rel="stylesheet" href="../../assets/css/com/style.css" />
+    <link rel="stylesheet" href="../../assets/css/com/fonts.css" />
+    <link rel="stylesheet" href="../../assets/css/com/layout.css" />
+    <link rel="stylesheet" href="../../assets/css/com/nav.css" />
+    <link rel="stylesheet" href="../../assets/css/com/input.css" />
+    <link rel="stylesheet" href="../../assets/css/com/button.css" />
+    <link rel="stylesheet" href="../../assets/css/com/tab.css" />
+    <link rel="stylesheet" href="../../assets/css/com/table.css" />
+    <link rel="stylesheet" href="../../assets/css/com/content.css" />
+    <script type="text/javascript" src="../../assets/js/lib/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="../../assets/js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/lib/ui_plugin.js"></script>
+    <script type="text/javascript" src="../../assets/js/ui/ui-util.js"></script>
+    <!--[D]퍼블용 인크루드 스크립트, 개발에서는 사용안함-->
+    <script src="../../assets/js/include.js"></script>
+    <style>
+        /*---------------------------------------------
+    #스크롤탑버튼
+---------------------------------------------*/
+#sideTools { z-index: 9; position: fixed; bottom: 30px; display:flex; right:30px;  display:flex; flex-direction: column; gap:20px; align-items: center;  transition: bottom 0.3s linear; }
+#sideTools > div > button { width:48px; height:48px; }
+#sideTools .scrollUpBtn { opacity: 0; visibility: hidden; background-color: var(--white); transition: all 0.2s ease-in-out;}
+#sideTools.on .scrollUpBtn { opacity: 1; visibility: visible; }
+#sideTools .scrollUpBtn > button { background: var(--ico-top) no-repeat center/32px auto; display: block; text-align: center; color: transparent; }
+
+#sideTools .scrollUpBtn,
+#sideTools .sideMenu { position: relative; display:flex; justify-content: center; width:48px; height:48px; border-radius: 50%; box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.2); }
+#sideTools .sideMenu {   background-color: var(--color-2); }
+#sideTools .sideMenu.on { z-index:11;}
+#sideTools .sideMenu > button { background: var(--ico-w-plus)no-repeat center/20px auto; display:block; text-align: center; color:transparent; transform: rotate(180deg); transition:all .2s; }
+#sideTools .sideMenu.on > button { transform: rotate(45deg); }
+#sideTools .sideMenu > ul { display:none; position: absolute; bottom:58px; }
+#sideTools .sideMenu > ul > li { margin-top:10px; }
+#sideTools .sideMenu > ul > li > a { display: flex; align-items: center; justify-content:center; width:48px; height:48px;  border-radius: 50%; text-align: center; border:1px solid red; background-color: #fff;}
+
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div data-include-path="../../views/COMMON/header.html"></div>
+        <div class="bodyWrap">
+            <main class="contentWrap">
+                <nav class="location-container">
+                    <ol class="breadcrumb">
+                        <li><span class="home">홈</span></li>
+                        <li><span>MY MG</span></li>
+                        <li><span>이용현황</span></li>
+                        <li><span>이용상품내역</span></li>
+                    </ol>
+                </nav>
+                <section class="visual-container">
+                    <h2>이용상품내역</h2>
+                </section>
+                <section class="page-container MGC-MMG-UST-001">
+                    <div class="text-content">
+                        <h3>이용상품내역 목록</h3>
+                        <form>
+                            <!--확인용-->
+                            <fieldset class="form-content">
+                                <legend>납입내역에 대한 조회</legend>
+                                <div class="form-wrap search-form">
+                                    <div class="form-group">
+                                        <p class="mo-tit">구분선택</p>
+                                        <label class="radio">
+                                            <input type="radio" name="use" value="" checked="">
+                                            <span>팩스</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="use" value="">
+                                            <span>이메일</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="use" value="">
+                                            <span>우편</span>
+                                        </label>
+                                    </div>
+                                    <div class="group">
+                                        <div class="form-group">
+                                            <label>납입기간</label>
+                                            <div class="ph">
+                                                <input id="date-input" type="date" name="date" placeholder="디폴트" />
+                                                <span class="ipt-hyphen">-</span>
+                                                <input id="date-input" type="date" name="date" placeholder="디폴트" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">제출기간</label>
+                                            <select required="" title="">
+                                                <option value="" hidden="">통신사</option>
+                                                <option value="0">SKT</option>
+                                                <option value="1">KT</option>
+                                                <option value="2">LGU+</option>
+                                                <option value="0">(알뜰)SKT</option>
+                                                <option value="1">(알뜰)KT</option>
+                                                <option value="2">(알뜰)LGU+</option>
+                                            </select>
+
+                                            <label for="">제출기관명</label>
+                                            <input id="submit-name" type="text" name="submitName" placeholder="제출기관명" />
+                                            <label for="">제출용도</label>
+                                            <input id="submit-name" type="text" name="submitName" placeholder="제출용도" />
+                                        </div>
+                                        <div class="form-group ph">
+                                            <label>팩스 번호</label>
+                                            <div class="ph">
+                                                <input id="fax-number" type="number" name="fax" placeholder="디폴트" />
+                                                <input id="fax-number" type="number" name="fax" placeholder="디폴트" />
+                                                <input id="fax-number" type="number" name="fax" placeholder="디폴트" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn-form">조회</button>
+                                </div><!--//form-wrap-->
+                            </fieldset>
+                            <!--확인용끝-->
+                        </form>
+                        <div class="text-group">
+                            <p class="caption">기준일 : 2025-09-22 / 단위: 원</p>
+                            <div class="table-content">
+                                <table class="mo-s">
+                                    <caption>번호, 실행번호, 공급자명, 상품명, 여신금액, 잔여회차/총회차, 실행일, 최근납입일, 잔액, 진행상태, 만기일, 차기납입일, 진행상태에 대한 표</caption>
+                                    <colgroup>
+                                        <col style="width:5%">
+                                        <col style="width:10%">
+                                        <col style="width:11%">
+                                        <col style="width:10%">
+                                        <col style="width:10%">
+                                        <col style="width:7%">
+                                        <col style="width:9%">
+                                        <col style="width:7%">
+                                        <col style="width:5%">
+                                        <col style="width:6%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" rowspan="2">No.</th>
+                                            <th scope="col" rowspan="2">실행번호</th>
+                                            <th scope="col" rowspan="2">공급자명</th>
+                                            <th scope="col" rowspan="2">상품명</th>
+                                            <th scope="col" rowspan="2">여신금액</th>
+                                            <th scope="col" rowspan="2">잔여회차/총회차</th>
+                                            <th scope="col">실행일</th>
+                                            <th scope="col">최근납입일</th>
+                                            <th scope="col" rowspan="2">잔액</th>
+                                            <th scope="col">진행상태</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col" class="bor-l">만기일</th>
+                                            <th scope="col">차기납입일</th>
+                                            <th scope="col">진행상태</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="2">1</td>
+                                            <td rowspan="2">MI14002240001</td>
+                                            <td rowspan="2">충면화광기고추손도</td>
+                                            <td rowspan="2">내구재/헬스케어</td>
+                                            <td rowspan="2">1,800,000</td>
+                                            <td rowspan="2">6/18</td>
+                                            <td>2014-02-27</td>
+                                            <td>134,050</td>
+                                            <td rowspan="2">0</td>
+                                            <td>중도상환</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bor-l">2015-02-27</td>
+                                            <td>134,050</td>
+                                            <td>정상</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4" class="sum">합계</td>
+                                            <td colspan="2">1,800,000</td>
+                                            <td colspan="2"></td>
+                                            <td>0</td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="info-list">
+                                <ul class="m-dot">
+                                    <li> 납입상태가 연체일 경우 납입상태의 “연체"를 클릭하시면 연체내역을 확인 하실 수 있습니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bottom-container">
+                    <div class="btn-content cta">
+                        <div class="button-group">
+                            <a herf="javascript:void(0);" class="btn-primary">출력</a>
+                        </div>
+                    </div>
+                </section>
+                <section id="sideTools" class="">
+                    <div class="scrollUpBtn"><button type="button">TOP</button></div>
+                 </section>
+            </main>
+        </div>
+        <div data-include-path="../../views/COMMON/footer.html"></div>
+    </div>
+</body>
+</html>

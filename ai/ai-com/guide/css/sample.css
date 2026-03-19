@@ -1,0 +1,26 @@
+main.contentWrap.guide { width:100%; height:100%; }
+
+
+main.contentWrap.guide .visual-content { margin-bottom:30px; }
+main.contentWrap.guide .visual-content > h2 { display:block; }
+main.contentWrap.guide .visual-content > h2 > em { display:block; color:#222; font-size:50px; padding:30px; border-bottom:1px solid #222;  }
+main.contentWrap.guide .visual-content > h2 > span {  color:#757575; font-size:1rem; line-height:1.5; font-weight:500; }
+
+main.contentWrap.guide .visual-content + .sample-content { padding:20px 30px; border:1px solid #666666; border-radius:20px; }
+main.contentWrap.guide .sample-content .tit-wrap { display:flex; width:100%; padding:30px 0 50px; margin-bottom:30px; border-bottom:1px solid #ddd;  }
+main.contentWrap.guide .sample-content .tit-wrap:last-child { border-bottom:0; }
+main.contentWrap.guide .sample-content .tit-wrap > div { width:100%; }
+main.contentWrap.guide .sample-content .tit-wrap h3 { display:block; flex:0 0 200px; min-width:200px; font-weight:500; color:#222; }
+main.contentWrap.guide .sample-content .tit-wrap h4 { display:block; margin-bottom:20px; color:rgba(0, 0, 0, 0.87); font-size:24px; font-weight:400; }
+main.contentWrap.guide .sample-content .tit-wrap h4 > span { display:block; margin-top:20px; font-size:14px; color:rgba(0, 0, 0, 0.47);  }
+main.contentWrap.guide 
+main.contentWrap.guide .sample-content .form-wrap + .form-wrap { margin-top:40px; }
+main.contentWrap.guide 
+main.contentWrap.guide .sample-content .form-wrap fieldset { width:100%; display:flex; gap:30px; }
+.label-tit { margin-bottom:10px; }
+
+
+@media (max-width:767px) {
+    main.contentWrap.guide { padding:0 20px; }
+    main.contentWrap.guide .sample-content .tit-wrap { flex-wrap: wrap; gap:20px; }
+}

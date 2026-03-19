@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>탭</title>
+
+    <!-- 수정: 회사 정보 제거 -->
+    <meta name="description" content="탭 샘플 페이지입니다." />
+
+    <!-- 수정: 경로 일반화 -->
+    <link rel="stylesheet" href="/assets/css/com/default.css" />
+    <link rel="stylesheet" href="/assets/css/com/common.css" />
+    <link rel="stylesheet" href="/assets/css/com/style.css" />
+    <link rel="stylesheet" href="/assets/css/com/fonts.css" />
+    <link rel="stylesheet" href="/assets/css/com/layout.css" />
+    <link rel="stylesheet" href="/assets/css/com/tab.css" />
+
+    <link rel="stylesheet" href="../css/sample.css" />
+
+    <script type="text/javascript" src="/assets/js/lib/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/assets/js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/assets/js/lib/ui_plugin.js"></script>
+    <script type="text/javascript" src="/assets/js/ui/ui-util.js"></script>
+    <!--[D]퍼블용 인크루드 스크립트, 개발에서는 사용안함-->
+    <script src="/assets/js/include.js"></script>
+
+    <style>
+        .button-content,
+        .bottom-container {
+            margin-top:30px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <!-- S: header -->
+    <header id="headerWrap" class="headerOn"></header>
+
+    <main class="contentWrap guide">
+    <div class="visual-content">
+        <h2>
+        <em>탭메뉴</em>
+        <p
+            >탭메뉴는 동일한 페이지 또는 영역 안에서 유사한 콘텐츠를
+            그룹화하여 섹션 간 이동 시 사용한다.<br />
+            각 탭에는 동일한 중요도의 Peer로 구성되며 다른 탭과 구별되는
+            콘텐츠가 포함되어야 한다.</p
+        >
+        </h2>
+    </div>
+    <div id="" class="sample-content">
+        <section class="tab-container jsTab">
+        <div style="padding: 0 0 20px">
+            <h3>1Depth</h3>
+            <div style="padding: 10px 0 20px">
+            <p>FIXED TABS (모바일에서는 드롭다운 사용)</p>
+            <p>
+                Fixed tabs는 섹션 개수와 레이블 길이가 고정적일 경우 사용되며,
+                스크린 넓이에 섹션 개수를 나누어 탭 넓이를 고정 사용한다.
+            </p>
+            <p>
+                메뉴명이 길어질 경우 두 줄 노출되며 텍스트 레이블에 따라 탭
+                좌우 패딩 8px 유지하여 중앙정렬한다.
+            </p>
+            </div>
+
+            <nav class="tab-list depth1">
+            <div class="btn-group">
+                <button type="button" class="tab-item active" data-tab="tab1" aria-selected="true">탭메뉴1</button>
+                <button type="button" class="tab-item" data-tab="tab2" aria-selected="false">탭메뉴2</button>
+                <button type="button" class="tab-item" data-tab="tab3" aria-selected="false">탭메뉴3</button>
+            </div>
+            </nav>
+            <!-- <div class="se-select tab-select-mobile" data-view="mo">
+            <select class="tab-select depth1">
+                <option value="tab1" selected>탭1-1</option>
+                <option value="tab2">탭1-2</option>
+                <option value="tab3">탭1-3</option>
+            </select>
+            </div> -->
+
+            <div class="tab-content">
+            <div id="tab1" class="tab-panel active">
+                <p>탭1-1 내용</p>
+            </div>
+            <div id="tab2" class="tab-panel">
+                <p>탭1-2 내용</p>
+            </div>
+            <div id="tab3" class="tab-panel">
+                <p>탭1-3 내용</p>
+            </div>
+            </div>
+            <!--//tab-content-->
+        </div>
+        </section>
+        <section class="tab-container jsTab">
+        <div style="padding: 0 0 20px">
+            <h3>2Depth</h3>
+            <div style="padding: 10px 0 20px; font-size: 14px">
+            <p>컨텐츠 전환처럼 명확한 상태 구분이 필요한 경우 사용한다.</p>
+            <p>
+                PC 환경에서는 탭 개수가 많아질 경우 자동으로 2줄 처리되며,
+                탭은 좌측 정렬된다.
+            </p>
+            </div>
+
+            <nav class="tab-list depth2">
+            <div class="btn-group">
+                <button type="button" class="tab-item active" data-tab="tab2-1" aria-selected="true">탭메뉴1</button>
+                <button type="button" class="tab-item" data-tab="tab2-2" aria-selected="false">탭메뉴2</button>
+                <button type="button" class="tab-item" data-tab="tab2-3" aria-selected="false">탭메뉴3</button>
+            </div>
+            </nav>
+            <div class="tab-content">
+            <div id="tab2-1" class="tab-panel active">
+                <p>준비중1</p>
+            </div>
+            <div id="tab2-2" class="tab-panel">
+                <p>준비중2</p>
+            </div>
+            <div id="tab2-3" class="tab-panel">
+                <p>준비중3</p>
+            </div>
+            </div>
+            <!--//tab-content-->
+        </div>
+        </section>
+        
+        <!-- 기존 탭(jsTab)과 분리 -->
+        <section class="select-tab-area"> 
+        <div style="padding: 0 0 20px">
+            <h3>select-tab</h3>
+            <div style="padding: 10px 0 20px; font-size: 14px">
+            <p>셀렉트 박스를 탭처럼 이용하려고 할 때 사용한다.</p>
+            </div>
+            <div class="tab-select-wrap">
+                <select class="tab-select-common">
+                    <option value="sel-tab1" selected>상품요약</option>
+                    <option value="sel-tab2">상세안내</option>
+                    <option value="sel-tab3">유의사항</option>
+                </select>
+            </div>
+
+            <div class="tab-content">
+                <div id="sel-tab1" class="tab-panel active">셀렉트 전용 내용 1</div>
+                <div id="sel-tab2" class="tab-panel">셀렉트 전용 내용 2</div>
+                <div id="sel-tab3" class="tab-panel">셀렉트 전용 내용 3</div>
+            </div>
+        </section>
+
+        <!-- <div class="anchor-container"> 
+        <div style="padding: 0 0 20px">
+            <h3>Anchor Tab (PC:Scroll / MO:Tab)</h3>
+            <p></p>
+        </div>
+        
+        <nav class="anchor-list">
+            <div class="btn-group">
+                <button type="button" data-target="#item" class="active" title="선택됨">상품요약</button>
+                <button type="button" data-target="#details">상세안내</button>
+                <button type="button" data-target="#precautions">유의사항</button>
+            </div>
+        </nav>
+        </div> -->
+    </main>
+
+    <!-- S: footer -->
+    <footer id="footerWrap"></footer>
+</div>
+</body>
+</html>
