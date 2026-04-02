@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1775111154002,
+    "title": "리얼그리드란?",
+    "project": "그리드시스템",
+    "date": "2026-04-01",
+    "content": "• 주요 작업/질문\n\n리얼그리드(RealGrid)의 개념 및 실무 활용 방식 파악\n웹 퍼블리셔가 리얼그리드에서 커스텀 가능한 범위 확인\n\n• 해결 방법 또는 결론\n\n리얼그리드는 DataProvider(데이터) + GridView(UI) 구조로 동작하는 고성능 그리드 라이브러리\n실무에서는 단순 조회가 아니라 조회 + 인라인 편집 + 저장 + 엑셀 기능까지 포함된 업무 핵심 UI로 사용됨\n퍼블리셔는 styleName 기반으로 CSS 커스터마이징(테마, 셀, 헤더, 상태 표현 등)을 담당\n데이터 처리, 이벤트, 렌더러/에디터 로직은 개발자 영역\n\n• 기억할 포인트\n\n리얼그리드는 일반 table처럼 DOM 직접 제어 방식 지양 → styleName 기반 접근 필수\n퍼블리셔 역할은 “보여지는 UI 설계”, 개발자는 “동작 로직 구현”으로 명확히 분리\n상태값(에러, 완료 등)은 클래스 설계로 먼저 정의 → 개발자가 조건 연결\ndataRow vs itemIndex 개념 차이 이해 필요 (정렬/필터 시 중요)\n기업용 시스템에서는 “엑셀 대체 UI”로 쓰이는 경우가 많음"
+  },
+  {
+    "id": 1775111121307,
+    "title": "ActiveX 기반 TOINB Grid 카드형 UI로 변환하는 구조 분석",
+    "project": "그리드시스템",
+    "date": "2026-04-01",
+    "content": "• 주요 작업/질문\n\nActiveX 기반 TOINB Grid 데이터를 카드형 UI로 변환하는 구조 분석\nHTML/CSS/JS 코드 흐름 및 역할 파악\nActiveX Grid와 TOINB의 관계 확인\n\n• 해결 방법 또는 결론\n\n현재 구조는 ActiveX Grid 데이터를 JS로 추출 → 카드 UI로 렌더링하는 중간 단계\nTOINB는 ActiveX 기반 Grid 제품이며, GetCellValue, RowCount 방식으로 데이터 접근\nmockData로 UI 먼저 구성 후, 추후 getGridData()로 실제 데이터 연결 가능\n카드 UI는 grid 기반이지만 실무에서는 flex fallback 고려 필요\n접근성 및 보안(XSS) 측면에서 일부 개선 필요\n\n• 기억할 포인트\n\nActiveX는 IE 전용 레거시 구조 → 점진적 제거 대상\nTOINB Grid는 행 1부터 시작 (index 1 기반)\ninnerHTML 사용 시 XSS 위험 → textContent 사용 권장\n카드 클릭은 div 대신 button/role=\"button\" + 키보드 이벤트 필요\n실무에서는 ActiveX → API → 신규 Grid(리얼그리드 등) 순으로 전환되는 경우 많음"
+  }
+]
