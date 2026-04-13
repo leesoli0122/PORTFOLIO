@@ -1,0 +1,89 @@
+
+<div class="preview-header">
+    <h2>Button</h2>
+    <div class="status-controls">
+        <button class="status-btn todo">대기</button>
+        <button class="status-btn inprogress">진행중</button>
+        <button class="status-btn completed">완료</button>
+    </div>
+</div>
+<div class="preview-content">
+    <div>
+        <div class="preview-title">
+            <h1>버튼</h1>
+            <p>버튼을 사용하면 사용자는 한 번의 탭으로 작업을 수행하고 선택할 수 있습니다.</p>
+        </div>
+        <div class="button-body">
+            <div class="button-content">
+                <h2>기본</h2>
+                <div class="btn-content">
+                    <div class="button-group">
+                        <button type="button"  class="btn-primary">btn-primary</button>
+                        <button type="button" class="btn-secondary">btn-secondary</button>
+                        <button type="button" class="btn-line">btn-line</button>
+                    </div>
+                </div>
+                <h2>작은 사이즈 <span>.button-group.btn-sm</span></h2>
+                <div class="btn-content">
+                    <div class="button-group btn-sm">
+                        <button type="button" class="btn-primary">btn-sm</button>
+                        <button type="button" class="btn-secondary">btn-sm</button>
+                        <button type="button" class="btn-line">btn-sm</button>
+                    </div>
+                </div>
+                <h2>텍스트 + 아이콘 <span>.ico-&#9632;&#9632;&#9632;</span></h2>
+                <div class="btn-content">
+                    <div class="table-group">
+                        <table>
+                            <caption>버튼 아이콘 구현 방식 비교(상황, 추천 방식, 접근성 처리 포함)</caption>
+                            <colgroup>
+                                <col style="width:20%">
+                                <col style="width:20%">
+                                <col style="width:auto">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>상황</th>
+                                    <th>추천 방식</th>
+                                    <th>접근성 처리</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>단순 화살표·기호 장식</td>
+                                    <td>가상선택자</td>
+                                    <td>아이콘만 들어간다면 <code><span>&#60;span</span> class="sr-only"<span>&#62;</span>버튼설명<span>&#60;span</span><span>/&#62;</span></code> 필수</td>
+                                </tr>
+                                <tr>
+                                    <td>아이콘 라이브러리 사용</td>
+                                    <td><code><span>&#60;i</span><span>/&#62;</span></code>태그</td>
+                                    <td>i태그에 <code>aria-hidden="true"</code></td>
+                                </tr>
+                                <tr>
+                                    <td>SVG 아이콘</td>
+                                    <td><code><span>&#60;span</span><span>&#62;</span></code> + SVG</td>
+                                    <td>SVG에 <code>aria-hidden="true"</code></td>
+                                </tr>
+                                <tr>
+                                    <td>동적 아이콘 변경</td>
+                                    <td><code><span>&#60;i</span><span>/&#62;</span> / <span>&#60;span</span><span>&#62;</span></code></td>
+                                    <td>SVG에 <code>aria-hidden="true"</code></td>
+                                </tr>
+                                <tr>
+                                    <td>아이콘만 있는 버튼</td>
+                                    <td><code><span>&#60;i</span><span>/&#62;</span> / <span>&#60;span</span><span>&#62;</span></code></td>
+                                    <td>버튼에 <code>aria-label</code>필수</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn-primary">ico-search<i class="ico-search" aria-hidden="true"></i></button>
+                        <button type="button" class="btn-secondary">btn-sm</button>
+                        <button type="button" class="btn-line">btn-sm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
