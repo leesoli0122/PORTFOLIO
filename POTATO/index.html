@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이모티콘 메이커</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+    <!-- 헤더 -->
+    <header class="app-header">
+        <h1>이모티콘 메이커</h1>
+    </header>
+
+    <!-- 메인 영역 -->
+    <main class="app-main">
+
+        <!-- 왼쪽: 캐릭터 미리보기 -->
+        <section class="preview-section">
+            <h2>미리보기</h2>
+            <div class="canvas-wrapper">
+                <canvas id="preview-canvas" width="500" height="500"></canvas>
+            </div>
+            <div class="preview-actions">
+                <button id="btn-save">💾 저장</button>
+                <button id="btn-reset">🔄 초기화</button>
+            </div>
+            <p class="save-hint">360x360px · 투명 배경</p>
+        </section>
+
+        <!-- 오른쪽: 파츠 선택 -->
+        <section class="parts-section">
+
+            <!-- 탭 메뉴 -->
+            <nav class="tab-bar" role="tablist">
+                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
+                <button class="tab-btn" data-tab="ear" role="tab">귀</button>
+                <button class="tab-btn" data-tab="outfit" role="tab">옷</button>
+                <button class="tab-btn" data-tab="pose" role="tab">포즈</button>
+                <button class="tab-btn" data-tab="background" role="tab">배경</button>
+            </nav>
+
+            <!-- 현재 탭 제목 -->
+            <p class="parts-tab-title" id="tab-title">얼굴</p>
+
+            <!-- 파츠 카드 목록 -->
+            <div id="parts-grid" role="tabpanel"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!--
+    로드 순서 중요:
+    1. save-manager.js
+    2. parts-config.js
+    3. app.js
+-->
+<script src="assets/js/save-manager.js"></script>
+<script src="assets/js/parts-config.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+/* =============================================
+    style.css
+    이모티콘 메이커 전체 스타일
+============================================= */
+/* ===== 저장 버튼 영역 ===== */
+.save-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 0 8px;
+}
+
+.save-btn {
+    width: 100%;
+    max-width: 240px;
+    padding: 12px 24px;
+    background-color: #4f46e5;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.save-btn:hover {
+    background-color: #4338ca;
+}
+
+.save-btn:active {
+    transform: scale(0.97);
+}
+
+.save-btn:disabled {
+    background-color: #a5a5a5;
+    cursor: not-allowed;
+}
+
+.save-hint {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+/* --------------------------------------------------
+    1. 기본 리셋 & 변수
+-------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-bg:          #f5f5f5;
+    --color-surface:     #ffffff;
+    --color-border:      #e0e0e0;
+    --color-primary:     #ff7eb3;   /* 포인트 컬러 (선택 상태 등) */
+    --color-primary-bg:  #fff0f6;
+    --color-text:        #333333;
+    --color-text-muted:  #999999;
+    --radius-card:       10px;
+    --radius-btn:        8px;
+    --shadow-card:       0 2px 8px rgba(0, 0, 0, 0.08);
+    --transition:        0.15s ease;
+}
+
+body {
+    font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+}
+
+
+/* --------------------------------------------------
+ 2. 앱 전체 레이아웃
+-------------------------------------------------- */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px;
+    gap: 16px;
+}
+
+.app-header h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* 메인 영역: 미리보기(좌) + 파츠 선택(우) */
+.app-main {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+    align-items: flex-start;
+}
+
+
+/* --------------------------------------------------
+ 3. 왼쪽 미리보기 영역
+-------------------------------------------------- */
+.preview-section {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+    width: 300px;
+}
+
+.preview-section h2 {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+/* 캔버스 (투명 배경 시각화를 위한 체커보드) */
+.canvas-wrapper {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1.5px solid var(--color-border);
+    background-image:
+        linear-gradient(45deg, #ddd 25%, transparent 25%),
+        linear-gradient(-45deg, #ddd 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ddd 75%),
+        linear-gradient(-45deg, transparent 75%, #ddd 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    background-color: #f9f9f9;
+}
+
+#preview-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 미리보기 하단 버튼들 */
+.preview-actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.preview-actions button {
+    flex: 1;
+    padding: 9px 0;
+    border: none;
+    border-radius: var(--radius-btn);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--transition);
+}
+
+.preview-actions button:hover {
+    opacity: 0.85;
+}
+
+#btn-save {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+#btn-reset {
+    background: var(--color-border);
+    color: var(--color-text);
+}
+
+
+/* --------------------------------------------------
+ 4. 오른쪽 파츠 선택 영역
+-------------------------------------------------- */
+.parts-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: 16px;
+    box-shadow: var(--shadow-card);
+    min-height: 400px;
+}
+
+
+/* --------------------------------------------------
+ 5. 탭 메뉴
+-------------------------------------------------- */
+.tab-bar {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 7px 16px;
+    border: 1.5px solid var(--color-border);
+    border-radius: 20px;
+    background: transparent;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.tab-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* 활성화된 탭 */
+.tab-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+
+/* --------------------------------------------------
+ 6. 탭 제목
+-------------------------------------------------- */
+.parts-tab-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text);
+    padding: 4px 0;
+    border-bottom: 2px solid var(--color-primary-bg);
+}
+
+
+/* --------------------------------------------------
+ 7. 파츠 카드 그리드
+-------------------------------------------------- */
+#parts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 480px;
+    padding: 4px 2px;
+}
+
+.part-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 6px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-card);
+    cursor: pointer;
+    background: var(--color-surface);
+    transition: all var(--transition);
+    user-select: none;
+}
+
+.part-card:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 126, 179, 0.2);
+}
+
+/* 선택된 파츠 카드 */
+.part-card.selected {
+    border-color: var(--color-primary);
+    background: var(--color-primary-bg);
+    box-shadow: 0 0 0 3px rgba(255, 126, 179, 0.25);
+}
+
+.part-card.selected::after {
+    content: "✓";
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* 카드에 position: relative 필요 (::after 때문) */
+.part-card {
+    position: relative;
+}
+
+.part-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 6px;
+    background: transparent;
+}
+
+.part-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* 이미지 없을 때 대체 표시 */
+.img-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--color-bg);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--color-text-muted);
+}
+
+/* 파츠 없을 때 메시지 */
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    line-height: 1.8;
+}
+
+
+/* --------------------------------------------------
+    8. 반응형 — iPad / 모바일
+-------------------------------------------------- */
+
+/* iPad 세로 (768px 이하) */
+@media (max-width: 768px) {
+    .app-main {
+        flex-direction: column;
+    }
+
+    .preview-section {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+
+    .canvas-wrapper {
+        width: 180px;
+        height: 180px;
+    }
+
+    .preview-actions {
+        flex-direction: column;
+        width: 120px;
+    }
+
+    #parts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        max-height: 340px;
+    }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+    .app-wrapper {
+        padding: 10px;
+    }
+
+    .canvas-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    .tab-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    #parts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
+}
