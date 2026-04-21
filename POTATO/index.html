@@ -2,881 +2,214 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="app-wrapper">
+<div id="app">
 
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
+    <!-- ================================================
+        메인 페이지
+    ================================================ -->
+    <div class="page" id="page-main">
+        <div class="main-bg-deco" aria-hidden="true">
+            <span class="deco-blob blob-1"></span>
+            <span class="deco-blob blob-2"></span>
+            <span class="deco-blob blob-3"></span>
+        </div>
 
-    <!-- 메인 영역 -->
-    <main class="app-main">
+        <div class="main-content">
+            <header class="main-header">
+                <div class="main-logo">
+                    <span class="logo-icon">🎨</span>
+                    <h1 class="logo-title">이모티콘 메이커</h1>
+                    <p class="logo-sub">나만의 캐릭터를 만들어요</p>
+                </div>
+            </header>
 
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
+            <nav class="main-nav">
+                <button class="main-nav-btn btn-maker" data-page="maker">
+                    <span class="nav-btn-icon">✏️</span>
+                    <span class="nav-btn-title">캐릭터 만들기</span>
+                    <span class="nav-btn-desc">파츠를 조합해 이모티콘 완성</span>
+                    <span class="nav-btn-arrow">→</span>
+                </button>
 
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
+                <button class="main-nav-btn btn-upload" data-page="upload">
+                    <span class="nav-btn-icon">📁</span>
+                    <span class="nav-btn-title">파츠 업로드</span>
+                    <span class="nav-btn-desc">그린 파츠 이미지 등록 · 관리</span>
+                    <span class="nav-btn-arrow">→</span>
+                </button>
 
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
+                <button class="main-nav-btn btn-gallery" data-page="gallery">
+                    <span class="nav-btn-icon">🖼️</span>
+                    <span class="nav-btn-title">갤러리</span>
+                    <span class="nav-btn-desc">완성된 이모티콘 모아보기</span>
+                    <span class="nav-btn-arrow">→</span>
+                </button>
             </nav>
 
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
+            <footer class="main-footer">
+                <p>이미지는 기기에만 저장돼요 ·  외부 서버 전송 없음</p>
+            </footer>
+        </div>
+    </div>
 
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
 
-        </section>
+    <!-- ================================================
+        메이커 페이지
+    ================================================ -->
+    <div class="page hidden" id="page-maker">
 
-    </main>
+        <!-- 상단 헤더 -->
+        <header class="sub-header">
+            <button class="back-btn" data-page="main">← 뒤로</button>
+            <h2 class="sub-header-title">✏️ 캐릭터 만들기</h2>
+            <div class="sub-header-right"></div>
+        </header>
 
+        <div class="maker-layout">
+
+            <!-- 왼쪽: 미리보기 -->
+            <section class="preview-section">
+                <div class="canvas-wrapper">
+                    <canvas id="preview-canvas" width="360" height="360"></canvas>
+                </div>
+                <div class="preview-actions">
+                    <button id="btn-random" class="action-btn btn-secondary" title="랜덤 조합">🎲 랜덤</button>
+                    <button id="btn-reset"  class="action-btn btn-secondary" title="초기화">🔄 초기화</button>
+                    <button id="btn-save"   class="action-btn btn-primary"   title="PNG 저장">💾 저장</button>
+                </div>
+                <p class="save-hint">360×360px · 투명 배경</p>
+            </section>
+
+            <!-- 오른쪽: 파츠 선택 -->
+            <section class="parts-section">
+
+                <!-- 탭 메뉴 (JS에서 동적 생성) -->
+                <nav class="tab-bar" id="maker-tab-bar" role="tablist"></nav>
+
+                <p class="parts-tab-title" id="tab-title"></p>
+
+                <!-- 즐겨찾기 토글 -->
+                <div class="fav-filter-row">
+                    <button id="btn-fav-filter" class="fav-filter-btn">⭐ 즐겨찾기만 보기</button>
+                </div>
+
+                <!-- 파츠 카드 목록 -->
+                <div id="parts-grid" role="tabpanel"></div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <!-- ================================================
+        업로드 페이지
+    ================================================ -->
+    <div class="page hidden" id="page-upload">
+
+        <header class="sub-header">
+            <button class="back-btn" data-page="main">← 뒤로</button>
+            <h2 class="sub-header-title">📁 파츠 업로드</h2>
+            <div class="sub-header-right"></div>
+        </header>
+
+        <div class="upload-layout">
+
+            <!-- 탭 선택 -->
+            <div class="upload-tab-row">
+                <p class="upload-section-label">어떤 파츠인가요?</p>
+                <nav class="tab-bar" id="upload-tab-bar" role="tablist"></nav>
+            </div>
+
+            <!-- 업로드 영역 -->
+            <div class="upload-drop-area" id="upload-drop-area">
+                <input type="file" id="upload-input" accept="image/png,image/jpeg,image/webp" multiple hidden>
+                <div class="upload-drop-inner">
+                    <span class="upload-drop-icon">🖼️</span>
+                    <p class="upload-drop-text">여기를 탭해서 이미지 선택</p>
+                    <p class="upload-drop-hint">PNG 권장 · 투명 배경 유지됨 · 여러 장 한번에 선택 가능</p>
+                    <button class="upload-select-btn" id="upload-select-btn">파일 선택하기</button>
+                </div>
+            </div>
+
+            <!-- 등록된 파츠 목록 -->
+            <div class="upload-list-section">
+                <p class="upload-section-label">등록된 파츠 <span id="upload-count">0</span>개</p>
+                <div id="upload-parts-grid" class="upload-parts-grid"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ================================================
+        갤러리 페이지
+    ================================================ -->
+    <div class="page hidden" id="page-gallery">
+
+        <header class="sub-header">
+            <button class="back-btn" data-page="main">← 뒤로</button>
+            <h2 class="sub-header-title">🖼️ 갤러리</h2>
+            <div class="sub-header-right">
+                <span id="gallery-count" class="gallery-count-badge">0개</span>
+            </div>
+        </header>
+
+        <div class="gallery-layout">
+            <div id="gallery-grid" class="gallery-grid"></div>
+            <div id="gallery-empty" class="gallery-empty hidden">
+                <p>아직 저장된 이모티콘이 없어요</p>
+                <button class="action-btn btn-primary" data-page="maker">캐릭터 만들러 가기 →</button>
+            </div>
+        </div>
+
+    </div>
+
+</div><!-- /#app -->
+
+
+<!-- 이미지 상세 모달 -->
+<div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal-box">
+        <img id="modal-img" src="" alt="이모티콘 미리보기">
+        <div class="modal-actions">
+            <button id="modal-download" class="action-btn btn-primary">⬇️ 다운로드</button>
+            <button id="modal-delete"   class="action-btn btn-danger">🗑️ 삭제</button>
+            <button id="modal-close"    class="action-btn btn-secondary">닫기</button>
+        </div>
+        <p class="modal-date" id="modal-date"></p>
+    </div>
 </div>
 
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
+<!-- 토스트 알림 -->
+<div id="toast" class="toast hidden"></div>
 
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
 
 <!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
+    JS 로드 순서:
+    1. db.js           — IndexedDB 초기화
+    2. parts-config.js — 탭/레이어 설정
+    3. save-manager.js — PNG 저장
+    4. upload.js       — 업로드 페이지
+    5. gallery.js      — 갤러리 페이지
+    6. maker.js        — 메이커 페이지
+    7. app.js          — 라우팅 + 초기화 (반드시 마지막)
 -->
+<script src="assets/js/db.js"></script>
 <script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 메이커</title>
-
-    <!-- =============================================
-        iPad / iPhone 홈 화면 추가 설정
-        Safari에서 "홈 화면에 추가" 시 앱처럼 동작하게 합니다.
-    ============================================= -->
-
-    <!-- 홈 화면 추가 시 전체화면(상단 바 없음)으로 실행 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- 상단 상태바 색상: default / black / black-translucent -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <!-- 홈 화면에 표시될 앱 이름 -->
-    <meta name="apple-mobile-web-app-title" content="이모티콘 메이커">
-
-    <!-- 홈 화면 아이콘 (없으면 스크린샷으로 자동 생성됨, 있으면 더 예쁨)
-         assets/images/icon-180.png 파일을 직접 만들어서 넣으면 적용됩니다.
-         180x180px PNG 권장. 없어도 앱 동작에는 문제 없습니다. -->
-    <!-- <link rel="apple-touch-icon" href="assets/images/icon-180.png"> -->
-
-    <!-- 일반 브라우저 파비콘 (선택 사항) -->
-    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
-
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="app-wrapper">
-
-    <!-- 헤더 -->
-    <header class="app-header">
-        <h1>🎨 이모티콘 메이커</h1>
-    </header>
-
-    <!-- 메인 영역 -->
-    <main class="app-main">
-
-        <!-- 왼쪽: 캐릭터 미리보기 -->
-        <section class="preview-section">
-            <h2>미리보기</h2>
-            <div class="canvas-wrapper">
-                <!--
-                    캔버스 크기: 500x500 (고해상도 저장을 위해 500으로 설정)
-                    CSS로 240x240으로 축소해서 표시하지만, 실제 저장은 500px 기준입니다.
-                -->
-                <canvas id="preview-canvas" width="500" height="500"></canvas>
-            </div>
-            <div class="preview-actions">
-                <button id="btn-save">💾 저장</button>
-                <button id="btn-reset">🔄 초기화</button>
-            </div>
-        </section>
-
-        <!-- 오른쪽: 파츠 선택 -->
-        <section class="parts-section">
-
-            <!-- 탭 메뉴 -->
-            <nav class="tab-bar" role="tablist">
-                <!--
-                    탭 버튼은 parts-config.js의 tabs 배열을 기반으로
-                    JS에서 동적으로 생성해도 되지만, 여기서는 HTML에 직접 작성합니다.
-                    탭을 추가하려면 아래에 버튼을 추가하고,
-                    parts-config.js의 tabs 배열에도 동일한 id를 추가하세요.
-                -->
-                <button class="tab-btn active" data-tab="face"       role="tab">얼굴</button>
-                <button class="tab-btn"        data-tab="ear"        role="tab">귀</button>
-                <button class="tab-btn"        data-tab="outfit"     role="tab">옷</button>
-                <button class="tab-btn"        data-tab="pose"       role="tab">포즈</button>
-                <button class="tab-btn"        data-tab="background" role="tab">배경</button>
-            </nav>
-
-            <!-- 현재 탭 제목 -->
-            <p class="parts-tab-title" id="tab-title">얼굴</p>
-
-            <!-- 파츠 카드 목록 (JS에서 동적으로 채워집니다) -->
-            <div id="parts-grid" role="tabpanel"></div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<!--
-    JS 로드 순서 중요:
-    1. parts-config.js 먼저 로드 (PARTS_CONFIG 객체 정의)
-    2. app.js 이후 로드 (PARTS_CONFIG를 사용하기 때문)
--->
-<script src="assets/js/parts-config.js"></script>
+<script src="assets/js/save-manager.js"></script>
+<script src="assets/js/upload.js"></script>
+<script src="assets/js/gallery.js"></script>
+<script src="assets/js/maker.js"></script>
 <script src="assets/js/app.js"></script>
 
 </body>
