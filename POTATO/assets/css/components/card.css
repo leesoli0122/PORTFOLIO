@@ -44,16 +44,6 @@
     box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
 }
 
-.part-card.selected::after {
-    content: "✓";
-    position: absolute;
-    top: 4px;
-    right: 7px;
-    font-size: 0.7rem;
-    color: var(--c-primary);
-    font-weight: 800;
-}
-
 .part-card img {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -63,7 +53,7 @@
 
 .part-label {
     font-size: 0.72rem;
-    color: var(--c-text-muted);
+    color: #d34f00;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
@@ -74,13 +64,14 @@
 /* 즐겨찾기 별 버튼 */
 .fav-btn {
     position: absolute;
-    top: 4px;
+    top: 0;
     left: 6px;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     line-height: 1;
     color: var(--c-border);
     transition: color var(--ease), transform var(--ease);
     z-index: 2;
+    filter: drop-shadow(1px 1px 2px gray) invert(1%);
 }
 
 .fav-btn:hover {
@@ -88,7 +79,7 @@
 }
 
 .fav-btn.starred {
-    color: var(--c-star);
+    color: #ffdd00;
 }
 
 /* 빈 메시지 */
