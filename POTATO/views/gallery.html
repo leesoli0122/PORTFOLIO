@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>갤러리 — 이모티콘 메이커</title>
+    <link rel="preconnect" href="assets/css/base/font.css">
+    <link rel="stylesheet" href="../assets/css/base/reset.css">
+    <link rel="stylesheet" href="../assets/css/base/animations.css">
+    <link rel="stylesheet" href="../assets/css/components/button.css">
+    <link rel="stylesheet" href="../assets/css/components/header.css">
+    <link rel="stylesheet" href="../assets/css/components/modal.css">
+    <link rel="stylesheet" href="../assets/css/components/toast.css">
+    <link rel="stylesheet" href="../assets/css/pages/gallery.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+<div id="page-gallery">
+
+    <header class="sub-header">
+        <a class="back-btn" href="../index.html">← 뒤로</a>
+        <h1 class="sub-header-title">🖼️ 갤러리</h1>
+        <div class="sub-header-right">
+            <span id="gallery-count" class="gallery-count-badge">0개</span>
+        </div>
+    </header>
+
+    <div class="gallery-layout">
+        <div id="gallery-grid" class="gallery-grid"></div>
+        <div id="gallery-empty" class="gallery-empty hidden">
+            <p>아직 저장된 이모티콘이 없어요</p>
+            <a class="action-btn btn-primary" href="maker.html">캐릭터 만들러 가기 →</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- 이미지 상세 모달 -->
+<div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal-box">
+        <img id="modal-img" src="" alt="이모티콘 미리보기">
+        <div class="modal-actions">
+            <button id="modal-download" class="action-btn btn-primary">⬇️ 다운로드</button>
+            <button id="modal-delete"   class="action-btn btn-danger">🗑️ 삭제</button>
+            <button id="modal-close"    class="action-btn btn-secondary">닫기</button>
+        </div>
+        <p class="modal-date" id="modal-date"></p>
+    </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="../assets/js/core/db.js"></script>
+<script src="../assets/js/pages/gallery.js"></script>
+
+</body>
+</html>

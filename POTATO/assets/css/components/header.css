@@ -1,0 +1,44 @@
+/* ==============================================
+    components/header.css
+    서브 페이지 공통 헤더
+============================================== */
+
+.sub-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: var(--c-surface);
+    border-bottom: 1.5px solid var(--c-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-btn {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    transition: background var(--ease);
+    min-width: 70px;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background: var(--c-primary-bg);
+}
+
+.sub-header-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--c-text);
+}
+
+.sub-header-right {
+    min-width: 70px;
+    display: flex;
+    justify-content: flex-end;
+}

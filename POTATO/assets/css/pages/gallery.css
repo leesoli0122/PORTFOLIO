@@ -1,0 +1,84 @@
+/* ==============================================
+    pages/gallery.css — 갤러리 페이지 전용
+============================================== */
+
+#page-gallery {
+    display: flex;
+    flex-direction: column;
+    background: var(--c-bg);
+}
+
+.gallery-layout {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.gallery-count-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--c-text-muted);
+    background: var(--c-bg);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1.5px solid var(--c-border);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+}
+
+.gallery-card {
+    position: relative;
+    background: var(--c-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid var(--c-border);
+    cursor: pointer;
+    transition: all var(--ease);
+    box-shadow: var(--shadow-sm);
+}
+
+.gallery-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--c-primary);
+}
+
+.gallery-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-image:
+        linear-gradient(45deg, #e8e0d8 25%, transparent 25%),
+        linear-gradient(-45deg, #e8e0d8 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e8e0d8 75%),
+        linear-gradient(-45deg, transparent 75%, #e8e0d8 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+    background-color: #f5ede4;
+}
+
+.gallery-card-date {
+    padding: 6px 8px;
+    font-size: 0.68rem;
+    color: var(--c-text-muted);
+    text-align: center;
+    border-top: 1px solid var(--c-border);
+}
+
+.gallery-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--c-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}

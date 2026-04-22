@@ -1,0 +1,33 @@
+/* ==============================================
+    components/tab.css
+    탭 바 컴포넌트 (메이커 + 업로드 공통)
+============================================== */
+
+.tab-bar {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 7px 16px;
+    border: 2px solid var(--c-border);
+    border-radius: 20px;
+    background: transparent;
+    font-size: 0.83rem;
+    font-weight: 700;
+    color: var(--c-text-muted);
+    transition: all var(--ease);
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    border-color: var(--c-primary);
+    color: var(--c-primary);
+}
+
+.tab-btn.active {
+    background: var(--c-primary);
+    border-color: var(--c-primary);
+    color: #fff;
+}

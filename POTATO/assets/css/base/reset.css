@@ -1,0 +1,71 @@
+/* ==============================================
+    base/reset.css
+    리셋 + CSS 변수 (전체 공통 기반)
+    모든 페이지에서 가장 먼저 로드됩니다.
+============================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    /* 컬러 */
+    --c-bg:           #fdf6ee;
+    --c-surface:      #ffffff;
+    --c-surface-2:    #fef9f4;
+    --c-border:       #ecdfd3;
+    --c-primary:      #ff6b6b;
+    --c-primary-dark: #e85555;
+    --c-primary-bg:   #fff0f0;
+    --c-secondary:    #ffa94d;
+    --c-accent:       #74c0fc;
+    --c-success:      #69db7c;
+    --c-danger:       #ff6b6b;
+    --c-text:         #3d2c2c;
+    --c-text-muted:   #a08c80;
+    --c-star:         #ffd43b;
+
+    /* 타이포 */
+    --font-display: "Gaegu", cursive;
+    --font-body:    "Nanum Gothic", sans-serif;
+
+    /* 공간 */
+    --radius-sm:  8px;
+    --radius-md:  14px;
+    --radius-lg:  20px;
+    --radius-xl:  28px;
+    --shadow-sm:  0 2px 8px rgba(61, 44, 44, 0.08);
+    --shadow-md:  0 4px 20px rgba(61, 44, 44, 0.12);
+    --shadow-lg:  0 8px 40px rgba(61, 44, 44, 0.16);
+
+    /* 전환 */
+    --ease: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--c-bg);
+    color: var(--c-text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: var(--font-body);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}

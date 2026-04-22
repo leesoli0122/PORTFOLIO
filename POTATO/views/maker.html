@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>캐릭터 만들기 — 이모티콘 메이커</title>
+    <link rel="preconnect" href="assets/css/base/font.css">
+    <link rel="stylesheet" href="../assets/css/base/reset.css">
+    <link rel="stylesheet" href="../assets/css/base/animations.css">
+    <link rel="stylesheet" href="../assets/css/components/button.css">
+    <link rel="stylesheet" href="../assets/css/components/tab.css">
+    <link rel="stylesheet" href="../assets/css/components/header.css">
+    <link rel="stylesheet" href="../assets/css/components/card.css">
+    <link rel="stylesheet" href="../assets/css/components/toast.css">
+    <link rel="stylesheet" href="../assets/css/pages/maker.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+<div id="page-maker">
+
+    <header class="sub-header">
+        <a class="back-btn" href="../index.html">← 뒤로</a>
+        <h1 class="sub-header-title">✏️ 캐릭터 만들기</h1>
+        <div class="sub-header-right"></div>
+    </header>
+
+    <div class="maker-layout">
+
+        <!-- 왼쪽: 미리보기 -->
+        <section class="preview-section">
+            <div class="canvas-wrapper">
+                <canvas id="preview-canvas" width="360" height="360"></canvas>
+            </div>
+            <div class="preview-actions">
+                <button id="btn-random" class="action-btn btn-secondary">🎲 랜덤</button>
+                <button id="btn-reset"  class="action-btn btn-secondary">🔄 초기화</button>
+                <button id="btn-save"   class="action-btn btn-primary">💾 저장</button>
+            </div>
+            <p class="save-hint">360×360px · 투명 배경</p>
+        </section>
+
+        <!-- 오른쪽: 파츠 선택 -->
+        <section class="parts-section">
+            <nav class="tab-bar" id="maker-tab-bar" role="tablist"></nav>
+            <p class="parts-tab-title" id="tab-title"></p>
+            <div class="fav-filter-row">
+                <button id="btn-fav-filter" class="fav-filter-btn">⭐ 즐겨찾기만 보기</button>
+            </div>
+            <div id="parts-grid" role="tabpanel"></div>
+        </section>
+
+    </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="../assets/js/core/db.js"></script>
+<script src="../assets/js/config/parts-config.js"></script>
+<script src="../assets/js/core/save-manager.js"></script>
+<script src="../assets/js/pages/maker.js"></script>
+
+</body>
+</html>

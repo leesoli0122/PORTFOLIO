@@ -4,213 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>이모티콘 메이커</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="assets/css/base/font.css">
+    <link rel="stylesheet" href="assets/css/base/reset.css">
+    <link rel="stylesheet" href="assets/css/base/animations.css">
+    <link rel="stylesheet" href="assets/css/components/button.css">
+    <link rel="stylesheet" href="assets/css/pages/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
 
-<div id="app">
-
-    <!-- ================================================
-        메인 페이지
-    ================================================ -->
-    <div class="page" id="page-main">
-        <div class="main-bg-deco" aria-hidden="true">
-            <span class="deco-blob blob-1"></span>
-            <span class="deco-blob blob-2"></span>
-            <span class="deco-blob blob-3"></span>
-        </div>
-
-        <div class="main-content">
-            <header class="main-header">
-                <div class="main-logo">
-                    <span class="logo-icon">🎨</span>
-                    <h1 class="logo-title">이모티콘 메이커</h1>
-                    <p class="logo-sub">나만의 캐릭터를 만들어요</p>
-                </div>
-            </header>
-
-            <nav class="main-nav">
-                <button class="main-nav-btn btn-maker" data-page="maker">
-                    <span class="nav-btn-icon">✏️</span>
-                    <span class="nav-btn-title">캐릭터 만들기</span>
-                    <span class="nav-btn-desc">파츠를 조합해 이모티콘 완성</span>
-                    <span class="nav-btn-arrow">→</span>
-                </button>
-
-                <button class="main-nav-btn btn-upload" data-page="upload">
-                    <span class="nav-btn-icon">📁</span>
-                    <span class="nav-btn-title">파츠 업로드</span>
-                    <span class="nav-btn-desc">그린 파츠 이미지 등록 · 관리</span>
-                    <span class="nav-btn-arrow">→</span>
-                </button>
-
-                <button class="main-nav-btn btn-gallery" data-page="gallery">
-                    <span class="nav-btn-icon">🖼️</span>
-                    <span class="nav-btn-title">갤러리</span>
-                    <span class="nav-btn-desc">완성된 이모티콘 모아보기</span>
-                    <span class="nav-btn-arrow">→</span>
-                </button>
-            </nav>
-
-            <footer class="main-footer">
-                <p>이미지는 기기에만 저장돼요 ·  외부 서버 전송 없음</p>
-            </footer>
-        </div>
+<div id="page-main">
+    <div class="main-bg-deco" aria-hidden="true">
+        <span class="deco-blob blob-1"></span>
+        <span class="deco-blob blob-2"></span>
+        <span class="deco-blob blob-3"></span>
     </div>
 
-
-    <!-- ================================================
-        메이커 페이지
-    ================================================ -->
-    <div class="page hidden" id="page-maker">
-
-        <!-- 상단 헤더 -->
-        <header class="sub-header">
-            <button class="back-btn" data-page="main">← 뒤로</button>
-            <h2 class="sub-header-title">✏️ 캐릭터 만들기</h2>
-            <div class="sub-header-right"></div>
-        </header>
-
-        <div class="maker-layout">
-
-            <!-- 왼쪽: 미리보기 -->
-            <section class="preview-section">
-                <div class="canvas-wrapper">
-                    <canvas id="preview-canvas" width="360" height="360"></canvas>
-                </div>
-                <div class="preview-actions">
-                    <button id="btn-random" class="action-btn btn-secondary" title="랜덤 조합">🎲 랜덤</button>
-                    <button id="btn-reset"  class="action-btn btn-secondary" title="초기화">🔄 초기화</button>
-                    <button id="btn-save"   class="action-btn btn-primary"   title="PNG 저장">💾 저장</button>
-                </div>
-                <p class="save-hint">360×360px · 투명 배경</p>
-            </section>
-
-            <!-- 오른쪽: 파츠 선택 -->
-            <section class="parts-section">
-
-                <!-- 탭 메뉴 (JS에서 동적 생성) -->
-                <nav class="tab-bar" id="maker-tab-bar" role="tablist"></nav>
-
-                <p class="parts-tab-title" id="tab-title"></p>
-
-                <!-- 즐겨찾기 토글 -->
-                <div class="fav-filter-row">
-                    <button id="btn-fav-filter" class="fav-filter-btn">⭐ 즐겨찾기만 보기</button>
-                </div>
-
-                <!-- 파츠 카드 목록 -->
-                <div id="parts-grid" role="tabpanel"></div>
-
-            </section>
-        </div>
-    </div>
-
-
-    <!-- ================================================
-        업로드 페이지
-    ================================================ -->
-    <div class="page hidden" id="page-upload">
-
-        <header class="sub-header">
-            <button class="back-btn" data-page="main">← 뒤로</button>
-            <h2 class="sub-header-title">📁 파츠 업로드</h2>
-            <div class="sub-header-right"></div>
-        </header>
-
-        <div class="upload-layout">
-
-            <!-- 탭 선택 -->
-            <div class="upload-tab-row">
-                <p class="upload-section-label">어떤 파츠인가요?</p>
-                <nav class="tab-bar" id="upload-tab-bar" role="tablist"></nav>
-            </div>
-
-            <!-- 업로드 영역 -->
-            <div class="upload-drop-area" id="upload-drop-area">
-                <input type="file" id="upload-input" accept="image/png,image/jpeg,image/webp" multiple hidden>
-                <div class="upload-drop-inner">
-                    <span class="upload-drop-icon">🖼️</span>
-                    <p class="upload-drop-text">여기를 탭해서 이미지 선택</p>
-                    <p class="upload-drop-hint">PNG 권장 · 투명 배경 유지됨 · 여러 장 한번에 선택 가능</p>
-                    <button class="upload-select-btn" id="upload-select-btn">파일 선택하기</button>
-                </div>
-            </div>
-
-            <!-- 등록된 파츠 목록 -->
-            <div class="upload-list-section">
-                <p class="upload-section-label">등록된 파츠 <span id="upload-count">0</span>개</p>
-                <div id="upload-parts-grid" class="upload-parts-grid"></div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- ================================================
-        갤러리 페이지
-    ================================================ -->
-    <div class="page hidden" id="page-gallery">
-
-        <header class="sub-header">
-            <button class="back-btn" data-page="main">← 뒤로</button>
-            <h2 class="sub-header-title">🖼️ 갤러리</h2>
-            <div class="sub-header-right">
-                <span id="gallery-count" class="gallery-count-badge">0개</span>
+    <div class="main-content">
+        <header class="main-header">
+            <div class="main-logo">
+                <span class="logo-icon">🎨</span>
+                <h1 class="logo-title">이모티콘 메이커</h1>
+                <p class="logo-sub">나만의 캐릭터를 만들어요</p>
             </div>
         </header>
 
-        <div class="gallery-layout">
-            <div id="gallery-grid" class="gallery-grid"></div>
-            <div id="gallery-empty" class="gallery-empty hidden">
-                <p>아직 저장된 이모티콘이 없어요</p>
-                <button class="action-btn btn-primary" data-page="maker">캐릭터 만들러 가기 →</button>
-            </div>
-        </div>
+        <nav class="main-nav">
+            <a class="main-nav-btn btn-maker" href="views/maker.html">
+                <span class="nav-btn-icon">✏️</span>
+                <span class="nav-btn-title">캐릭터 만들기</span>
+                <span class="nav-btn-desc">파츠를 조합해 이모티콘 완성</span>
+                <span class="nav-btn-arrow">→</span>
+            </a>
 
-    </div>
+            <a class="main-nav-btn btn-upload" href="views/upload.html">
+                <span class="nav-btn-icon">📁</span>
+                <span class="nav-btn-title">파츠 업로드</span>
+                <span class="nav-btn-desc">그린 파츠 이미지 등록 · 관리</span>
+                <span class="nav-btn-arrow">→</span>
+            </a>
 
-</div><!-- /#app -->
+            <a class="main-nav-btn btn-gallery" href="views/gallery.html">
+                <span class="nav-btn-icon">🖼️</span>
+                <span class="nav-btn-title">갤러리</span>
+                <span class="nav-btn-desc">완성된 이모티콘 모아보기</span>
+                <span class="nav-btn-arrow">→</span>
+            </a>
+        </nav>
 
-
-<!-- 이미지 상세 모달 -->
-<div id="modal-overlay" class="modal-overlay hidden">
-    <div class="modal-box">
-        <img id="modal-img" src="" alt="이모티콘 미리보기">
-        <div class="modal-actions">
-            <button id="modal-download" class="action-btn btn-primary">⬇️ 다운로드</button>
-            <button id="modal-delete"   class="action-btn btn-danger">🗑️ 삭제</button>
-            <button id="modal-close"    class="action-btn btn-secondary">닫기</button>
-        </div>
-        <p class="modal-date" id="modal-date"></p>
+        <footer class="main-footer">
+            <p>이미지는 기기에만 저장돼요 · 외부 서버 전송 없음</p>
+        </footer>
     </div>
 </div>
-
-
-<!-- 토스트 알림 -->
-<div id="toast" class="toast hidden"></div>
-
-
-<!--
-    JS 로드 순서:
-    1. db.js           — IndexedDB 초기화
-    2. parts-config.js — 탭/레이어 설정
-    3. save-manager.js — PNG 저장
-    4. upload.js       — 업로드 페이지
-    5. gallery.js      — 갤러리 페이지
-    6. maker.js        — 메이커 페이지
-    7. app.js          — 라우팅 + 초기화 (반드시 마지막)
--->
-<script src="assets/js/db.js"></script>
-<script src="assets/js/parts-config.js"></script>
-<script src="assets/js/save-manager.js"></script>
-<script src="assets/js/upload.js"></script>
-<script src="assets/js/gallery.js"></script>
-<script src="assets/js/maker.js"></script>
-<script src="assets/js/app.js"></script>
 
 </body>
 </html>
