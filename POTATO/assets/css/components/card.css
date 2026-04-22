@@ -53,12 +53,16 @@
 
 .part-label {
     font-size: 0.72rem;
-    color: #d34f00;
+    color: var(--c-text-muted);
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+}
+
+.part-card.selected .part-label {
+    color: #d34f00;
 }
 
 /* 즐겨찾기 별 버튼 */
