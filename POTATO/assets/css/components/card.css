@@ -156,31 +156,31 @@
 
 /* 이름 + 편집 버튼을 가로로 배치하는 행 */
 .upload-name-row {
-    display:     flex;
+    display: flex;
     align-items: center;
-    gap:         4px;
-    width:       100%;
-    min-height:  24px;
-    padding:     0 2px;
-    box-sizing:  border-box;
+    gap: 4px;
+    width: 100%;
+    min-height: 24px;
+    padding: 0 2px;
+    box-sizing: border-box;
 }
 
 /* ✏️ 편집 버튼 */
 .upload-edit-btn {
-    flex-shrink:     0;
-    display:         flex;
-    align-items:     center;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    width:           22px;
-    height:          22px;
-    padding:         0;
-    border:          none;
-    background:      transparent;
-    border-radius:   6px;
-    font-size:       0.78rem;
-    cursor:          pointer;
-    opacity:         0;
-    transition:      opacity 0.15s ease, background 0.15s ease;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease, background 0.15s ease;
 }
 
 .upload-part-card:hover .upload-edit-btn,
@@ -202,19 +202,52 @@
 
 /* 인라인 이름 수정 input */
 .upload-name-input {
-    flex:          1;
-    min-width:     0;
-    padding:       2px 6px;
-    border:        1.5px solid var(--c-primary);
+    flex: 1;
+    min-width: 0;
+    padding: 2px 6px;
+    border: 1.5px solid var(--c-primary);
     border-radius: 6px;
-    font-size:     0.72rem;
-    background:    var(--c-surface);
-    color:         inherit;
-    outline:       none;
-    box-shadow:    0 0 0 3px rgba(255, 107, 107, 0.18);
-    transition:    box-shadow 0.15s ease;
+    font-size: 0.72rem;
+    background: var(--c-surface);
+    color: inherit;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.18);
+    transition: box-shadow 0.15s ease;
 }
 
 .upload-name-input:focus {
     box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+}
+
+/* 순서 버튼 행 */
+.upload-order-row {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-top: 4px;
+}
+ 
+/* ▲ / ▼ 공통 스타일 */
+.upload-order-btn {
+    flex: 1;
+    padding: 2px 0;
+    font-size: 0.7rem;
+    line-height: 1;
+    color: var(--color-text-muted, #888);
+    background: var(--color-surface-2, #f4f4f4);
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+ 
+.upload-order-btn:hover:not(:disabled) {
+    background: var(--color-primary-light, #e8e0ff);
+    color: var(--color-primary, #7c5cbf);
+    border-color: var(--color-primary, #7c5cbf);
+}
+ 
+.upload-order-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
 }

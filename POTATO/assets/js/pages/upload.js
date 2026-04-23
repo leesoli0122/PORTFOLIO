@@ -129,7 +129,7 @@ async function renderPartsList() {
         return;
     }
 
-    parts.forEach(part => {
+    parts.forEach((part, index) => {
         const card         = document.createElement("div");
         card.className     = "upload-part-card";
 
@@ -158,6 +158,39 @@ async function renderPartsList() {
         nameRow.appendChild(label);
         nameRow.appendChild(editBtn);
 
+        // ── 순서 정렬 버튼 ────────────────────────────
+        const orderRow     = document.createElement("div");
+        orderRow.className = "upload-order-row";
+
+        const upBtn        = document.createElement("button");
+        upBtn.className    = "upload-order-btn";
+        upBtn.textContent  = "▲";
+        upBtn.title        = "위로 이동";
+        upBtn.disabled     = index === 0;
+        upBtn.addEventListener("click", async (e) => {
+            e.stopPropagation();
+            const prev = parts[index - 1];
+            await DB.updatePartOrder(part.id, prev.order);
+            await DB.updatePartOrder(prev.id, part.order);
+            await renderPartsList();
+        });
+
+        const downBtn      = document.createElement("button");
+        downBtn.className  = "upload-order-btn";
+        downBtn.textContent = "▼";
+        downBtn.title      = "아래로 이동";
+        downBtn.disabled   = index === parts.length - 1;
+        downBtn.addEventListener("click", async (e) => {
+            e.stopPropagation();
+            const next = parts[index + 1];
+            await DB.updatePartOrder(part.id, next.order);
+            await DB.updatePartOrder(next.id, part.order);
+            await renderPartsList();
+        });
+
+        orderRow.appendChild(upBtn);
+        orderRow.appendChild(downBtn);
+
         // ── 삭제 버튼 ─────────────────────────────────
         const delBtn       = document.createElement("button");
         delBtn.className   = "upload-delete-btn";
@@ -166,6 +199,7 @@ async function renderPartsList() {
 
         card.appendChild(img);
         card.appendChild(nameRow);
+        card.appendChild(orderRow);
         card.appendChild(delBtn);
         grid.appendChild(card);
     });
