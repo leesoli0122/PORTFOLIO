@@ -57,17 +57,38 @@ async function switchTab(tabId) {
 // 이벤트 바인딩
 // --------------------------------------------------
 function bindEvents() {
-    // 저장
-    document.getElementById("btn-save").addEventListener("click", async () => {
-        const btn       = document.getElementById("btn-save");
+    // 카카오 저장 (360×360)
+    document.getElementById("btn-save-kakao").addEventListener("click", async () => {
+        const btn       = document.getElementById("btn-save-kakao");
         btn.disabled    = true;
         btn.textContent = "저장 중…";
 
-        const ok = await SaveManager.saveAsPNG(_selected, PARTS_CONFIG.layerOrder);
-        showToast(ok ? "갤러리에 저장됐어요 🎉" : "저장에 실패했어요. 다시 시도해주세요.");
+        const ok = await SaveManager.saveAsPNG(
+            _selected,
+            PARTS_CONFIG.layerOrder,
+            { platform: "kakao", canvasSize: SaveManager.CANVAS_SIZE_KAKAO }
+        );
+        showToast(ok ? "카카오용으로 저장됐어요 🎉 (360×360)" : "저장에 실패했어요. 다시 시도해주세요.");
 
         btn.disabled    = false;
-        btn.textContent = "💾 저장";
+        btn.textContent = "🐾 카카오 저장";
+    });
+
+    // OGQ 저장 (740×740)
+    document.getElementById("btn-save-ogq").addEventListener("click", async () => {
+        const btn       = document.getElementById("btn-save-ogq");
+        btn.disabled    = true;
+        btn.textContent = "저장 중…";
+
+        const ok = await SaveManager.saveAsPNG(
+            _selected,
+            PARTS_CONFIG.layerOrder,
+            { platform: "ogq", canvasSize: SaveManager.CANVAS_SIZE_OGQ }
+        );
+        showToast(ok ? "OGQ용으로 저장됐어요 🎉 (740×740)" : "저장에 실패했어요. 다시 시도해주세요.");
+
+        btn.disabled    = false;
+        btn.textContent = "🟢 OGQ 저장";
     });
 
     // 초기화
@@ -81,7 +102,7 @@ function bindEvents() {
     // 랜덤
     document.getElementById("btn-random").addEventListener("click", async () => {
         for (const tab of PARTS_CONFIG.tabs) {
-            const parts      = await DB.getPartsByTab(tab.id);
+            const parts       = await DB.getPartsByTab(tab.id);
             _selected[tab.id] = parts.length > 0
                 ? parts[Math.floor(Math.random() * parts.length)]
                 : null;
