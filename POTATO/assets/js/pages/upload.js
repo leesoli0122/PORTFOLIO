@@ -138,19 +138,126 @@ async function renderPartsList() {
         img.alt            = part.name;
         img.loading        = "lazy";
 
+        // ── 이름 + 편집 영역 ──────────────────────────
+        const nameRow      = document.createElement("div");
+        nameRow.className  = "upload-name-row";
+
         const label        = document.createElement("span");
         label.className    = "upload-part-label";
         label.textContent  = part.name;
 
+        const editBtn      = document.createElement("button");
+        editBtn.className  = "upload-edit-btn";
+        editBtn.textContent = "✏️";
+        editBtn.title      = "이름 수정";
+        editBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            startEditName(part, label, editBtn);
+        });
+
+        nameRow.appendChild(label);
+        nameRow.appendChild(editBtn);
+
+        // ── 삭제 버튼 ─────────────────────────────────
         const delBtn       = document.createElement("button");
         delBtn.className   = "upload-delete-btn";
         delBtn.textContent = "✕";
         delBtn.addEventListener("click", () => deletePart(part.id));
 
         card.appendChild(img);
-        card.appendChild(label);
+        card.appendChild(nameRow);
         card.appendChild(delBtn);
         grid.appendChild(card);
+    });
+}
+
+// --------------------------------------------------
+// 이름 인라인 편집 시작
+// --------------------------------------------------
+function startEditName(part, labelEl, editBtn) {
+    // 이미 편집 중이면 무시
+    if (editBtn.classList.contains("editing")) return;
+
+    const originalName = labelEl.textContent;
+
+    // input 생성
+    const input        = document.createElement("input");
+    input.type         = "text";
+    input.className    = "upload-name-input";
+    input.value        = originalName;
+    input.maxLength    = 40;
+
+    // 라벨 → input 교체
+    labelEl.replaceWith(input);
+    editBtn.classList.add("editing");
+    editBtn.textContent = "✔️";
+    editBtn.title       = "저장";
+
+    input.focus();
+    input.select();
+
+    // 저장 함수
+    const save = async () => {
+        const newName = input.value.trim();
+
+        if (newName && newName !== originalName) {
+            await DB.updatePartName(part.id, newName);
+            part.name = newName;
+            showToast("이름을 수정했어요 ✏️");
+        }
+
+        // input → 라벨 복원
+        const restoredLabel       = document.createElement("span");
+        restoredLabel.className   = "upload-part-label";
+        restoredLabel.textContent = newName || originalName;
+        input.replaceWith(restoredLabel);
+
+        editBtn.classList.remove("editing");
+        editBtn.textContent = "✏️";
+        editBtn.title       = "이름 수정";
+
+        // 편집 버튼 클릭 핸들러를 새 label 기준으로 재등록
+        editBtn.onclick = (e) => {
+            e.stopPropagation();
+            startEditName(part, restoredLabel, editBtn);
+        };
+    };
+
+    // 취소 함수
+    const cancel = () => {
+        const restoredLabel       = document.createElement("span");
+        restoredLabel.className   = "upload-part-label";
+        restoredLabel.textContent = originalName;
+        input.replaceWith(restoredLabel);
+
+        editBtn.classList.remove("editing");
+        editBtn.textContent = "✏️";
+        editBtn.title       = "이름 수정";
+
+        editBtn.onclick = (e) => {
+            e.stopPropagation();
+            startEditName(part, restoredLabel, editBtn);
+        };
+    };
+
+    // ✔️ 버튼 클릭 → 저장
+    editBtn.onclick = (e) => {
+        e.stopPropagation();
+        save();
+    };
+
+    // Enter → 저장, Escape → 취소
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter")  { e.preventDefault(); save(); }
+        if (e.key === "Escape") { e.preventDefault(); cancel(); }
+    });
+
+    // 포커스 아웃 → 저장
+    input.addEventListener("blur", () => {
+        // setTimeout: ✔️ 버튼 클릭과 blur 충돌 방지
+        setTimeout(() => {
+            if (document.activeElement !== editBtn) save();
+        }, 150);
     });
 }
 

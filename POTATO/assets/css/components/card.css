@@ -149,3 +149,72 @@
     transform: scale(1.15);
     background: #c0392b;
 }
+
+/* --------------------------------------------------
+   upload-part-card 이름 영역
+   -------------------------------------------------- */
+
+/* 이름 + 편집 버튼을 가로로 배치하는 행 */
+.upload-name-row {
+    display:     flex;
+    align-items: center;
+    gap:         4px;
+    width:       100%;
+    min-height:  24px;
+    padding:     0 2px;
+    box-sizing:  border-box;
+}
+
+/* ✏️ 편집 버튼 */
+.upload-edit-btn {
+    flex-shrink:     0;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           22px;
+    height:          22px;
+    padding:         0;
+    border:          none;
+    background:      transparent;
+    border-radius:   6px;
+    font-size:       0.78rem;
+    cursor:          pointer;
+    opacity:         0;
+    transition:      opacity 0.15s ease, background 0.15s ease;
+}
+
+.upload-part-card:hover .upload-edit-btn,
+.upload-part-card:focus-within .upload-edit-btn {
+    opacity: 1;
+}
+
+.upload-edit-btn.editing {
+    opacity: 1;
+}
+
+.upload-edit-btn:hover {
+    background: rgba(0, 0, 0, 0.07);
+}
+
+.upload-edit-btn:active {
+    transform: scale(0.92);
+}
+
+/* 인라인 이름 수정 input */
+.upload-name-input {
+    flex:          1;
+    min-width:     0;
+    padding:       2px 6px;
+    border:        1.5px solid var(--c-primary);
+    border-radius: 6px;
+    font-size:     0.72rem;
+    background:    var(--c-surface);
+    color:         inherit;
+    outline:       none;
+    box-shadow:    0 0 0 3px rgba(255, 107, 107, 0.18);
+    transition:    box-shadow 0.15s ease;
+}
+
+.upload-name-input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+}
