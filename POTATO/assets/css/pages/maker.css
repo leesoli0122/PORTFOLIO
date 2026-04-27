@@ -57,11 +57,11 @@
     height: 100%;
 }
 
+/* 랜덤 / 초기화 버튼 행 */
 .preview-actions {
     display: flex;
     gap: 6px;
     width: 100%;
-    flex-wrap: wrap;
 }
 
 .preview-actions .action-btn {
@@ -71,9 +71,54 @@
     min-width: 60px;
 }
 
+/* 저장 버튼 행 — 카카오 / OGQ */
+.save-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.save-actions .action-btn {
+    width: 100%;
+    height: 44px;
+    padding: 0 6px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+.btn-kakao {
+    background: var(--c-primary);
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-kakao:hover {
+    background: var(--c-primary-dark);
+}
+
+.btn-ogq {
+    background: #65b299;
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-ogq:hover {
+    background: #4f9e82;
+}
+
+/* 권장 사이즈 안내 */
 .save-hint {
-    font-size: 0.72rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.save-hint p {
+    font-size: 0.7rem;
     color: var(--c-text-muted);
+    line-height: 1.5;
 }
 
 /* 파츠 선택 영역 */

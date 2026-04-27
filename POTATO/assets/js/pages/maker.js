@@ -54,41 +54,41 @@ async function switchTab(tabId) {
 }
 
 // --------------------------------------------------
+// 저장 버튼 공통 처리
+// --------------------------------------------------
+async function handleSave(btnId, platform, canvasSize, label) {
+    const btn       = document.getElementById(btnId);
+    btn.disabled    = true;
+    btn.textContent = "저장 중…";
+
+    const ok = await SaveManager.saveAsPNG(
+        _selected,
+        PARTS_CONFIG.layerOrder,
+        { platform, canvasSize }
+    );
+
+    const sizeLabel = `${canvasSize}×${canvasSize}`;
+    showToast(ok
+        ? `갤러리에 저장됐어요 🎉 (${sizeLabel})`
+        : "저장에 실패했어요. 다시 시도해주세요."
+    );
+
+    btn.disabled    = false;
+    btn.textContent = label;
+}
+
+// --------------------------------------------------
 // 이벤트 바인딩
 // --------------------------------------------------
 function bindEvents() {
     // 카카오 저장 (360×360)
-    document.getElementById("btn-save-kakao").addEventListener("click", async () => {
-        const btn       = document.getElementById("btn-save-kakao");
-        btn.disabled    = true;
-        btn.textContent = "저장 중…";
-
-        const ok = await SaveManager.saveAsPNG(
-            _selected,
-            PARTS_CONFIG.layerOrder,
-            { platform: "kakao", canvasSize: SaveManager.CANVAS_SIZE_KAKAO }
-        );
-        showToast(ok ? "카카오용으로 저장됐어요 🎉 (360×360)" : "저장에 실패했어요. 다시 시도해주세요.");
-
-        btn.disabled    = false;
-        btn.textContent = "🐾 카카오 저장";
+    document.getElementById("btn-save-kakao").addEventListener("click", () => {
+        handleSave("btn-save-kakao", "kakao", SaveManager.CANVAS_SIZE_KAKAO, "🐾 카카오 저장");
     });
 
     // OGQ 저장 (740×740)
-    document.getElementById("btn-save-ogq").addEventListener("click", async () => {
-        const btn       = document.getElementById("btn-save-ogq");
-        btn.disabled    = true;
-        btn.textContent = "저장 중…";
-
-        const ok = await SaveManager.saveAsPNG(
-            _selected,
-            PARTS_CONFIG.layerOrder,
-            { platform: "ogq", canvasSize: SaveManager.CANVAS_SIZE_OGQ }
-        );
-        showToast(ok ? "OGQ용으로 저장됐어요 🎉 (740×740)" : "저장에 실패했어요. 다시 시도해주세요.");
-
-        btn.disabled    = false;
-        btn.textContent = "🟢 OGQ 저장";
+    document.getElementById("btn-save-ogq").addEventListener("click", () => {
+        handleSave("btn-save-ogq", "ogq", SaveManager.CANVAS_SIZE_OGQ, "🟢 OGQ 저장");
     });
 
     // 초기화
@@ -102,7 +102,7 @@ function bindEvents() {
     // 랜덤
     document.getElementById("btn-random").addEventListener("click", async () => {
         for (const tab of PARTS_CONFIG.tabs) {
-            const parts       = await DB.getPartsByTab(tab.id);
+            const parts      = await DB.getPartsByTab(tab.id);
             _selected[tab.id] = parts.length > 0
                 ? parts[Math.floor(Math.random() * parts.length)]
                 : null;
@@ -207,10 +207,10 @@ function renderCanvas() {
             if (!part?.dataURL) return Promise.resolve();
 
             return new Promise(resolve => {
-                const img  = new Image();
-                img.onload = () => { _ctx.drawImage(img, 0, 0, _canvas.width, _canvas.height); resolve(); };
+                const img   = new Image();
+                img.onload  = () => { _ctx.drawImage(img, 0, 0, _canvas.width, _canvas.height); resolve(); };
                 img.onerror = () => resolve();
-                img.src    = part.dataURL;
+                img.src     = part.dataURL;
             });
         });
     }, Promise.resolve());

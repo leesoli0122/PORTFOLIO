@@ -1,5 +1,5 @@
 /* ==============================================
-    pages/gallery.css — 갤러리 페이지 전용
+    pages/gallery.css — 갤러리 페이지 전용 (14단계)
 ============================================== */
 
 #page-gallery {
@@ -62,12 +62,24 @@
     background-color: #f5ede4;
 }
 
+/* 카드 이름 */
+.gallery-card-name {
+    padding: 4px 8px 0;
+    font-size: 0.7rem;
+    color: var(--c-text);
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-top: 1px solid var(--c-border);
+}
+
 .gallery-card-date {
-    padding: 6px 8px;
-    font-size: 0.68rem;
+    padding: 4px 8px 6px;
+    font-size: 0.66rem;
     color: var(--c-text-muted);
     text-align: center;
-    border-top: 1px solid var(--c-border);
 }
 
 .gallery-empty {
@@ -81,4 +93,218 @@
     color: var(--c-text-muted);
     font-size: 0.9rem;
     line-height: 1.8;
+}
+
+/* ==============================================
+   카테고리 탭 바
+============================================== */
+
+.category-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-bottom: 1.5px solid var(--c-border);
+    background: var(--c-surface);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.category-bar-wrap::-webkit-scrollbar { display: none; }
+
+.category-tab-bar {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.category-tab-btn {
+    flex-shrink: 0;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--c-text-muted);
+    background: var(--c-bg);
+    border: 1.5px solid var(--c-border);
+    cursor: pointer;
+    transition: all var(--ease);
+    white-space: nowrap;
+    user-select: none;
+}
+
+.category-tab-btn:hover {
+    border-color: var(--c-primary);
+    color: var(--c-primary);
+}
+
+.category-tab-btn.active {
+    background: var(--c-primary);
+    border-color: var(--c-primary);
+    color: #fff;
+}
+
+.category-add-btn {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--c-primary-bg, #fff0ee);
+    border: 1.5px solid var(--c-primary);
+    color: var(--c-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--ease);
+}
+
+.category-add-btn:hover {
+    background: var(--c-primary);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* ==============================================
+   상세 모달 — 이름 + 카테고리 영역
+============================================== */
+
+.modal-name-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-name-label {
+    flex: 1;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--c-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.modal-name-edit-btn {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity var(--ease), background var(--ease);
+}
+
+.modal-name-edit-btn:hover,
+.modal-name-edit-btn.editing {
+    opacity: 1;
+    background: rgba(0,0,0,0.07);
+}
+
+/* 모달 내 이름 수정 input */
+.modal-name-input {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1.5px solid var(--c-primary);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    background: var(--c-surface);
+    color: inherit;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.18);
+}
+
+.modal-category-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-category-label {
+    font-size: 0.78rem;
+    color: var(--c-text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.modal-category-select {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1.5px solid var(--c-border);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    background: var(--c-surface);
+    color: var(--c-text);
+    outline: none;
+    cursor: pointer;
+    transition: border-color var(--ease);
+}
+
+.modal-category-select:focus {
+    border-color: var(--c-primary);
+}
+
+/* ==============================================
+   이름 입력 모달 / 카테고리 추가 모달 공통
+============================================== */
+
+.name-modal-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 24px;
+    max-width: 340px;
+    width: 90%;
+}
+
+.name-modal-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--c-text);
+    text-align: center;
+}
+
+.name-modal-desc {
+    font-size: 0.8rem;
+    color: var(--c-text-muted);
+    text-align: center;
+    line-height: 1.5;
+    margin-top: -4px;
+}
+
+.name-modal-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1.5px solid var(--c-border);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    background: var(--c-surface);
+    color: var(--c-text);
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.name-modal-input:focus {
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.18);
+}
+
+.name-modal-category-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
