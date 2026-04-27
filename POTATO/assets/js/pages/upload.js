@@ -129,7 +129,7 @@ async function renderPartsList() {
         return;
     }
 
-    parts.forEach((part, index) => {
+    parts.forEach((part, idx) => {
         const card         = document.createElement("div");
         card.className     = "upload-part-card";
 
@@ -158,35 +158,23 @@ async function renderPartsList() {
         nameRow.appendChild(label);
         nameRow.appendChild(editBtn);
 
-        // ── 순서 정렬 버튼 ────────────────────────────
+        // ── 순서 버튼 (▲ / ▼) ─────────────────────────
         const orderRow     = document.createElement("div");
         orderRow.className = "upload-order-row";
 
         const upBtn        = document.createElement("button");
         upBtn.className    = "upload-order-btn";
         upBtn.textContent  = "▲";
-        upBtn.title        = "위로 이동";
-        upBtn.disabled     = index === 0;
-        upBtn.addEventListener("click", async (e) => {
-            e.stopPropagation();
-            const prev = parts[index - 1];
-            await DB.updatePartOrder(part.id, prev.order);
-            await DB.updatePartOrder(prev.id, part.order);
-            await renderPartsList();
-        });
+        upBtn.title        = "위로";
+        upBtn.disabled     = idx === 0;
+        upBtn.addEventListener("click", () => swapOrder(parts, idx, idx - 1));
 
         const downBtn      = document.createElement("button");
         downBtn.className  = "upload-order-btn";
         downBtn.textContent = "▼";
-        downBtn.title      = "아래로 이동";
-        downBtn.disabled   = index === parts.length - 1;
-        downBtn.addEventListener("click", async (e) => {
-            e.stopPropagation();
-            const next = parts[index + 1];
-            await DB.updatePartOrder(part.id, next.order);
-            await DB.updatePartOrder(next.id, part.order);
-            await renderPartsList();
-        });
+        downBtn.title      = "아래로";
+        downBtn.disabled   = idx === parts.length - 1;
+        downBtn.addEventListener("click", () => swapOrder(parts, idx, idx + 1));
 
         orderRow.appendChild(upBtn);
         orderRow.appendChild(downBtn);
@@ -293,6 +281,21 @@ function startEditName(part, labelEl, editBtn) {
             if (document.activeElement !== editBtn) save();
         }, 150);
     });
+}
+
+// --------------------------------------------------
+// 파츠 순서 교환
+// --------------------------------------------------
+async function swapOrder(parts, idxA, idxB) {
+    const partA = parts[idxA];
+    const partB = parts[idxB];
+
+    // order 값 교환
+    const tempOrder = partA.order;
+    await DB.updatePartOrder(partA.id, partB.order);
+    await DB.updatePartOrder(partB.id, tempOrder);
+
+    await renderPartsList();
 }
 
 // --------------------------------------------------
