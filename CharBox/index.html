@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>특수문자 치트시트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+            <h1>특수문자 치트시트</h1>
+            <p>자주 쓰는 특수문자와 HTML 엔티티를 검색하고 복사할 수 있습니다.</p>
+        </header>
+
+        <main>
+            <section class="search-box">
+                <label for="searchKeyword">특수문자 검색</label>
+                <input
+                    type="search"
+                    id="searchKeyword"
+                    placeholder="예: 화살표, 저작권, 공백, option, &copy;"
+                >
+            </section>
+
+            <ul class="category-list" id="categoryList" aria-label="특수문자 카테고리">
+                <li><button type="button" class="category-btn is-active" data-category="전체" aria-pressed="true">전체</button></li>
+                <li><button type="button" class="category-btn" data-category="공백" aria-pressed="false">공백</button></li>
+                <li><button type="button" class="category-btn" data-category="화살표" aria-pressed="false">화살표</button></li>
+                <li><button type="button" class="category-btn" data-category="문장부호" aria-pressed="false">문장부호</button></li>
+                <li><button type="button" class="category-btn" data-category="저작권/상표" aria-pressed="false">저작권/상표</button></li>
+                <li><button type="button" class="category-btn" data-category="수학" aria-pressed="false">수학</button></li>
+                <li><button type="button" class="category-btn" data-category="통화" aria-pressed="false">통화</button></li>
+                <li><button type="button" class="category-btn" data-category="괄호" aria-pressed="false">괄호</button></li>
+                <li><button type="button" class="category-btn" data-category="기호" aria-pressed="false">기호</button></li>
+            </ul>
+
+            <div class="table-wrap">
+                <table>
+                    <caption>맥에서 자주 사용하는 특수문자 및 HTML 엔티티 목록</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">특수문자</th>
+                            <th scope="col">설명</th>
+                            <th scope="col">카테고리</th>
+                            <th scope="col">맥 단축키</th>
+                            <th scope="col">HTML 엔티티</th>
+                            <th scope="col">복사</th>
+                        </tr>
+                    </thead>
+                    <tbody id="symbolTableBody"></tbody>
+                </table>
+            </div>
+
+            <p id="copyStatus" class="status-message" role="status" aria-live="polite"></p>
+        </main>
+    </div>
+
+    <script src="./assets/js/symbol-data.js"></script>
+    <script src="./assets/js/common.js"></script>
+</body>
+</html>
