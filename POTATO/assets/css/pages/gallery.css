@@ -1,5 +1,5 @@
 /* ==============================================
-    pages/gallery.css — 갤러리 페이지 전용 (14단계)
+   pages/gallery.css — 갤러리 페이지 전용 (14단계)
 ============================================== */
 
 #page-gallery {
@@ -62,7 +62,6 @@
     background-color: #f5ede4;
 }
 
-/* 카드 이름 */
 .gallery-card-name {
     padding: 4px 8px 0;
     font-size: 0.7rem;
@@ -211,7 +210,6 @@
     background: rgba(0,0,0,0.07);
 }
 
-/* 모달 내 이름 수정 input */
 .modal-name-input {
     flex: 1;
     padding: 4px 8px;

@@ -43,7 +43,13 @@
         </div>
 
         <div class="upload-list-section">
-            <p class="upload-section-label">등록된 파츠 <span id="upload-count">0</span>개</p>
+            <div class="upload-list-header">
+                <p class="upload-section-label">등록된 파츠 <span id="upload-count">0</span>개</p>
+                <select id="upload-sort-select" class="upload-sort-select">
+                    <option value="newest">최신순</option>
+                    <option value="name">이름순</option>
+                </select>
+            </div>
             <div id="upload-parts-grid" class="upload-parts-grid"></div>
         </div>
 

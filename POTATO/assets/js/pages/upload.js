@@ -3,6 +3,7 @@
 // =============================================
 
 let _activeTabId = PARTS_CONFIG.tabs[0].id;
+let _sortOrder   = "newest"; // "newest" | "name"
 
 // --------------------------------------------------
 // 토스트
@@ -71,6 +72,12 @@ function bindEvents() {
         dropArea.classList.remove("drag-over");
         handleFiles(Array.from(e.dataTransfer.files));
     });
+
+    // 정렬 변경
+    document.getElementById("upload-sort-select").addEventListener("change", (e) => {
+        _sortOrder = e.target.value;
+        renderPartsList();
+    });
 }
 
 // --------------------------------------------------
@@ -121,7 +128,7 @@ async function renderPartsList() {
     const countEl  = document.getElementById("upload-count");
     grid.innerHTML = "";
 
-    const parts         = await DB.getPartsByTab(_activeTabId);
+    let parts = await DB.getPartsByTab(_activeTabId);
     countEl.textContent = parts.length;
 
     if (parts.length === 0) {
@@ -129,7 +136,15 @@ async function renderPartsList() {
         return;
     }
 
-    parts.forEach((part, idx) => {
+    // 정렬
+    if (_sortOrder === "name") {
+        parts = [...parts].sort((a, b) => a.name.localeCompare(b.name, "ko"));
+    } else {
+        // newest: createdAt 내림차순
+        parts = [...parts].sort((a, b) => b.createdAt - a.createdAt);
+    }
+
+    parts.forEach(part => {
         const card         = document.createElement("div");
         card.className     = "upload-part-card";
 
@@ -158,27 +173,6 @@ async function renderPartsList() {
         nameRow.appendChild(label);
         nameRow.appendChild(editBtn);
 
-        // ── 순서 버튼 (▲ / ▼) ─────────────────────────
-        const orderRow     = document.createElement("div");
-        orderRow.className = "upload-order-row";
-
-        const upBtn        = document.createElement("button");
-        upBtn.className    = "upload-order-btn";
-        upBtn.textContent  = "▲";
-        upBtn.title        = "위로";
-        upBtn.disabled     = idx === 0;
-        upBtn.addEventListener("click", () => swapOrder(parts, idx, idx - 1));
-
-        const downBtn      = document.createElement("button");
-        downBtn.className  = "upload-order-btn";
-        downBtn.textContent = "▼";
-        downBtn.title      = "아래로";
-        downBtn.disabled   = idx === parts.length - 1;
-        downBtn.addEventListener("click", () => swapOrder(parts, idx, idx + 1));
-
-        orderRow.appendChild(upBtn);
-        orderRow.appendChild(downBtn);
-
         // ── 삭제 버튼 ─────────────────────────────────
         const delBtn       = document.createElement("button");
         delBtn.className   = "upload-delete-btn";
@@ -187,7 +181,6 @@ async function renderPartsList() {
 
         card.appendChild(img);
         card.appendChild(nameRow);
-        card.appendChild(orderRow);
         card.appendChild(delBtn);
         grid.appendChild(card);
     });
@@ -281,21 +274,6 @@ function startEditName(part, labelEl, editBtn) {
             if (document.activeElement !== editBtn) save();
         }, 150);
     });
-}
-
-// --------------------------------------------------
-// 파츠 순서 교환
-// --------------------------------------------------
-async function swapOrder(parts, idxA, idxB) {
-    const partA = parts[idxA];
-    const partB = parts[idxB];
-
-    // order 값 교환
-    const tempOrder = partA.order;
-    await DB.updatePartOrder(partA.id, partB.order);
-    await DB.updatePartOrder(partB.id, tempOrder);
-
-    await renderPartsList();
 }
 
 // --------------------------------------------------
