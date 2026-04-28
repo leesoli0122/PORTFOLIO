@@ -107,3 +107,31 @@
     font-size: 0.85rem;
     line-height: 1.8;
 }
+
+/* --------------------------------------------------
+    등록된 파츠 헤더 — 라벨 + 정렬 셀렉트
+-------------------------------------------------- */
+.upload-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.upload-sort-select {
+    padding: 5px 10px;
+    border: 1.5px solid var(--c-border);
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--c-text-muted);
+    background: var(--c-bg);
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--ease);
+}
+
+.upload-sort-select:focus {
+    border-color: var(--c-primary);
+    color: var(--c-text);
+}

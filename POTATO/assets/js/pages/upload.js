@@ -3,7 +3,7 @@
 // =============================================
 
 let _activeTabId = PARTS_CONFIG.tabs[0].id;
-let _sortOrder   = "newest"; // "newest" | "name"
+let _sortOrder   = "latest";   // "latest" | "name"
 
 // --------------------------------------------------
 // 토스트
@@ -73,9 +73,9 @@ function bindEvents() {
         handleFiles(Array.from(e.dataTransfer.files));
     });
 
-    // 정렬 변경
+    // 정렬 셀렉트
     document.getElementById("upload-sort-select").addEventListener("change", (e) => {
-        _sortOrder = e.target.value;
+        _sortOrder = e.target.value === "name" ? "name" : "latest";
         renderPartsList();
     });
 }
@@ -131,17 +131,20 @@ async function renderPartsList() {
     let parts = await DB.getPartsByTab(_activeTabId);
     countEl.textContent = parts.length;
 
+    // select 값 동기화
+    const sortSel = document.getElementById("upload-sort-select");
+    if (sortSel) sortSel.value = _sortOrder === "name" ? "name" : "newest";
+
     if (parts.length === 0) {
         grid.innerHTML = `<p class="upload-empty">아직 등록된 파츠가 없어요.<br>위에서 이미지를 선택해주세요.</p>`;
         return;
     }
 
-    // 정렬
-    if (_sortOrder === "name") {
-        parts = [...parts].sort((a, b) => a.name.localeCompare(b.name, "ko"));
+    // ── 정렬 적용 ─────────────────────────────────
+    if (_sortOrder === "latest") {
+        parts = [...parts].sort((a, b) => (b.createdAt ?? 0) - (a.createdAt ?? 0));
     } else {
-        // newest: createdAt 내림차순
-        parts = [...parts].sort((a, b) => b.createdAt - a.createdAt);
+        parts = [...parts].sort((a, b) => a.name.localeCompare(b.name, "ko"));
     }
 
     parts.forEach(part => {
