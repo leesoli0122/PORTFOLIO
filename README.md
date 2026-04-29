@@ -1,99 +1,133 @@
-<h1>GUIDE-HTML</h1>
+# PORTFOLIO
 
-<p>UI 컴포넌트를 정리하면서 <b>SPA 구조, 상태 관리, 자동 초기화 패턴</b>을 직접 설계한 개인 학습 프로젝트.</p>
-<p>프로젝트 목적</p>
-<ul>
-    <li>단순 UI 모음이 아니라 구조 설계 연습</li>
-    <li>상태 관리 분리 경험</li>
-    <li>확장 가능한 초기화 패턴 설계</li>
-    <li>네이밍 일관성 유지 훈련</li>
-</ul>
+웹 퍼블리셔로 성장하기 위해 만든 개인 프로젝트 모음입니다.
 
-## 1. Architecture Overview
+HTML, CSS, SCSS를 중심으로 화면 구조와 공통 스타일을 먼저 잡고, 프로젝트에 이미 만들어 둔 공통 코드가 있다면 가져와서 해당 화면에 맞게 수정하는 방식으로 작업했습니다. JavaScript와 jQuery는 필요한 동작을 이해하고 수정하는 수준에서 사용했으며, 복잡한 스크립트 구현은 AI의 도움을 받아 구조를 파악하고 적용했습니다.
+
+## 소개
+
+- 주 작업 영역은 HTML, CSS, SCSS 기반의 화면 구현입니다.
+- 공통 레이아웃, reset, base style, component style을 먼저 정리한 뒤 페이지를 확장하는 방식을 선호합니다.
+- JavaScript는 탭, 검색, 필터, 저장, 불러오기처럼 화면에 필요한 기능 위주로 사용했습니다.
+- 일부 프로젝트의 스크립트 구조와 기능 구현은 AI 도움을 받아 만들었고, 코드를 읽고 수정하면서 학습했습니다.
+- 정적 웹 환경에서도 확인할 수 있는 개인 프로젝트 중심으로 구성되어 있습니다.
+
+## 프로젝트 목록
+
+| 프로젝트 | 설명 | 내가 중점적으로 작업한 부분 | 링크 |
+| --- | --- | --- | --- |
+| GUIDE-HTML | UI 컴포넌트를 정리하고 화면별 가이드 구조를 만든 퍼블리싱 학습 프로젝트 | 컴포넌트 마크업, SCSS 구조, 공통 스타일 정리 | [보기](./GUIDE-HTML/) |
+| POTATO | 직접 그린 파츠 이미지를 조합해 이모티콘 PNG를 만드는 개인용 웹 앱 | 화면 구성, CSS 분리, UI 흐름 정리, 스크립트는 AI 도움으로 구현 | [보기](./POTATO/) |
+| DailySummary | 업무 기록을 프로젝트별로 정리하고 JSON으로 관리하는 기록 도구 | 레이아웃, 입력 화면, 목록 UI, 필터/저장 스크립트는 AI 도움으로 구현 | [보기](./DailySummary/) |
+| CharBox | 자주 사용하는 특수문자와 HTML 엔티티를 검색하고 복사하는 치트시트 | 표 구조, 검색 UI, 카테고리 UI, 복사 스크립트는 AI 도움으로 구현 | [보기](./CharBox/) |
+
+## 작업 방식
+
+1. 화면 목적과 필요한 UI를 먼저 정리합니다.
+2. reset, font, layout, button, card 같은 공통 스타일을 먼저 잡습니다.
+3. 기존에 만들어 둔 공통 코드가 있으면 가져와서 프로젝트 분위기와 구조에 맞게 수정합니다.
+4. HTML 구조를 먼저 안정적으로 만든 뒤 CSS를 분리합니다.
+5. 필요한 스크립트 기능은 직접 흐름을 정리한 뒤 AI에게 도움을 받아 구현합니다.
+6. 완성된 스크립트는 화면에서 동작을 확인하면서 필요한 문구, 클래스, 구조를 다시 수정합니다.
+
+## 1. GUIDE-HTML
+
+UI 컴포넌트를 정리하면서 공통 스타일과 컴포넌트 구조를 연습한 프로젝트입니다.
+
+### 핵심 포인트
+
+- Button, Checkbox, Autocomplete, Badge, Alert, Accordion, Aspect Ratio 등 UI 패턴 정리
+- SCSS를 abstracts, components, display 단위로 분리
+- 컴포넌트별 HTML 구조와 클래스 네이밍 연습
+- 반복되는 스타일을 공통화하는 방식 학습
+- 화면 전환과 초기화 스크립트는 AI 도움을 받아 구조를 이해하며 적용
+
+### 구조
+
 ```text
-index.html
-   ↓
-common.js 로드
-   ↓
-현재 hash 확인
-   ↓
-/guide 내부 HTML fetch
-   ↓
-DOM 삽입
-   ↓
-runComponentInit()
-   ↓
-components.js 내 init 실행
-   ↓
-statusManager.init()
+GUIDE-HTML/
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── scss/
+└── views/
+    ├── index.html
+    ├── layout.html
+    └── guide/
 ```
 
-## 2. Folder Structure
-``` bash
-/assets
-    /css
-        common.css        # 전체 스타일
-        layout.css        # 레이아웃
-        components.css    # 컴포넌트 공통
+## 2. POTATO
 
-    /js
-        index.js          # 상태 관리 모듈
-        common.js         # SPA + 전체 제어
-        components.js     # 컴포넌트 init 모음
-/views
-    /guide
-        /data
-        /feedback
-        /input
-        /surfaces
-    index.html
+프로크리에이트로 그린 캐릭터 파츠를 업로드하고 조합해서 이모티콘 이미지로 저장하는 개인용 웹 앱입니다.
+
+### 핵심 포인트
+
+- 메인, 파츠 업로드, 캐릭터 만들기, 갤러리 화면 구성
+- CSS를 base, components, pages 단위로 분리
+- 버튼, 탭, 카드, 모달, 토스트 등 반복 UI 정리
+- 이미지 업로드, IndexedDB 저장, Canvas 렌더링, PNG 저장 기능은 AI 도움을 받아 구현
+- iPad와 PC 브라우저에서 사용할 수 있도록 화면 흐름 점검
+
+### 구조
+
+```text
+POTATO/
+├── index.html
+├── views/
+│   ├── maker.html
+│   ├── upload.html
+│   └── gallery.html
+└── assets/
+    ├── css/
+    └── js/
 ```
 
-## 3. Core Design Decisions
-### 3.1 Hash 기반 SPA
-- 페이지 새로고침 없이 컴포넌트 전환
-- URL 유지 가능
-- 새로고침 시 현재 페이지 복원 가능
+## 3. DailySummary
 
-#### 선택 이유:
-- 구조 이해 목적
-- 간단하지만 SPA 개념을 체험하기 위함
+업무 중 배운 내용, 질문, 해결 방법을 프로젝트 단위로 기록하기 위한 개인 기록 도구입니다.
 
-### 3.2 파일명 기반 자동 초기화 패턴
-- HTML 파일명 기준으로 init 함수 자동 실행.
-- 예:
-``` bash
-aspect-ratio.html
-→ aspectRatio
-→ initAspectRatio()
+### 핵심 포인트
+
+- 사이드바, 헤더, 검색, 기록 카드, 모달 입력 화면 구성
+- 프로젝트별 기록을 보기 좋게 분류하는 UI 설계
+- JSON 가져오기/내보내기, 검색, 필터, 수정/삭제 기능은 AI 도움을 받아 구현
+- 기록을 파일로 관리할 수 있도록 정적 웹 방식에 맞춰 구성
+
+### 구조
+
+```text
+DailySummary/
+├── index.html
+├── data/
+│   └── records.json
+└── assets/
+    ├── css/
+    └── js/
 ```
 
-#### 장점:
-- 새 컴포넌트 추가 시 공통 코드 수정 불필요
-- 확장성 높음
-- 구조가 단순함
+## 4. CharBox
 
-## 4. Initialization Lifecycle
-1. 페이지 최초 로드
-2. hash 값 확인
-3. 해당 guide HTML fetch
-4. DOM 삽입
-5. runComponentInit()
-6. statusManager.init()
+퍼블리싱 작업 중 자주 필요한 특수문자, 기호, HTML 엔티티를 빠르게 찾기 위한 치트시트입니다.
 
-## 5. Naming Convention
-| 항목           | 규칙                |
-| ------------ | ----------------- |
-| HTML 파일      | kebab-case        |
-| JS init 함수   | PascalCase        |
-| 일반 함수        | camelCase         |
-| CSS 클래스      | kebab-case        |
-| 상태 클래스       | comp / ing / wait |
-| localStorage | guide:* prefix    |
+### 핵심 포인트
 
-## 6. 컴포넌트 추가 방법
-1. /guide에 new-component.html 추가
-2. components.js에 initNewComponent() 작성
-3. 끝
--> 공통 로직 수정 없음
----
+- 특수문자 정보를 표 구조로 정리
+- 카테고리 버튼과 검색 영역 UI 구성
+- 특수문자, 설명, 맥 단축키, HTML 엔티티를 한 화면에서 확인 가능
+- 검색, 카테고리 필터, 복사 기능은 AI 도움을 받아 구현
+
+## 사용 기술
+
+| 구분 | 내용 |
+| --- | --- |
+| 주 사용 기술 | HTML, CSS, SCSS |
+| 보조 사용 기술 | JavaScript 기초, jQuery 기초 |
+| AI 도움을 받아 적용한 기능 | 검색, 필터, JSON 처리, IndexedDB, Canvas, 이미지 저장 |
+| 작업 방식 | 공통 구조와 스타일을 먼저 잡고, 스크립트는 필요한 기능 단위로 도움을 받아 구현 |
+
+## 앞으로 보완할 점
+
+- GUIDE-HTML 컴포넌트 문서 보강
+- 각 프로젝트에 제작 과정과 배운 점 정리
+- 스크립트 코드를 다시 읽고 직접 설명할 수 있도록 주석과 문서 추가
+- 루트 포트폴리오 페이지에서 각 프로젝트로 이동하는 인덱스 화면 정리

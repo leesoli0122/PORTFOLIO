@@ -1,8 +1,0 @@
-section { display:flex; justify-content:center; align-items:center; height:100vh; }
-.section-inner { width:100%; border:1px solid red; }
-.accordion-content { display:flex; }
-.focus { flex:1; background:url("../images/banner-back.jpg")no-repeat center center; }
-.accordion { flex:4; display:flex; }
-.accordion li { position:relative; display:flex; flex-direction:column; justify-content:flex-end; flex:1; padding:20px; border-right:1px solid #ddd; }
-.accordion li::before { content:attr(data-text); position:absolute; top:0; left:20px; text-transform: uppercase; }
-.accordion li .number { position:relative; transform:translateY(-120px); font-size:50px; }

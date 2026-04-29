@@ -1,7 +1,0 @@
-body { line-height:1.5; background:#151781; }
-.text-frame-wrap { display:flex; justify-content:center; align-items:center; height:100vh; }
-.text-frame { color:#222; }
-.text-frame span { display:block; font-size:50px; font-weight:800; color:#fff; text-transform:uppercase; }
-.text-frame span::first-letter { color:#bc3434; }
-.text-frame span:nth-child(1) { letter-spacing:15px; }
-.text-frame span:nth-child(3) { letter-spacing:12px; }
