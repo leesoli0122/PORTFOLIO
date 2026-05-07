@@ -1,85 +1,37 @@
 /* ==============================================
-    responsive.css — 반응형 (iPad / 모바일)
-    base, components, pages 모두 로드된 후 마지막에 로드됩니다.
+    반응형 (iPad / 모바일)
 ============================================== */
 
 /* iPad 세로 (768px 이하) */
 @media (max-width: 768px) {
-    .maker-layout {
-        flex-direction: column;
-        align-items: center;
-        padding: 12px;
-        gap: 12px;
-    }
+    .maker-layout { flex-direction: column; gap: 12px; align-items: center; padding: 12px; }
 
-    .preview-section {
-        width: 100%;
-        max-width: 400px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 14px;
-        gap: 10px;
-    }
+    .preview-section { flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center; width: 100%; max-width: 400px; padding: 14px; }
 
-    .canvas-wrapper {
-        width: 180px;
-        height: 180px;
-        flex: 0 0 auto;
-    }
+    .canvas-wrapper { flex: 0 0 auto; width: 180px; height: 180px; }
 
-    .preview-actions {
-        flex: 0 0 auto;
-        flex-direction: column;
-        width: auto;
-        gap: 8px;
-    }
+    .preview-actions { flex-direction: column; flex: 0 0 auto; gap: 8px; width: auto; }
 
-    .preview-actions .action-btn {
-        flex: none;
-        width: 120px;
-    }
+    .preview-actions .action-btn { flex: none; width: 120px; }
 
-    .parts-section {
-        width: 100%;
-    }
+    .parts-section { width: 100%; }
 
-    #parts-grid {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-        max-height: 320px;
-    }
+    #parts-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); max-height: 320px; }
 
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 }
 
 /* 모바일 (480px 이하) */
 @media (max-width: 480px) {
-    .main-content {
-        padding: 28px 16px;
-        gap: 28px;
-    }
+    .main-content { gap: 28px; padding: 28px 16px; }
 
-    .logo-title {
-        font-size: 1.7rem;
-    }
+    .logo-title { font-size: 1.7rem; }
 
-    .canvas-wrapper {
-        width: 150px;
-        height: 150px;
-    }
+    .canvas-wrapper { width: 150px; height: 150px; }
 
-    .tab-btn {
-        padding: 6px 12px;
-        font-size: 0.78rem;
-    }
+    .tab-btn { padding: 6px 12px; font-size: 0.78rem; }
 
-    #parts-grid {
-        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-    }
+    #parts-grid { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); }
 
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
 }

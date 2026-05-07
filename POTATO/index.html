@@ -2,61 +2,80 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이모티콘 메이커</title>
+
+    <!-- S: css -->
     <link rel="preconnect" href="assets/css/base/font.css">
     <link rel="stylesheet" href="assets/css/base/reset.css">
     <link rel="stylesheet" href="assets/css/base/animations.css">
     <link rel="stylesheet" href="assets/css/components/button.css">
     <link rel="stylesheet" href="assets/css/pages/main.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- E: css -->
+
+    <!-- S: js -->
+    <!-- E: js -->
 </head>
 <body>
+    <div class="wrap">
+        <main class="contentWrap">
+            <!-- S: 본문 -->
+            <section class="page-container">
+                <div id="page-main">
+                    <div class="main-bg-deco" aria-hidden="true">
+                        <span class="deco-blob blob-1"></span>
+                        <span class="deco-blob blob-2"></span>
+                        <span class="deco-blob blob-3"></span>
+                    </div>
 
-<div id="page-main">
-    <div class="main-bg-deco" aria-hidden="true">
-        <span class="deco-blob blob-1"></span>
-        <span class="deco-blob blob-2"></span>
-        <span class="deco-blob blob-3"></span>
+                    <div class="main-content">
+                        <!-- S: 헤더 -->
+                        <header class="main-header">
+                            <div class="main-logo">
+                                <span class="logo-icon">🎨</span>
+                                <h1 class="logo-title">이모티콘 메이커</h1>
+                                <p class="logo-sub">나만의 캐릭터를 만들어요</p>
+                            </div>
+                        </header>
+                        <!-- E: 헤더 -->
+
+                        <nav class="main-nav">
+                            <a class="nav-btn btn-maker" href="views/maker.html">
+                                <span class="nav-btn-icon">✏️</span>
+                                <div class="tit-box">
+                                    <span class="tit">캐릭터 만들기</span>
+                                    <span class="s-tit">파츠를 조합해 이모티콘 완성</span>
+                                </div>
+                            </a>
+
+                            <a class="nav-btn btn-upload" href="views/upload.html">
+                                <span class="nav-btn-icon">📁</span>
+                                <div class="tit-box">
+                                    <span class="tit">파츠 업로드</span>
+                                    <span class="s-tit">그린 파츠 이미지 등록 · 관리</span>
+                                </div>
+                            </a>
+
+                            <a class="nav-btn btn-gallery" href="views/gallery.html">
+                                <span class="nav-btn-icon">🖼️</span>
+                                <div class="tit-box">
+                                    <span class="tit">갤러리</span>
+                                    <span class="s-tit">완성된 이모티콘 모아보기</span>
+                                </div>
+                            </a>
+                        </nav>
+
+                        <!-- S: 푸터 -->
+                        <footer class="main-footer">
+                            <p>이미지는 기기에만 저장돼요 · 외부 서버 전송 없음</p>
+                        </footer>
+                        <!-- E: 푸터 -->
+                    </div>
+                </div>
+            </section>
+            <!-- E: 본문 -->
+        </main>
     </div>
-
-    <div class="main-content">
-        <header class="main-header">
-            <div class="main-logo">
-                <span class="logo-icon">🎨</span>
-                <h1 class="logo-title">이모티콘 메이커</h1>
-                <p class="logo-sub">나만의 캐릭터를 만들어요</p>
-            </div>
-        </header>
-
-        <nav class="main-nav">
-            <a class="main-nav-btn btn-maker" href="views/maker.html">
-                <span class="nav-btn-icon">✏️</span>
-                <span class="nav-btn-title">캐릭터 만들기</span>
-                <span class="nav-btn-desc">파츠를 조합해 이모티콘 완성</span>
-                <span class="nav-btn-arrow">→</span>
-            </a>
-
-            <a class="main-nav-btn btn-upload" href="views/upload.html">
-                <span class="nav-btn-icon">📁</span>
-                <span class="nav-btn-title">파츠 업로드</span>
-                <span class="nav-btn-desc">그린 파츠 이미지 등록 · 관리</span>
-                <span class="nav-btn-arrow">→</span>
-            </a>
-
-            <a class="main-nav-btn btn-gallery" href="views/gallery.html">
-                <span class="nav-btn-icon">🖼️</span>
-                <span class="nav-btn-title">갤러리</span>
-                <span class="nav-btn-desc">완성된 이모티콘 모아보기</span>
-                <span class="nav-btn-arrow">→</span>
-            </a>
-        </nav>
-
-        <footer class="main-footer">
-            <p>이미지는 기기에만 저장돼요 · 외부 서버 전송 없음</p>
-        </footer>
-    </div>
-</div>
-
 </body>
 </html>

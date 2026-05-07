@@ -2,9 +2,7 @@
 
 *,
 *::before,
-*::after {
-    box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 html, body,
 div, span, applet, object, iframe,
@@ -18,22 +16,10 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
-menu, nav, section {
-    margin: 0;
-    padding: 0;
-}
+menu, nav, section { padding: 0; margin: 0; }
 
-ul, ol {
-    list-style: none;
-}
+ul, ol { list-style: none; }
 
-button {
-    border: none;
-    background: none;
-    cursor: pointer;
-}
+button { border: none; background: none; cursor: pointer; }
 
-img {
-    max-width: 100%;
-    display: block;
-}
+img { display: block; max-width: 100%; }

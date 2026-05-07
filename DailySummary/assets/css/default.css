@@ -1,6 +1,6 @@
 /* default.css */
 
-:root {
+:root { 
     --bg: #0f0f0f;
     --surface: #1a1a1a;
     --surface2: #222;
@@ -19,16 +19,7 @@
     --radius-sm: 6px;
 }
 
-body {
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-}
+body { min-height: 100vh; background: var(--bg); font-family: "Noto Sans KR", sans-serif; font-size: 14px; color: var(--text); line-height: 1.6; }
 
 /* 공통 유틸 */
-.hidden {
-    display: none !important;
-}
+.hidden { display: none !important; }

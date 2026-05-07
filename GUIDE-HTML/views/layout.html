@@ -7,13 +7,15 @@
     <meta name="keyword" content="" />
     <meta name="description" content="퍼블가이드" />
     <meta name="author" content="이솔" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
-    <!-- 가이드CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- S: css -->
     <link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/guide.css" />
+    <!-- E: css -->
 
-    <!-- 공통JS -->
+    <!-- S: js -->
     <script type="text/javascript" src="../assets/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="../assets/js/jquery-ui-1.12.1.js"></script>
     <script type="text/javascript" src="../assets/js/swiper-bundle.min.js"></script>
@@ -22,17 +24,34 @@
 
     <!--[D]퍼블용 인크루드 스크립트, 개발에서는 사용안함-->
     <script src="../assets/js/include.js"></script>
+    <!-- E: js -->
 </head>
 <body>
-    <div id="root">
-        <header class="guide-header">
-            <h1>Design System Guide</h1>
-            <p>공통 컴포넌트 가이드 워크리스트(웹접근성 적용)</p>
-        </header>
-        <div class="guide-container">
+    <div class="wrap">
+        <!-- S: 사이드메뉴 or 헤더 -->
+        <div data-include-path=""></div>
+        <!-- E: 사이드메뉴 or 헤더 -->
 
-        </div>
-        <footer></footer>
+        <main class="contentWrap">
+            <!-- S: 본문 -->
+            <section class="page-container">
+                <div id="root">
+                    <header class="guide-header">
+                        <h1>Design System Guide</h1>
+                        <p>공통 컴포넌트 가이드 워크리스트(웹접근성 적용)</p>
+                    </header>
+                    <div class="guide-container">
+
+                    </div>
+                    <footer></footer>
+                </div>
+            </section>
+            <!-- E: 본문 -->
+        </main>
+
+        <!-- S: 푸터 -->
+        <div data-include-path=""></div>
+        <!-- E: 푸터 -->
     </div>
 </body>
 </html>

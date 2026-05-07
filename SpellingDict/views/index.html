@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200px, initial-scale=1.0" />
+    <title>나만의 맞춤법 사전</title>
+
+    <!-- S: css -->
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- E: css -->
+
+    <!-- S: js -->
+    <script src="../assets/js/data.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <!-- E: js -->
+</head>
+<body>
+    <div class="wrap">
+
+        <!-- S: 사이드바 오버레이 (모바일) -->
+        <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+        <!-- E: 사이드바 오버레이 -->
+
+        <!-- S: 모바일 헤더 -->
+        <header class="mobile-header" role="banner">
+            <span class="mobile-logo">맞춤법 사전</span>
+            <button type="button" class="btn-menu" id="btnMenuOpen" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">&#9776;</button>
+        </header>
+        <!-- E: 모바일 헤더 -->
+
+        <!-- S: 사이드바 -->
+        <nav class="sidebar" id="sidebar" role="navigation" aria-label="카테고리 메뉴">
+
+            <!-- 로고 -->
+            <div class="logo">
+                <span class="logo-icon" aria-hidden="true">사</span>
+                <span>맞춤법 사전</span>
+            </div>
+
+            <!-- 카테고리 필터 네비게이션 -->
+            <p class="section-title">카테고리</p>
+            <ul class="nav" role="list" id="sidebarNav">
+                <li>
+                    <button type="button" class="nav-item is-active" data-category="전체" aria-current="true" aria-label="전체 보기">
+                        <span class="nav-dot" aria-hidden="true"></span>
+                        <span>전체</span>
+                        <span class="count" id="countAll" aria-label="전체 단어 수">0</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="nav-item" data-category="조사류" aria-label="조사류 카테고리">
+                        <span class="nav-dot" style="background: var(--color-badge-1)" aria-hidden="true"></span>
+                        <span>조사류</span>
+                        <span class="count" id="count조사류" aria-label="조사류 단어 수">0</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="nav-item" data-category="어미류" aria-label="어미류 카테고리">
+                        <span class="nav-dot" style="background: var(--color-badge-2)" aria-hidden="true"></span>
+                        <span>어미류</span>
+                        <span class="count" id="count어미류" aria-label="어미류 단어 수">0</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="nav-item" data-category="띄어쓰기" aria-label="띄어쓰기 카테고리">
+                        <span class="nav-dot" style="background: var(--color-badge-3)" aria-hidden="true"></span>
+                        <span>띄어쓰기</span>
+                        <span class="count" id="count띄어쓰기" aria-label="띄어쓰기 단어 수">0</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="nav-item" data-category="혼동 단어" aria-label="혼동 단어 카테고리">
+                        <span class="nav-dot" style="background: var(--color-badge-4)" aria-hidden="true"></span>
+                        <span>혼동 단어</span>
+                        <span class="count" id="count혼동단어" aria-label="혼동 단어 수">0</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="nav-item" data-category="외래어 표기" aria-label="외래어 표기 카테고리">
+                        <span class="nav-dot" style="background: var(--color-badge-5)" aria-hidden="true"></span>
+                        <span>외래어 표기</span>
+                        <span class="count" id="count외래어표기" aria-label="외래어 표기 단어 수">0</span>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- 사이드바 하단 — 테마 토글 -->
+            <div class="footer">
+                <span class="footer-label" id="themeLabel">다크 모드</span>
+                <button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="라이트 모드로 전환">
+                    <span class="knob" aria-hidden="true"></span>
+                </button>
+            </div>
+
+        </nav>
+        <!-- E: 사이드바 -->
+
+        <!-- S: 메인 콘텐츠 -->
+        <main class="contentWrap" id="mainContent">
+
+            <!-- S: 본문 -->
+            <section class="page-container" aria-label="맞춤법 사전 본문">
+
+                <!-- S: 페이지 헤더 -->
+                <div class="page-header">
+                    <h1 class="title">나만의 <span>맞춤법</span> 사전</h1>
+                    <p class="desc">헷갈리는 맞춤법을 카테고리별로 정리하고, 초성 검색으로 빠르게 찾아보세요.</p>
+                    <div class="stats" aria-label="사전 통계">
+                        <span class="stat-badge">전체 <strong id="statTotal">0</strong>개</span>
+                        <span class="stat-badge">카테고리 <strong>5</strong>종</span>
+                    </div>
+                </div>
+                <!-- E: 페이지 헤더 -->
+
+                <!-- S: 검색바 -->
+                <div class="search-wrap" role="search">
+                    <div class="search-bar">
+                        <span class="search-icon" aria-hidden="true">&#128269;</span>
+                        <label for="searchInput" class="sr-only">맞춤법 검색</label>
+                        <input type="search" id="searchInput" class="search-input" placeholder="단어 또는 초성으로 검색 (예: ㄹㅅ)" autocomplete="off" spellcheck="false" aria-label="맞춤법 검색" aria-controls="cardList" aria-describedby="searchHint" />
+                        <button type="button" class="clear" id="searchClear" aria-label="검색어 지우기">&#10005;</button>
+                    </div>
+                    <p class="search-hint" id="searchHint">
+                        <span class="search-tag">ㄹㅅ</span> 입력 시 '로서', '로써' 검색 &nbsp;·&nbsp;
+                        <span class="search-tag">ㅁㅎㄷ</span> 입력 시 '맞히다' 검색
+                    </p>
+                </div>
+                <!-- E: 검색바 -->
+
+                <!-- S: 섹션 타이틀 / 정렬 바 -->
+                <div class="filter-bar" role="toolbar" aria-label="목록 정렬">
+
+                    <!-- 섹션 타이틀 -->
+                    <h2 class="section-title" id="sectionTitle">전체 단어</h2>
+
+                    <!-- 정렬 셀렉트 -->
+                    <div class="sort-wrap">
+                        <label for="sortSelect" class="sr-only">정렬 기준 선택</label>
+                        <select id="sortSelect" class="sort-select" aria-label="정렬 기준">
+                            <option value="default">기본순</option>
+                            <option value="asc">가나다순 (오름차순)</option>
+                            <option value="desc">가나다 역순</option>
+                        </select>
+                    </div>
+
+                </div>
+                <!-- E: 섹션 타이틀 / 정렬 바 -->
+
+                <!-- S: 리스트 툴바 -->
+                <div class="list-toolbar">
+                    <p class="result-info" aria-live="polite" aria-atomic="true" id="resultInfo">전체 <strong id="resultCount">0</strong>개의 단어</p>
+                    <button type="button" class="btn-add" id="btnAddWord" aria-label="새 단어 추가" aria-haspopup="dialog">
+                        <span class="add-icon" aria-hidden="true">+</span>단어 추가
+                    </button>
+                </div>
+                <!-- E: 리스트 툴바 -->
+
+                <!-- S: 카드 리스트 -->
+                <ul class="card-list" id="cardList" role="list" aria-label="맞춤법 단어 목록" aria-live="polite" aria-relevant="additions removals">
+                    <!-- JS로 카드 렌더링 -->
+                </ul>
+                <!-- E: 카드 리스트 -->
+
+            </section>
+            <!-- E: 본문 -->
+
+        </main>
+        <!-- E: 메인 콘텐츠 -->
+
+        <!-- S: 단어 추가 모달 -->
+        <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal" id="modal">
+
+                <!-- 모달 헤더 -->
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle">새 단어 추가</h2>
+                    <button type="button" class="modal-close" id="modalClose" aria-label="모달 닫기">&#10005;</button>
+                </div>
+
+                <!-- 모달 폼 -->
+                <div class="modal-body" id="modalBody">
+
+                    <!-- 단어 쌍 입력 -->
+                    <div class="form-field">
+                        <label class="form-label" for="inputTitle">단어 쌍 (Title)<span aria-hidden="true"> *</span></label>
+                        <input type="text" id="inputTitle" class="form-input" placeholder="예: 로서 / 로써" maxlength="60" required aria-required="true" aria-describedby="inputTitleDesc" />
+                        <span id="inputTitleDesc" class="sr-only">헷갈리는 단어 쌍을 슬래시(/)로 구분하여 입력하세요.</span>
+                    </div>
+
+                    <!-- 카테고리 선택 -->
+                    <div class="form-field">
+                        <label class="form-label" for="inputCategory">카테고리<span aria-hidden="true"> *</span></label>
+                        <select id="inputCategory" class="form-select" required aria-required="true">
+                            <option value="" disabled selected>카테고리 선택</option>
+                            <option value="조사류">조사류</option>
+                            <option value="어미류">어미류</option>
+                            <option value="띄어쓰기">띄어쓰기</option>
+                            <option value="혼동 단어">혼동 단어</option>
+                            <option value="외래어 표기">외래어 표기</option>
+                        </select>
+                    </div>
+
+                    <!-- 설명 입력 -->
+                    <div class="form-field">
+                        <label class="form-label" for="inputDesc">설명 (Description)<span aria-hidden="true"> *</span></label>
+                        <textarea id="inputDesc" class="form-textarea" placeholder="예: '로서'는 자격·신분을 나타낼 때, '로써'는 수단·도구를 나타낼 때 사용합니다." maxlength="300" required aria-required="true"></textarea>
+                    </div>
+
+                    <!-- 예시 입력 -->
+                    <div class="form-field">
+                        <p class="form-label" id="examplesLabel">사용 예시 (Examples)</p>
+                        <div class="examples-fields" id="examplesFields" role="group" aria-labelledby="examplesLabel">
+                            <!-- JS로 예시 필드 동적 추가 -->
+                        </div>
+                        <button type="button" class="btn-add-example" id="btnAddExample" aria-label="예시 항목 추가">+ 예시 추가</button>
+                    </div>
+
+                </div>
+
+                <!-- 모달 푸터 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="modalCancel" aria-label="취소하고 닫기">취소</button>
+                    <button type="button" class="btn-submit" id="modalSubmit" aria-label="단어 저장">저장하기</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- E: 단어 추가 모달 -->
+
+        <!-- S: 토스트 알림 -->
+        <div class="toast-container" id="toastContainer" role="status" aria-live="polite" aria-atomic="true"></div>
+        <!-- E: 토스트 알림 -->
+
+    </div>
+</body>
+</html>

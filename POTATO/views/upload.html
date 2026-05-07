@@ -2,8 +2,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>파츠 업로드 — 이모티콘 메이커</title>
+
+    <!-- S: css -->
     <link rel="preconnect" href="assets/css/base/font.css">
     <link rel="stylesheet" href="../assets/css/base/reset.css">
     <link rel="stylesheet" href="../assets/css/base/animations.css">
@@ -14,53 +16,72 @@
     <link rel="stylesheet" href="../assets/css/components/toast.css">
     <link rel="stylesheet" href="../assets/css/pages/upload.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <!-- E: css -->
+
+    <!-- S: js -->
+    <!-- E: js -->
 </head>
 <body>
+    <div class="wrap">
+        <!-- S: 사이드메뉴 or 헤더 -->
+        <div data-include-path=""></div>
+        <!-- E: 사이드메뉴 or 헤더 -->
 
-<div id="page-upload">
+        <main class="contentWrap">
+            <!-- S: 본문 -->
+            <section class="page-container">
+                <div id="page-upload">
 
-    <header class="sub-header">
-        <a class="back-btn" href="../index.html">← 뒤로</a>
-        <h1 class="sub-header-title">📁 파츠 업로드</h1>
-        <div class="sub-header-right"></div>
-    </header>
+                    <header class="sub-header">
+                        <a class="back-btn" href="../index.html">← 뒤로</a>
+                        <h1 class="sub-header-title">📁 파츠 업로드</h1>
+                        <div class="sub-header-right"></div>
+                    </header>
 
-    <div class="upload-layout">
+                    <div class="upload-layout">
 
-        <div class="upload-tab-row">
-            <p class="upload-section-label">어떤 파츠인가요?</p>
-            <nav class="tab-bar" id="upload-tab-bar" role="tablist"></nav>
-        </div>
+                        <div class="upload-tab-row">
+                            <p class="upload-section-label">어떤 파츠인가요?</p>
+                            <nav class="tab-bar" id="upload-tab-bar" role="tablist"></nav>
+                        </div>
 
-        <div class="upload-drop-area" id="upload-drop-area">
-            <input type="file" id="upload-input" accept="image/png,image/jpeg,image/webp" multiple hidden>
-            <div class="upload-drop-inner">
-                <span class="upload-drop-icon">🖼️</span>
-                <p class="upload-drop-text">여기를 탭해서 이미지 선택</p>
-                <p class="upload-drop-hint">PNG 권장 · 투명 배경 유지됨 · 여러 장 한번에 선택 가능</p>
-                <button class="upload-select-btn" id="upload-select-btn">파일 선택하기</button>
-            </div>
-        </div>
+                        <div class="upload-drop-area" id="upload-drop-area">
+                            <input type="file" id="upload-input" accept="image/png,image/jpeg,image/webp" multiple hidden>
+                            <div class="upload-drop-inner">
+                                <span class="upload-drop-icon">🖼️</span>
+                                <p class="upload-drop-text">여기를 탭해서 이미지 선택</p>
+                                <p class="upload-drop-hint">PNG 권장 · 투명 배경 유지됨 · 여러 장 한번에 선택 가능</p>
+                                <button class="upload-select-btn" id="upload-select-btn">파일 선택하기</button>
+                            </div>
+                        </div>
 
-        <div class="upload-list-section">
-            <div class="upload-list-header">
-                <p class="upload-section-label">등록된 파츠 <span id="upload-count">0</span>개</p>
-                <select id="upload-sort-select" class="upload-sort-select">
-                    <option value="newest">최신순</option>
-                    <option value="name">이름순</option>
-                </select>
-            </div>
-            <div id="upload-parts-grid" class="upload-parts-grid"></div>
-        </div>
+                        <div class="upload-list-section">
+                            <div class="upload-list-header">
+                                <p class="upload-section-label">등록된 파츠 <span id="upload-count">0</span>개</p>
+                                <select id="upload-sort-select" class="upload-sort-select">
+                                    <option value="newest">최신순</option>
+                                    <option value="name">이름순</option>
+                                </select>
+                            </div>
+                            <div id="upload-parts-grid" class="upload-parts-grid"></div>
+                        </div>
 
+                    </div>
+                </div>
+
+                <div id="toast" class="toast hidden"></div>
+            </section>
+            <!-- E: 본문 -->
+        </main>
+
+        <!-- S: 푸터 -->
+        <div data-include-path=""></div>
+        <!-- E: 푸터 -->
     </div>
-</div>
 
-<div id="toast" class="toast hidden"></div>
-
-<script src="../assets/js/core/db.js"></script>
-<script src="../assets/js/config/parts-config.js"></script>
-<script src="../assets/js/pages/upload.js"></script>
+    <script src="../assets/js/core/db.js"></script>
+    <script src="../assets/js/config/parts-config.js"></script>
+    <script src="../assets/js/pages/upload.js"></script>
 
 </body>
 </html>

@@ -1,22 +1,22 @@
 @charset "UTF-8";
-* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-text-size-adjust: none; word-break:keep-all;  word-wrap:break-word; transition: all .2s;}
-html { font-size:18px; overflow: hidden; }/*  기본 폰트 사이즈 18px */
-body { font-size:1rem;; font-weight:400; line-height: normal; font-family:'Noto Sans KR', 'Pretendard', 'Spoqa Han Sans Neo', "Apple SD Gothic Neo", sans-serif; color: var(--default-color); }
-body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, li, table, caption, th, td, form, fieldset, legend, address, div, p, span, a { margin:0; padding:0; }
+* { box-sizing: border-box; word-break:keep-all; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -webkit-text-size-adjust: none; word-wrap:break-word; transition: all .2s; }
+html { overflow: hidden; font-size:18px; }/*  기본 폰트 사이즈 18px */
+body { font-family:'Noto Sans KR', 'Pretendard', 'Spoqa Han Sans Neo', "Apple SD Gothic Neo", sans-serif; font-size:1rem; font-weight:400; color: var(--default-color); line-height: normal; }
+body, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, li, table, caption, th, td, form, fieldset, legend, address, div, p, span, a { padding:0; margin:0; }
 ul,ol,li,dl,dt,dd { list-style: none; }
 form, fieldset, legend, input, button, textarea, label { color: var(--default-color); }
-div, img, form, fieldset, button, blockquote, p, hr, select, input { border:0; padding:0; margin:0; font-size:1rem; }
+div, img, form, fieldset, button, blockquote, p, hr, select, input { padding:0; margin:0; border:0; font-size:1rem; }
 img, table { width:100%; }
-legend, caption { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow: hidden;  border:0; clip:rect(0, 0, 0, 0); white-space: nowrap; } /*21.1.28 웹접근성*/
+legend, caption { position:absolute; overflow: hidden; width:1px; height:1px; padding:0; margin:-1px; border:0; white-space: nowrap; clip:rect(0, 0, 0, 0); } /*21.1.28 웹접근성*/
 input, textarea, select, address { font-family: 'Pretendard', 'Spoqa Han Sans Neo', "Apple SD Gothic Neo", sans-serif; }
 input, button, select, textarea { font-family: inherit; }
 input, textarea, select { display:inline-block; vertical-align: middle; color:var(--default-color); }
 
-img { line-height:0; font-size:0; vertical-align:top; }
-table{ border-spacing:0; border-collapse: collapse; }
+img { vertical-align:top; font-size:0; line-height:0; }
+table { border-spacing:0; border-collapse: collapse; }
 address, em { font-style: normal; }
-button { background-color:var(--white); text-align:center; cursor:pointer;}
-a { display:block; color:var(--default-color);  }
+button { background-color:var(--white); text-align:center; cursor:pointer; }
+a { display:block; color:var(--default-color); }
 a, a:hover, a:focus, a:active { text-decoration: none; cursor: pointer; }
 
 /* ===================== 예약어 css =======================================================*/
@@ -80,12 +80,12 @@ a, a:hover, a:focus, a:active { text-decoration: none; cursor: pointer; }
 /* 너비 */
 .w100 { width:100%!important; }
 
-.col02 > li { display:inline-block; float:left; width:calc(100% / 2)!important; }
-.col03 > li { display:inline-block; float:left; width:calc(100% / 3)!important; }
-.col04 > li { display:inline-block; float:left; width:calc(100% / 4)!important; }
-.col05 > li { display:inline-block; float:left; width:calc(100% / 5)!important; }
-.col06 > li { display:inline-block; float:left; width:calc(100% / 6)!important; }
-.col07 > li { display:inline-block; float:left; width:calc(100% / 7)!important; }
+.col02 > li { display:inline-block; width:calc(100% / 2)!important; }
+.col03 > li { display:inline-block; width:calc(100% / 3)!important; }
+.col04 > li { display:inline-block; width:calc(100% / 4)!important; }
+.col05 > li { display:inline-block; width:calc(100% / 5)!important; }
+.col06 > li { display:inline-block; width:calc(100% / 6)!important; }
+.col07 > li { display:inline-block; width:calc(100% / 7)!important; }
 
 /* 타이틀 */
 .txt-tit01 { font-size:1rem; font-weight:bold; }
@@ -95,51 +95,48 @@ a, a:hover, a:focus, a:active { text-decoration: none; cursor: pointer; }
 .txt-tit05 { font-size:1.4rem; font-weight:bold; }
 
 /* 말줄임표 */
-.txt-ellip { position:relative; display:inline-block; float:left; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-table .txt-ellip { display:table; table-layout:fixed; width:100%; }
+.txt-ellip { position:relative; display:inline-block; overflow:hidden; width:100%; white-space:nowrap; text-overflow:ellipsis; }
+table .txt-ellip { display:table; width:100%; table-layout:fixed; }
 .txt-ellip > * { display:table-cell; overflow:hidden; text-overflow:ellipsis; }
 
 /* 텍스트 위치 */
-.ta-c { text-align:center!important;}
-.ta-r { text-align:right!important;}
-.ta-l { text-align:left!important;}
+.ta-c { text-align:center!important; }
+.ta-r { text-align:right!important; }
+.ta-l { text-align:left!important; }
 
 /* 블릿텍스트 */
 .bul-dot,
 .bul-hypn,
 .bul-refer,
 .bul-star,
-.bul-sqr { display:inline-block; float:left; width:100%; }
+.bul-sqr { display:inline-block; width:100%; }
 .bul-dot > li,
-.bul-dot > dd { display:inline-block; float:left; width:100%; padding-left:10px; }
+.bul-dot > dd { display:inline-block; width:100%; padding-left:10px; }
 .bul-dot > li::before,
-.bul-dot > dd::before { content:'·'; position:absolute; left:0; }
+.bul-dot > dd::before { position:absolute; left:0; content:'·'; }
 .bul-hypn > li,
-.bul-hypn > dd { display:inline-block; float:left; width:100%; padding-left:15px; }
+.bul-hypn > dd { display:inline-block; width:100%; padding-left:15px; }
 .bul-hypn > li::before,
-.bul-hypn > dd::before{ content:'-'; position:absolute; left:0; }
+.bul-hypn > dd::before { position:absolute; left:0; content:'-'; }
 .bul-refer > li,
-.bul-refer > dd { display:inline-block; float:left; width:100%; padding-left:20px; }
+.bul-refer > dd { display:inline-block; width:100%; padding-left:20px; }
 .bul-refer > li::before,
-.bul-refer > dd::before { content:'※'; position:absolute; left:0; }
+.bul-refer > dd::before { position:absolute; left:0; content:'※'; }
 .bul-star > li,
-.bul-star > dd { display:inline-block; float:left; width:100%; padding-left:15px; }
+.bul-star > dd { display:inline-block; width:100%; padding-left:15px; }
 .bul-star > li::before,
-.bul-star > dd::before { content:'*'; position:absolute; left:0; top:65%; transform:translate(0, -50%); }
+.bul-star > dd::before { position:absolute; top:65%; left:0; content:'*'; transform:translate(0, -50%); }
 .bul-sqr > li,
-.bul-sqr > dd { display:inline-block; float:left; width:100%; padding-left:20px; }
+.bul-sqr > dd { display:inline-block; width:100%; padding-left:20px; }
 .bul-sqr > li::before,
-.bul-sqr > dd::before { content:'□'; position:absolute; left:0; top:50%; transform:translate(0, -50%); font-size:0.8rem; }
+.bul-sqr > dd::before { position:absolute; top:50%; left:0; content:'□'; font-size:0.8rem; transform:translate(0, -50%); }
 
 /* input */
-input:read-only { }
-input:disabled { }
-
 input[type="text"],
 input[type="tel"], input[type="date"],
 input[type="password"],
-select { position:relative; display:inline-block; float:left; width:100%; height:40px; padding:10px 5px; border:1px solid #ddd; border-radius:5px;  }
-textarea { position:relative; display:inline-block; float:left; width:100%; padding:10px 5px; border:1px solid #ddd; border-radius:5px; font-size:1rem; font-family:"NanumSquareNeo", sans-serif; }
+select { position:relative; display:inline-block; width:100%; height:40px; padding:10px 5px; border:1px solid #ddd; border-radius:5px; }
+textarea { position:relative; display:inline-block; width:100%; padding:10px 5px; border:1px solid #ddd; border-radius:5px; font-family:"NanumSquareNeo", sans-serif; font-size:1rem; }
 
 input[type="checkbox"],
 input[type="radio"] { display:none; }

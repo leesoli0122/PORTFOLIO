@@ -3,7 +3,7 @@
 ---------------------------------------------*/
 /* 인풋 */
 input,
-.se-select select { display:block; width:100%; line-height:initial; box-sizing:border-box; border:none; border-radius: 0; background-color: none; -o-appearance:none; -webkit-appearance:none; -moz-appearance: none; appearance: none; white-space: nowrap; overflow:hidden; outline:none; cursor: pointer; }
+.se-select select { display:block; overflow:hidden; box-sizing:border-box; width:100%; border:none; border-radius: 0; outline:none; background-color: none; white-space: nowrap; line-height:initial; -o-appearance:none; -webkit-appearance:none; -moz-appearance: none; appearance: none; cursor: pointer; }
 input:disabled { cursor: initial; }
 /** Firefox Browser **/
 input[type=number],
@@ -16,17 +16,17 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; -moz-a
 /** Edge Browser **/
 input[type="password"]::-ms-reveal { display: none; }
 input[type="radio"],
-input[type="checkbox"] {  box-sizing: border-box; padding:0; }
+input[type="checkbox"] { box-sizing: border-box; padding:0; }
 input::-ms-clear,
-input::-ms-reveal { display: none;}
+input::-ms-reveal { display: none; }
 /* Chrome의 autofill 관련 기본 스타일 제거 */
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:focus,
-textarea:-webkit-autofill:hover { -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important; box-shadow: 0 0 0 1000px #FFFFFF inset !important;}
+textarea:-webkit-autofill:hover { box-shadow: 0 0 0 1000px #FFFFFF inset !important; -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important; }
 
 /*-----------------------------------------------------------------------*/
 /* 테이블 */
-table{  border-spacing:0; border-collapse: collapse; table-layout:fixed; max-width:1200px; }
+table { max-width:1200px; border-spacing:0; border-collapse: collapse; table-layout:fixed; }
 
 table thead tr:first-child,
 table tbody tr:first-child { border-top:1px solid var(--border); }
@@ -35,7 +35,7 @@ table thead + tbody tr:first-child { border-top:0; }
 table tr:first-of-type th,
 table tr:first-of-type td { padding:10px 0; border-top:1px solid var(--gray-outline-border); }
 table th,
-table td { padding:16px 0; text-align:center; color:var(--default-color); font-size:var(--font18); font-weight:var(--font-w-r); border:1px solid var(--table-border); word-break:keep-all !important; }
+table td { padding:16px 0; border:1px solid var(--table-border); font-size:var(--font18); font-weight:var(--font-w-r); text-align:center; word-break:keep-all !important; color:var(--default-color); }
 table th { font-weight:var(--font-w-m); }
 
 table .bor-l { border-left:var(--table-border) !important; }

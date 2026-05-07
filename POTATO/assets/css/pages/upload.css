@@ -1,137 +1,43 @@
 /* ==============================================
-    pages/upload.css — 업로드 페이지 전용
+    업로드 페이지 전용
 ============================================== */
 
-#page-upload {
-    display: flex;
-    flex-direction: column;
-    background: var(--c-bg);
-}
+#page-upload { display: flex; flex-direction: column; background: var(--c-bg); }
 
-.upload-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-}
+.upload-layout { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 700px; padding: 20px; margin: 0 auto; }
 
-.upload-tab-row {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+.upload-tab-row { display: flex; flex-direction: column; gap: 10px; }
 
-.upload-section-label {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: var(--c-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
+.upload-section-label { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.05em; color: var(--c-text-muted); text-transform: uppercase; }
 
-.upload-drop-area {
-    border: 2.5px dashed var(--c-border);
-    border-radius: var(--radius-lg);
-    background: var(--c-surface);
-    transition: all var(--ease);
-    cursor: pointer;
-}
+.upload-drop-area { border: 2.5px dashed var(--c-border); border-radius: var(--radius-lg); background: var(--c-surface); transition: all var(--ease); cursor: pointer; }
 
 .upload-drop-area:hover,
-.upload-drop-area.drag-over {
-    border-color: var(--c-primary);
-    background: var(--c-primary-bg);
-}
+.upload-drop-area.drag-over { border-color: var(--c-primary); background: var(--c-primary-bg); }
 
-.upload-drop-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 36px 24px;
-    text-align: center;
-}
+.upload-drop-inner { display: flex; flex-direction: column; gap: 8px; align-items: center; padding: 36px 24px; text-align: center; }
 
-.upload-drop-icon {
-    font-size: 2.6rem;
-    filter: drop-shadow(0 2px 8px rgba(255, 107, 107, 0.2));
-}
+.upload-drop-icon { filter: drop-shadow(0 2px 8px rgba(255, 107, 107, 0.2)); font-size: 2.6rem; }
 
-.upload-drop-text {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--c-text);
-}
+.upload-drop-text { font-size: 1rem; font-weight: 800; color: var(--c-text); }
 
-.upload-drop-hint {
-    font-size: 0.78rem;
-    color: var(--c-text-muted);
-    line-height: 1.6;
-}
+.upload-drop-hint { font-size: 0.78rem; color: var(--c-text-muted); line-height: 1.6; }
 
-.upload-select-btn {
-    margin-top: 8px;
-    padding: 10px 24px;
-    background: var(--c-primary);
-    color: #fff;
-    border-radius: var(--radius-md);
-    font-size: 0.9rem;
-    font-weight: 700;
-    transition: all var(--ease);
-}
+.upload-select-btn { padding: 10px 24px; margin-top: 8px; border-radius: var(--radius-md); background: var(--c-primary); font-size: 0.9rem; font-weight: 700; color: #fff; transition: all var(--ease); }
 
-.upload-select-btn:hover {
-    background: var(--c-primary-dark);
-}
+.upload-select-btn:hover { background: var(--c-primary-dark); }
 
-.upload-list-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+.upload-list-section { display: flex; flex-direction: column; gap: 12px; }
 
-.upload-parts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 10px;
-}
+.upload-parts-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
 
-.upload-empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 24px;
-    color: var(--c-text-muted);
-    font-size: 0.85rem;
-    line-height: 1.8;
-}
+.upload-empty { grid-column: 1 / -1; padding: 24px; font-size: 0.85rem; text-align: center; color: var(--c-text-muted); line-height: 1.8; }
 
 /* --------------------------------------------------
     등록된 파츠 헤더 — 라벨 + 정렬 셀렉트
 -------------------------------------------------- */
-.upload-list-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
+.upload-list-header { display: flex; gap: 12px; align-items: center; justify-content: space-between; }
 
-.upload-sort-select {
-    padding: 5px 10px;
-    border: 1.5px solid var(--c-border);
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--c-text-muted);
-    background: var(--c-bg);
-    cursor: pointer;
-    outline: none;
-    transition: border-color var(--ease);
-}
+.upload-sort-select { padding: 5px 10px; border: 1.5px solid var(--c-border); border-radius: 20px; outline: none; background: var(--c-bg); font-size: 0.78rem; font-weight: 600; color: var(--c-text-muted); cursor: pointer; transition: border-color var(--ease); }
 
-.upload-sort-select:focus {
-    border-color: var(--c-primary);
-    color: var(--c-text);
-}
+.upload-sort-select:focus { border-color: var(--c-primary); color: var(--c-text); }

@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PORTFOLIO</title>
 
+    <!-- S: css -->
     <link rel="stylesheet" type="text/css" href="./resources/css/lib/reset.css" />
     <link rel="stylesheet" type="text/css" href="./resources/css/ui/common.css" />
+    <!-- E: css -->
 
+    <!-- S: js -->
     <script src="./resources/js/lib/jquery-1.9.1.min.js"></script>
     <script src="./resources/js/lib/gsap.min.js"></script>
     <script src="./resources/js/vue.js"></script>
+    <!-- E: js -->
 </head>
 <body>
-    <div id="skipnavi">
-        <script>
-            $(document).ready(function () {
-                $("#skipnavi").load("./views/INCLUDE/inc_skipnavi.html");
-            });
-        </script>
-    </div>
     <div class="wrap">
-        <!-- s:header -->
+        <!-- S: 사이드메뉴 or 헤더 -->
+        <div id="skipnavi">
+            <script>
+                $(document).ready(function () {
+                    $("#skipnavi").load("./views/INCLUDE/inc_skipnavi.html");
+                });
+            </script>
+        </div>
         <header id="headerWrap">
             <script>
                 $(document).ready(function () {
@@ -29,20 +33,29 @@
                 });
             </script>
         </header>
-        <!-- //e:header -->
-        <section>
-            <ul class="link-wrap">
-                <li class="link"><a href="./views/PRACTICE/Neon-typing-effect.html">네온 타이핑 이펙트</a></li>
-                <li class="link"><a href="./views/PRACTICE/Mouse-wheel-animation.html">마우스 휠 애니메이션</a></li>
-                <li class="link"><a href="./views/PRACTICE/simple-typo-design-of-the-loading-page.html">간단한 로딩페이지 타이포 디자인</a></li>
-                <li class="link"><a href="./views/PRACTICE/heading.html">애니메이션 연습</a></li>
-                <li class="link"><a href="./views/PRACTICE/dark-mode.html">다크모드</a></li>
-                <li class="link"><a href="./views/PRACTICE/선택자 중첩 로그인 만들기.html">선택자 중첩 로그인 만들기기</a></li>
-            </ul>
-            <ul class="link-wrap">
-                <li class="link"><a href="./views/SIZE/PC-1400.html">max-width:1400px pc</a></li>
-            </ul>
-        </section>
+        <!-- E: 사이드메뉴 or 헤더 -->
+
+        <main class="contentWrap">
+            <!-- S: 본문 -->
+            <section class="page-container">
+                <ul class="link-wrap">
+                    <li class="link"><a href="./views/PRACTICE/Neon-typing-effect.html">네온 타이핑 이펙트</a></li>
+                    <li class="link"><a href="./views/PRACTICE/Mouse-wheel-animation.html">마우스 휠 애니메이션</a></li>
+                    <li class="link"><a href="./views/PRACTICE/simple-typo-design-of-the-loading-page.html">간단한 로딩페이지 타이포 디자인</a></li>
+                    <li class="link"><a href="./views/PRACTICE/heading.html">애니메이션 연습</a></li>
+                    <li class="link"><a href="./views/PRACTICE/dark-mode.html">다크모드</a></li>
+                    <li class="link"><a href="./views/PRACTICE/선택자 중첩 로그인 만들기.html">선택자 중첩 로그인 만들기기</a></li>
+                </ul>
+                <ul class="link-wrap">
+                    <li class="link"><a href="./views/SIZE/PC-1400.html">max-width:1400px pc</a></li>
+                </ul>
+            </section>
+            <!-- E: 본문 -->
+        </main>
+
+        <!-- S: 푸터 -->
+        <div data-include-path=""></div>
+        <!-- E: 푸터 -->
     </div>
 </body>
 </html>

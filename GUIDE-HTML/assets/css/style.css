@@ -5,688 +5,327 @@
     짝수 단위로 할 경우 소수점 최대 3자리까지
 ──────────────────────────────────────────── */
 :root {
-  --font12: 0.667rem;
-  --font13: 0.722rem;
-  --font14: 0.778rem;
-  --font16: 0.889rem;
-  --font18: 1rem;
-  --font20: 1.111rem;
-  --font22: 1.222rem;
-  --font24: 1.333rem;
-  --font26: 1.444rem;
-  --font28: 1.556rem;
-  --font30: 1.667rem;
-  --font32: 1.778rem;
-  --font34: 1.889rem;
-  --font36: 2rem;
-  --font38: 2.111rem;
-  --font40: 2.222rem;
-  --font42: 2.333rem;
-  --font45: 2.5rem;
-  --font-w-b: 700;
-  --font-w-m: 500;
-  --font-w-r: 400;
-  --font-w-l: 300;
+    --font12: 0.667rem;
+    --font13: 0.722rem;
+    --font14: 0.778rem;
+    --font16: 0.889rem;
+    --font18: 1rem;
+    --font20: 1.111rem;
+    --font22: 1.222rem;
+    --font24: 1.333rem;
+    --font26: 1.444rem;
+    --font28: 1.556rem;
+    --font30: 1.667rem;
+    --font32: 1.778rem;
+    --font34: 1.889rem;
+    --font36: 2rem;
+    --font38: 2.111rem;
+    --font40: 2.222rem;
+    --font42: 2.333rem;
+    --font45: 2.5rem;
+    --font-w-b: 700;
+    --font-w-m: 500;
+    --font-w-r: 400;
+    --font-w-l: 300;
 }
 
 body {
-  /* 색상 */
-  --white:#ffffff;
-  --color9:#999999;
+    /* 색상 */
+    --white:#ffffff;
+    --color9:#999999;
 }
 
 /* ────────────────────────────────────────────
-   CSS Variables — 라이트 (기본)
+    CSS Variables — 라이트 (기본)
 ──────────────────────────────────────────── */
 :root {
-  /* 페이지 */
-  --bg:#F7F7FA;
-  --border:#E4E4EE;
-  --text:#111120;
-  --muted:#4a4a5d;
-  --tit3:#333333;
-  --tit45:#454545;
-  /* 레드 */
-  --red-primary:#C0392B;
-  --red-primary-text:#FFFFFF;
-  --red-outline-bg:#FFFFFF;
-  --red-outline-text:#C0392B;
-  --red-outline-border:#C0392B;
-  --red-secondary:#FDEDEC;
-  --red-pastel-text:#7B241C;
-  /* 오렌지 */
-  --orange-primary:#C95E00;
-  --orange-primary-text:#FFFFFF;
-  --orange-outline-bg:#FFFFFF;
-  --orange-outline-text:#C95E00;
-  --orange-outline-border:#C95E00;
-  --orange-secondary:#FEF0E7;
-  --orange-pastel-text:#7D3C00;
-  /* 옐로 */
-  --yellow-primary:#7D6608;
-  --yellow-primary-text:#FFFFFF;
-  --yellow-outline-bg:#FFFFFF;
-  --yellow-outline-text:#7D6608;
-  --yellow-outline-border:#7D6608;
-  --yellow-secondary:#FEFBD8;
-  --yellow-pastel-text:#5D4E00;
-  /* 그린 */
-  --green-primary:#1E8449;
-  --green-primary-text:#FFFFFF;
-  --green-outline-bg:#FFFFFF;
-  --green-outline-text:#1E8449;
-  --green-outline-border:#1E8449;
-  --green-secondary:#E9F7EF;
-  --green-pastel-text:#145A32;
-  /* 블루 */
-  --blue-primary:#1A5276;
-  --blue-primary-text:#FFFFFF;
-  --blue-outline-bg:#FFFFFF;
-  --blue-outline-text:#1A5276;
-  --blue-outline-border:#1A5276;
-  --blue-secondary:#EBF5FB;
-  --blue-pastel-text:#154360;
-  /* 인디고 */
-  --indigo-primary:#1F3A8F;
-  --indigo-primary-text:#FFFFFF;
-  --indigo-outline-bg:#FFFFFF;
-  --indigo-outline-text:#1F3A8F;
-  --indigo-outline-border:#1F3A8F;
-  --indigo-secondary:#EEF2FA;
-  --indigo-pastel-text:#16275E;
-  /* 바이올렛 */
-  --violet-primary:#6C3483;
-  --violet-primary-text:#FFFFFF;
-  --violet-outline-bg:#FFFFFF;
-  --violet-outline-text:#6C3483;
-  --violet-outline-border:#6C3483;
-  --violet-secondary:#F5EEF8;
-  --violet-pastel-text:#512E5F;
-  /* 그레이 */
-  --gray-primary: #424242;
-  --gray-primary-text:#FFFFFF;
-  --gray-outline-bg:#FFFFFF;
-  --gray-outline-text:#424242;
-  --gray-outline-border:#616161;
-  --gray-secondary:#F0F0F0;
-  --gray-pastel-text: #212121;
+    /* 페이지 */
+    --bg:#F7F7FA;
+    --border:#E4E4EE;
+    --text:#111120;
+    --muted:#4a4a5d;
+    --tit3:#333333;
+    --tit45:#454545;
+    /* 레드 */
+    --red-primary:#C0392B;
+    --red-primary-text:#FFFFFF;
+    --red-outline-bg:#FFFFFF;
+    --red-outline-text:#C0392B;
+    --red-outline-border:#C0392B;
+    --red-secondary:#FDEDEC;
+    --red-pastel-text:#7B241C;
+    /* 오렌지 */
+    --orange-primary:#C95E00;
+    --orange-primary-text:#FFFFFF;
+    --orange-outline-bg:#FFFFFF;
+    --orange-outline-text:#C95E00;
+    --orange-outline-border:#C95E00;
+    --orange-secondary:#FEF0E7;
+    --orange-pastel-text:#7D3C00;
+    /* 옐로 */
+    --yellow-primary:#7D6608;
+    --yellow-primary-text:#FFFFFF;
+    --yellow-outline-bg:#FFFFFF;
+    --yellow-outline-text:#7D6608;
+    --yellow-outline-border:#7D6608;
+    --yellow-secondary:#FEFBD8;
+    --yellow-pastel-text:#5D4E00;
+    /* 그린 */
+    --green-primary:#1E8449;
+    --green-primary-text:#FFFFFF;
+    --green-outline-bg:#FFFFFF;
+    --green-outline-text:#1E8449;
+    --green-outline-border:#1E8449;
+    --green-secondary:#E9F7EF;
+    --green-pastel-text:#145A32;
+    /* 블루 */
+    --blue-primary:#1A5276;
+    --blue-primary-text:#FFFFFF;
+    --blue-outline-bg:#FFFFFF;
+    --blue-outline-text:#1A5276;
+    --blue-outline-border:#1A5276;
+    --blue-secondary:#EBF5FB;
+    --blue-pastel-text:#154360;
+    /* 인디고 */
+    --indigo-primary:#1F3A8F;
+    --indigo-primary-text:#FFFFFF;
+    --indigo-outline-bg:#FFFFFF;
+    --indigo-outline-text:#1F3A8F;
+    --indigo-outline-border:#1F3A8F;
+    --indigo-secondary:#EEF2FA;
+    --indigo-pastel-text:#16275E;
+    /* 바이올렛 */
+    --violet-primary:#6C3483;
+    --violet-primary-text:#FFFFFF;
+    --violet-outline-bg:#FFFFFF;
+    --violet-outline-text:#6C3483;
+    --violet-outline-border:#6C3483;
+    --violet-secondary:#F5EEF8;
+    --violet-pastel-text:#512E5F;
+    /* 그레이 */
+    --gray-primary: #424242;
+    --gray-primary-text:#FFFFFF;
+    --gray-outline-bg:#FFFFFF;
+    --gray-outline-text:#424242;
+    --gray-outline-border:#616161;
+    --gray-secondary:#F0F0F0;
+    --gray-pastel-text: #212121;
 }
 
 /* ────────────────────────────────────────────
     CSS Variables — 다크
 ──────────────────────────────────────────── */
 [data-theme=dark] {
-  /* 페이지 */
-  --bg:#0E0E16;
-  --surface:#18181F;
-  --border:#2A2A38;
-  --text: #f5f5f5;
-  --muted: #b0b486;
-  --tit3:#f5f5f5;
-  --tit6:#b0b486;
-  /* 레드 */
-  --red-primary:#E74C3C;
-  --red-primary-text:#FFFFFF;
-  --red-outline-bg:#0E0E16;
-  --red-outline-text:#F1948A;
-  --red-outline-border:#F1948A;
-  --red-secondary:#3B1010;
-  --red-pastel-text:#F9C0BB;
-  /* 오렌지 */
-  --orange-primary:#E67E22;
-  --orange-primary-text:#FFFFFF;
-  --orange-outline-bg:#0E0E16;
-  --orange-outline-text:#F0B27A;
-  --orange-outline-border:#F0B27A;
-  --orange-secondary:#3B2000;
-  --orange-pastel-text:#FDD5A8;
-  /* 옐로 */
-  --yellow-primary:#B7950B;
-  --yellow-primary-text:#FFFFFF;
-  --yellow-outline-bg:#0E0E16;
-  --yellow-outline-text:#F4D03F;
-  --yellow-outline-border:#F4D03F;
-  --yellow-secondary:#2E2800;
-  --yellow-pastel-text:#FAE97A;
-  /* 그린 */
-  --green-primary:#27AE60;
-  --green-primary-text:#FFFFFF;
-  --green-outline-bg:#0E0E16;
-  --green-outline-text:#82E0AA;
-  --green-outline-border:#82E0AA;
-  --green-secondary:#0A2B18;
-  --green-pastel-text:#A9DFBF;
-  /* 블루 */
-  --blue-primary:#2980B9;
-  --blue-primary-text:#FFFFFF;
-  --blue-outline-bg:#0E0E16;
-  --blue-outline-text:#7FB3D3;
-  --blue-outline-border:#7FB3D3;
-  --blue-secondary:#0A1E30;
-  --blue-pastel-text:#A8D1E9;
-  /* 인디고 */
-  --indigo-primary:#3455C1;
-  --indigo-primary-text:#FFFFFF;
-  --indigo-outline-bg:#0E0E16;
-  --indigo-outline-text:#7B96D8;
-  --indigo-outline-border:#7B96D8;
-  --indigo-secondary:#0D1535;
-  --indigo-pastel-text:#A4B8E8;
-  /* 바이올렛 */
-  --violet-primary:#8E44AD;
-  --violet-primary-text:#FFFFFF;
-  --violet-outline-bg:#0E0E16;
-  --violet-outline-text:#C39BD3;
-  --violet-outline-border:#C39BD3;
-  --violet-secondary:#250F31;
-  --violet-pastel-text:#D7B8E0;
-  /* 그레이 */
-  --gray-primary:#9E9E9E;
-  --gray-primary-text:#111111;
-  --gray-outline-bg:#0E0E16;
-  --gray-outline-text:#BDBDBD;
-  --gray-outline-border:#9E9E9E;
-  --gray-secondary:#2A2A2A;
-  --gray-pastel-text:#D4D4D4;
-}
+    /* 페이지 */
+    --bg:#0E0E16;
+    --surface:#18181F;
+    --border:#2A2A38;
+    --text: #f5f5f5;
+    --muted: #b0b486;
+    --tit3:#f5f5f5;
+    --tit6:#b0b486;
+    /* 레드 */
+    --red-primary:#E74C3C;
+    --red-primary-text:#FFFFFF;
+    --red-outline-bg:#0E0E16;
+    --red-outline-text:#F1948A;
+    --red-outline-border:#F1948A;
+    --red-secondary:#3B1010;
+    --red-pastel-text:#F9C0BB;
+    /* 오렌지 */
+    --orange-primary:#E67E22;
+    --orange-primary-text:#FFFFFF;
+    --orange-outline-bg:#0E0E16;
+    --orange-outline-text:#F0B27A;
+    --orange-outline-border:#F0B27A;
+    --orange-secondary:#3B2000;
+    --orange-pastel-text:#FDD5A8;
+    /* 옐로 */
+    --yellow-primary:#B7950B;
+    --yellow-primary-text:#FFFFFF;
+    --yellow-outline-bg:#0E0E16;
+    --yellow-outline-text:#F4D03F;
+    --yellow-outline-border:#F4D03F;
+    --yellow-secondary:#2E2800;
+    --yellow-pastel-text:#FAE97A;
+    /* 그린 */
+    --green-primary:#27AE60;
+    --green-primary-text:#FFFFFF;
+    --green-outline-bg:#0E0E16;
+    --green-outline-text:#82E0AA;
+    --green-outline-border:#82E0AA;
+    --green-secondary:#0A2B18;
+    --green-pastel-text:#A9DFBF;
+    /* 블루 */
+    --blue-primary:#2980B9;
+    --blue-primary-text:#FFFFFF;
+    --blue-outline-bg:#0E0E16;
+    --blue-outline-text:#7FB3D3;
+    --blue-outline-border:#7FB3D3;
+    --blue-secondary:#0A1E30;
+    --blue-pastel-text:#A8D1E9;
+    /* 인디고 */
+    --indigo-primary:#3455C1;
+    --indigo-primary-text:#FFFFFF;
+    --indigo-outline-bg:#0E0E16;
+    --indigo-outline-text:#7B96D8;
+    --indigo-outline-border:#7B96D8;
+    --indigo-secondary:#0D1535;
+    --indigo-pastel-text:#A4B8E8;
+    /* 바이올렛 */
+    --violet-primary:#8E44AD;
+    --violet-primary-text:#FFFFFF;
+    --violet-outline-bg:#0E0E16;
+    --violet-outline-text:#C39BD3;
+    --violet-outline-border:#C39BD3;
+    --violet-secondary:#250F31;
+    --violet-pastel-text:#D7B8E0;
+    /* 그레이 */
+    --gray-primary:#9E9E9E;
+    --gray-primary-text:#111111;
+    --gray-outline-bg:#0E0E16;
+    --gray-outline-text:#BDBDBD;
+    --gray-outline-border:#9E9E9E;
+    --gray-secondary:#2A2A2A;
+    --gray-pastel-text:#D4D4D4; }
 
 /* components */
 /* abstracts */
 /* autocomplete 커스텀 */
-.ui-menu {
-  padding: 5px 10px;
-  background-color: var(--white);
-}
+.ui-menu { padding: 5px 10px; background-color: var(--white); }
 
 /* abstracts */
 /* button 공통 */
-:where(a, button) {
-  position: relative;
-}
-:where(a, button):hover {
-  color: var(--white);
-  background-color: var(--gray-pastel-text);
-}
-:where(a, button):focus-visible {
-  outline: 2px solid var(--gray-pastel-text);
-  outline-offset: 4px;
-}
+:where(a, button) { position: relative; }
+:where(a, button):hover { background-color: var(--gray-pastel-text); color: var(--white); }
+:where(a, button):focus-visible { outline: 2px solid var(--gray-pastel-text); outline-offset: 4px; }
 
-.button-group a {
-  display: inline-block;
-  height: 56px;
-  padding: 18px 20px;
-  border-radius: 10px;
-  font-size: var(--font18);
-  line-height: 18px;
-  text-align: center;
-}
-.button-group a:hover {
-  color: var(--white);
-  background-color: var(--gray-pastel-text);
-}
-.button-group a:focus-visible {
-  outline: 2px solid var(--gray-pastel-text);
-  outline-offset: 4px;
-}
-.button-group a.btn-primary {
-  background-color: var(--blue-primary);
-  color: var(--blue-primary-text);
-}
-.button-group a.btn-secondary {
-  background-color: var(--blue-secondary);
-  color: var(--blue-pastel-text);
-}
-.button-group a.btn-line {
-  border: 1px solid var(--blue-primary);
-  background-color: transparent;
-  color: var(--blue-pastel-text);
-}
+.button-group a { display: inline-block; height: 56px; padding: 18px 20px; border-radius: 10px; font-size: var(--font18); text-align: center; line-height: 18px; }
+.button-group a:hover { background-color: var(--gray-pastel-text); color: var(--white); }
+.button-group a:focus-visible { outline: 2px solid var(--gray-pastel-text); outline-offset: 4px; }
+.button-group a.btn-primary { background-color: var(--blue-primary); color: var(--blue-primary-text); }
+.button-group a.btn-secondary { background-color: var(--blue-secondary); color: var(--blue-pastel-text); }
+.button-group a.btn-line { border: 1px solid var(--blue-primary); background-color: transparent; color: var(--blue-pastel-text); }
 
-.button-group button {
-  display: inline-block;
-  height: 56px;
-  padding: 18px 20px;
-  border-radius: 10px;
-  font-size: var(--font18);
-  line-height: 18px;
-  text-align: center;
-}
-.button-group button:hover {
-  color: var(--white);
-  background-color: var(--gray-pastel-text);
-}
-.button-group button:focus-visible {
-  outline: 2px solid var(--gray-pastel-text);
-  outline-offset: 4px;
-}
-.button-group button.btn-primary {
-  background-color: var(--blue-primary);
-  color: var(--blue-primary-text);
-}
-.button-group button.btn-secondary {
-  background-color: var(--blue-secondary);
-  color: var(--blue-pastel-text);
-}
-.button-group button.btn-line {
-  border: 1px solid var(--blue-primary);
-  background-color: transparent;
-  color: var(--blue-pastel-text);
-}
+.button-group button { display: inline-block; height: 56px; padding: 18px 20px; border-radius: 10px; font-size: var(--font18); text-align: center; line-height: 18px; }
+.button-group button:hover { background-color: var(--gray-pastel-text); color: var(--white); }
+.button-group button:focus-visible { outline: 2px solid var(--gray-pastel-text); outline-offset: 4px; }
+.button-group button.btn-primary { background-color: var(--blue-primary); color: var(--blue-primary-text); }
+.button-group button.btn-secondary { background-color: var(--blue-secondary); color: var(--blue-pastel-text); }
+.button-group button.btn-line { border: 1px solid var(--blue-primary); background-color: transparent; color: var(--blue-pastel-text); }
 
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-size: 0;
-}
+.button-group { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0; }
 
-.btn-sm a, .btn-sm button {
-  height: 40px;
-  padding: 12px 18px;
-  font-size: var(--font16);
-  line-height: 16px;
-}
+.btn-sm a, .btn-sm button { height: 40px; padding: 12px 18px; font-size: var(--font16); line-height: 16px; }
 
 /* ㅇ */
 .rnd a,
-.rnd button {
-  border-radius: 6px;
-}
+.rnd button { border-radius: 6px; }
 
 /* abstracts */
 /* display */
 /* abstracts */
 /* Badge */
-.mode-toggle {
-  text-align: right;
-  font-size: 0;
-}
-.mode-toggle .mode-btn {
-  padding: 4px 10px;
-  border: 1px solid #333;
-  border-radius: 16px;
-}
-.mode-toggle .mode-btn:hover, .mode-toggle .mode-btn.active {
-  background-color: #007bff;
-  color: #fff;
-}
-.mode-toggle .mode-btn + .mode-btn {
-  margin-left: 10px;
-}
+.mode-toggle { font-size: 0; text-align: right; }
+.mode-toggle .mode-btn { padding: 4px 10px; border: 1px solid #333; border-radius: 16px; }
+.mode-toggle .mode-btn:hover, .mode-toggle .mode-btn.active { background-color: #007bff; color: #fff; }
+.mode-toggle .mode-btn + .mode-btn { margin-left: 10px; }
 
-.badge-group {
-  margin-bottom: 24px;
-}
-.badge-group .tit {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 10px;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--tit3);
-}
-.badge-group .tit span {
-  display: inline-block;
-  font-size: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-}
-.badge-group > ul > li {
-  display: flex;
-  align-items: center;
-}
-.badge-group > ul > li p {
-  font-size: 18px;
-  color: var(--tit45);
-}
-.badge-group > ul > li + li {
-  margin-top: 16px;
-}
-.badge-group .badge-item {
-  margin-left: 10px;
-}
-.badge-group .badge-item span {
-  display: inline-block;
-}
-.badge-group .badge-item span + span {
-  margin-left: 10px;
-}
-.badge-group .badge-item span[class*=badge] {
-  padding: 4px 10px;
-  border-radius: 30px;
-  font-size: var(--font16);
-  font-weight: var(--font-w-m);
-}
-.badge-group .badge-item span[class*=badge].square {
-  border-radius: 10px;
-}
-.badge-wrap {
-  margin-bottom: 20px;
-}
-.badge-small {
-  padding: 4px 10px;
-  font-size: 14px;
-  line-height: 1rem;
-}
-.badge-medium {
-  padding: 4px 10px;
-  font-size: 16px;
-  line-height: 1.25rem;
-}
-.badge-large {
-  padding: 7px 14px;
-  font-size: 18px;
-  line-height: 1.5rem;
-  border-radius: 22px;
-}
+.badge-group { margin-bottom: 24px; }
+.badge-group .tit { display: flex; gap: 10px; align-items: center; padding-bottom: 10px; font-size: 22px; font-weight: 600; color: var(--tit3); }
+.badge-group .tit span { display: inline-block; width: 14px; height: 14px; border-radius: 3px; font-size: 0; }
+.badge-group > ul > li { display: flex; align-items: center; }
+.badge-group > ul > li p { font-size: 18px; color: var(--tit45); }
+.badge-group > ul > li + li { margin-top: 16px; }
+.badge-group .badge-item { margin-left: 10px; }
+.badge-group .badge-item span { display: inline-block; }
+.badge-group .badge-item span + span { margin-left: 10px; }
+.badge-group .badge-item span[class*=badge] { padding: 4px 10px; border-radius: 30px; font-size: var(--font16); font-weight: var(--font-w-m); }
+.badge-group .badge-item span[class*=badge].square { border-radius: 10px; }
+.badge-wrap { margin-bottom: 20px; }
+.badge-small { padding: 4px 10px; font-size: 14px; line-height: 1rem; }
+.badge-medium { padding: 4px 10px; font-size: 16px; line-height: 1.25rem; }
+.badge-large { padding: 7px 14px; border-radius: 22px; font-size: 18px; line-height: 1.5rem; }
 
-.color {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.color .badge-group {
-  max-width: 250px;
-  width: 100%;
-  max-height: 190px;
-  height: 100%;
-  padding: 14px;
-  margin-bottom: 0;
-  border: 1px solid #e1e5e9;
-  border-radius: 20px;
-}
+.color { display: flex; flex-wrap: wrap; gap: 20px; }
+.color .badge-group { width: 100%; max-width: 250px; height: 100%; max-height: 190px; padding: 14px; margin-bottom: 0; border: 1px solid #e1e5e9; border-radius: 20px; }
 
-.red .primary {
-  background-color: var(--red-primary);
-}
-.red .secondary {
-  background-color: var(--red-secondary);
-}
-.red .badge {
-  background-color: var(--red-primary);
-  color: var(--red-primary-text);
-}
-.red .badge-line {
-  background-color: var(--red-outline-bg);
-  border: 2px solid var(--red-outline-border);
-  color: var(--red-outline-text);
-}
-.red .badge-pastel {
-  background-color: var(--red-secondary);
-  color: var(--red-pastel-text);
-}
+.red .primary { background-color: var(--red-primary); }
+.red .secondary { background-color: var(--red-secondary); }
+.red .badge { background-color: var(--red-primary); color: var(--red-primary-text); }
+.red .badge-line { border: 2px solid var(--red-outline-border); background-color: var(--red-outline-bg); color: var(--red-outline-text); }
+.red .badge-pastel { background-color: var(--red-secondary); color: var(--red-pastel-text); }
 
-.orange .primary {
-  background-color: var(--orange-primary);
-}
-.orange .secondary {
-  background-color: var(--orange-secondary);
-}
-.orange .badge {
-  background-color: var(--orange-primary);
-  color: var(--orange-primary-text);
-}
-.orange .badge-line {
-  background-color: var(--orange-outline-bg);
-  border: 2px solid var(--orange-outline-border);
-  color: var(--orange-outline-text);
-}
-.orange .badge-pastel {
-  background-color: var(--orange-secondary);
-  color: var(--orange-pastel-text);
-}
+.orange .primary { background-color: var(--orange-primary); }
+.orange .secondary { background-color: var(--orange-secondary); }
+.orange .badge { background-color: var(--orange-primary); color: var(--orange-primary-text); }
+.orange .badge-line { border: 2px solid var(--orange-outline-border); background-color: var(--orange-outline-bg); color: var(--orange-outline-text); }
+.orange .badge-pastel { background-color: var(--orange-secondary); color: var(--orange-pastel-text); }
 
-.yellow .primary {
-  background-color: var(--yellow-primary);
-}
-.yellow .secondary {
-  background-color: var(--yellow-secondary);
-}
-.yellow .badge {
-  background-color: var(--yellow-primary);
-  color: var(--yellow-primary-text);
-}
-.yellow .badge-line {
-  background-color: var(--yellow-outline-bg);
-  border: 2px solid var(--yellow-outline-border);
-  color: var(--yellow-outline-text);
-}
-.yellow .badge-pastel {
-  background-color: var(--yellow-secondary);
-  color: var(--yellow-pastel-text);
-}
+.yellow .primary { background-color: var(--yellow-primary); }
+.yellow .secondary { background-color: var(--yellow-secondary); }
+.yellow .badge { background-color: var(--yellow-primary); color: var(--yellow-primary-text); }
+.yellow .badge-line { border: 2px solid var(--yellow-outline-border); background-color: var(--yellow-outline-bg); color: var(--yellow-outline-text); }
+.yellow .badge-pastel { background-color: var(--yellow-secondary); color: var(--yellow-pastel-text); }
 
-.green .primary {
-  background-color: var(--green-primary);
-}
-.green .secondary {
-  background-color: var(--green-secondary);
-}
-.green .badge {
-  background-color: var(--green-primary);
-  color: var(--green-primary-text);
-}
-.green .badge-line {
-  background-color: var(--green-outline-bg);
-  border: 2px solid var(--green-outline-border);
-  color: var(--green-outline-text);
-}
-.green .badge-pastel {
-  background-color: var(--green-secondary);
-  color: var(--green-pastel-text);
-}
+.green .primary { background-color: var(--green-primary); }
+.green .secondary { background-color: var(--green-secondary); }
+.green .badge { background-color: var(--green-primary); color: var(--green-primary-text); }
+.green .badge-line { border: 2px solid var(--green-outline-border); background-color: var(--green-outline-bg); color: var(--green-outline-text); }
+.green .badge-pastel { background-color: var(--green-secondary); color: var(--green-pastel-text); }
 
-.blue .primary {
-  background-color: var(--blue-primary);
-}
-.blue .secondary {
-  background-color: var(--blue-secondary);
-}
-.blue .badge {
-  background-color: var(--blue-primary);
-  color: var(--blue-primary-text);
-}
-.blue .badge-line {
-  background-color: var(--blue-outline-bg);
-  border: 2px solid var(--blue-outline-border);
-  color: var(--blue-outline-text);
-}
-.blue .badge-pastel {
-  background-color: var(--blue-secondary);
-  color: var(--blue-pastel-text);
-}
+.blue .primary { background-color: var(--blue-primary); }
+.blue .secondary { background-color: var(--blue-secondary); }
+.blue .badge { background-color: var(--blue-primary); color: var(--blue-primary-text); }
+.blue .badge-line { border: 2px solid var(--blue-outline-border); background-color: var(--blue-outline-bg); color: var(--blue-outline-text); }
+.blue .badge-pastel { background-color: var(--blue-secondary); color: var(--blue-pastel-text); }
 
-.indigo .primary {
-  background-color: var(--indigo-primary);
-}
-.indigo .secondary {
-  background-color: var(--indigo-secondary);
-}
-.indigo .badge {
-  background-color: var(--indigo-primary);
-  color: var(--indigo-primary-text);
-}
-.indigo .badge-line {
-  background-color: var(--indigo-outline-bg);
-  border: 2px solid var(--indigo-outline-border);
-  color: var(--indigo-outline-text);
-}
-.indigo .badge-pastel {
-  background-color: var(--indigo-secondary);
-  color: var(--indigo-pastel-text);
-}
+.indigo .primary { background-color: var(--indigo-primary); }
+.indigo .secondary { background-color: var(--indigo-secondary); }
+.indigo .badge { background-color: var(--indigo-primary); color: var(--indigo-primary-text); }
+.indigo .badge-line { border: 2px solid var(--indigo-outline-border); background-color: var(--indigo-outline-bg); color: var(--indigo-outline-text); }
+.indigo .badge-pastel { background-color: var(--indigo-secondary); color: var(--indigo-pastel-text); }
 
-.violet .primary {
-  background-color: var(--violet-primary);
-}
-.violet .secondary {
-  background-color: var(--violet-secondary);
-}
-.violet .badge {
-  background-color: var(--violet-primary);
-  color: var(--violet-primary-text);
-}
-.violet .badge-line {
-  background-color: var(--violet-outline-bg);
-  border: 2px solid var(--violet-outline-border);
-  color: var(--violet-outline-text);
-}
-.violet .badge-pastel {
-  background-color: var(--violet-secondary);
-  color: var(--violet-pastel-text);
-}
+.violet .primary { background-color: var(--violet-primary); }
+.violet .secondary { background-color: var(--violet-secondary); }
+.violet .badge { background-color: var(--violet-primary); color: var(--violet-primary-text); }
+.violet .badge-line { border: 2px solid var(--violet-outline-border); background-color: var(--violet-outline-bg); color: var(--violet-outline-text); }
+.violet .badge-pastel { background-color: var(--violet-secondary); color: var(--violet-pastel-text); }
 
-.gray .primary {
-  background-color: var(--gray-primary);
-}
-.gray .secondary {
-  background-color: var(--gray-secondary);
-}
-.gray .badge {
-  background-color: var(--gray-primary);
-  color: var(--gray-primary-text);
-}
-.gray .badge-line {
-  background-color: var(--gray-outline-bg);
-  border: 2px solid var(--gray-outline-border);
-  color: var(--gray-outline-text);
-}
-.gray .badge-pastel {
-  background-color: var(--gray-secondary);
-  color: var(--gray-pastel-text);
-}
+.gray .primary { background-color: var(--gray-primary); }
+.gray .secondary { background-color: var(--gray-secondary); }
+.gray .badge { background-color: var(--gray-primary); color: var(--gray-primary-text); }
+.gray .badge-line { border: 2px solid var(--gray-outline-border); background-color: var(--gray-outline-bg); color: var(--gray-outline-text); }
+.gray .badge-pastel { background-color: var(--gray-secondary); color: var(--gray-pastel-text); }
 
-.badge-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.badge-button-blue {
-  background-color: #3b82f6;
-  color: white;
-}
-.badge-button-blue:hover {
-  background-color: #2563eb;
-}
-.badge-button-gray {
-  background-color: var(--muted);
-  color: white;
-}
-.badge-button-gray:hover {
-  background-color: #4b5563;
-}
-.badge-table {
-  width: 100%;
-  background-color: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-.badge-table thead {
-  background-color: #f9fafb;
-}
-.badge-table thead th {
-  padding: 0.75rem 1.5rem;
-  text-align: left;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.badge-table tbody {
-  background-color: white;
-}
-.badge-table tbody tr {
-  border-top: 1px solid #e5e7eb;
-}
-.badge-table tbody tr td {
-  padding: 1rem 1.5rem;
-  white-space: nowrap;
-  font-size: 0.875rem;
-}
-.badge-table tbody tr td:first-child {
-  font-weight: 500;
-  color: var(--text);
-}
-.badge-table tbody tr td:not(:first-child) {
-  color: var(--muted);
-}
-.badge-code-block {
-  background-color: var(--text);
-  color: #10b981;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  font-family: "Consolas", "Monaco", "Courier New", monospace;
-  font-size: 0.875rem;
-  overflow-x: auto;
-}
-.badge-code-block pre {
-  white-space: pre;
-  margin: 0;
-}
+.badge-button { display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem 1rem; border: none; border-radius: 0.5rem; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
+.badge-button-blue { background-color: #3b82f6; color: white; }
+.badge-button-blue:hover { background-color: #2563eb; }
+.badge-button-gray { background-color: var(--muted); color: white; }
+.badge-button-gray:hover { background-color: #4b5563; }
+.badge-table { overflow: hidden; width: 100%; border: 1px solid #e5e7eb; border-radius: 0.5rem; background-color: white; }
+.badge-table thead { background-color: #f9fafb; }
+.badge-table thead th { padding: 0.75rem 1.5rem; font-size: 0.75rem; font-weight: 500; text-align: left; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; }
+.badge-table tbody { background-color: white; }
+.badge-table tbody tr { border-top: 1px solid #e5e7eb; }
+.badge-table tbody tr td { padding: 1rem 1.5rem; font-size: 0.875rem; white-space: nowrap; }
+.badge-table tbody tr td:first-child { font-weight: 500; color: var(--text); }
+.badge-table tbody tr td:not(:first-child) { color: var(--muted); }
+.badge-code-block { overflow-x: auto; padding: 1rem; border-radius: 0.5rem; background-color: var(--text); font-family: "Consolas", "Monaco", "Courier New", monospace; font-size: 0.875rem; color: #10b981; }
+.badge-code-block pre { margin: 0; white-space: pre; }
 
 /* 레이아웃 */
-[class*=-content] {
-  margin-bottom: 38px;
-}
-[class*=-content] h2 {
-  font-size: var(--font22);
-  font-weight: var(--font-w-b);
-  color: var(--text);
-  margin-bottom: 16px;
-}
-[class*=-content] h3 {
-  font-size: var(--font20);
-  font-weight: var(--font-w-m);
-  color: var(--text);
-  margin-bottom: 14px;
-}
-[class*=-content] [class*=-group] {
-  margin-bottom: 52px;
-}
+[class*=-content] { margin-bottom: 38px; }
+[class*=-content] h2 { margin-bottom: 16px; font-size: var(--font22); font-weight: var(--font-w-b); color: var(--text); }
+[class*=-content] h3 { margin-bottom: 14px; font-size: var(--font20); font-weight: var(--font-w-m); color: var(--text); }
+[class*=-content] [class*=-group] { margin-bottom: 52px; }
 
-.form-content > .form-wrap {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
-}
-.form-content > .form-wrap:first-of-type {
-  margin-top: 0;
-}
-.form-content > .form-wrap:last-of-type > .form-group:last-of-type {
-  margin-bottom: 0;
-}
-.form-content > .form-wrap > .form-group {
-  flex: 1;
-  position: relative;
-}
-.form-content > .form-wrap > .form-group:only-of-type {
-  flex: 0 0 calc(50% - 20px);
-}
-.form-content > .form-wrap > .form-group > .flex-row, .form-content > .form-wrap > .form-group > .flex-row > div {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-}
-.form-content > .form-wrap > .form-group > .flex-row > div:only-of-type {
-  flex: 1;
-  width: 100%;
-}
-.form-content > .form-wrap > .form-group .mo-column .flex-row > div {
-  flex: 1;
-}
-.form-content > .form-wrap > .form-group .mo-column .flex-row .se-select, .form-content > .form-wrap > .form-group .mo-column > .col:last-of-type {
-  flex: 0 0 152px;
-}
+.form-content > .form-wrap { display: flex; gap: 40px; margin-bottom: 40px; }
+.form-content > .form-wrap:first-of-type { margin-top: 0; }
+.form-content > .form-wrap:last-of-type > .form-group:last-of-type { margin-bottom: 0; }
+.form-content > .form-wrap > .form-group { position: relative; flex: 1; }
+.form-content > .form-wrap > .form-group:only-of-type { flex: 0 0 calc(50% - 20px); }
+.form-content > .form-wrap > .form-group > .flex-row, .form-content > .form-wrap > .form-group > .flex-row > div { position: relative; display: flex; flex: 1; gap: 10px; align-items: center; }
+.form-content > .form-wrap > .form-group > .flex-row > div:only-of-type { flex: 1; width: 100%; }
+.form-content > .form-wrap > .form-group .mo-column .flex-row > div { flex: 1; }
+.form-content > .form-wrap > .form-group .mo-column .flex-row .se-select, .form-content > .form-wrap > .form-group .mo-column > .col:last-of-type { flex: 0 0 152px; }

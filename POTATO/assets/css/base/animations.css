@@ -5,35 +5,31 @@
 
 @keyframes pageIn {
     from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to { opacity: 1; }
 }
 
 @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes floatIcon {
     0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-8px); }
+    50% { transform: translateY(-8px); }
 }
 
 @keyframes toastIn {
     from { opacity: 0; transform: translateX(-50%) translateY(12px); }
-    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 /* 페이지 래퍼 공통 */
 #page-main,
 #page-maker,
 #page-upload,
-#page-gallery {
-    min-height: 100vh;
-    min-height: 100dvh;
-    animation: pageIn 0.22s ease both;
-}
+#page-gallery { min-height: 100vh; min-height: 100dvh; animation: pageIn 0.22s ease both; }

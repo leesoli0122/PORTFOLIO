@@ -1,65 +1,19 @@
 /* ==============================================
-   components/modal.css
-   이미지 상세 모달
+    이미지 상세 모달
 ============================================== */
 
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(61, 44, 44, 0.55);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 24px;
-    animation: fadeIn 0.18s ease both;
-}
+.modal-overlay { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(61, 44, 44, 0.55); backdrop-filter: blur(4px); animation: fadeIn 0.18s ease both; }
 
-.modal-overlay.hidden {
-    display: none;
-}
+.modal-overlay.hidden { display: none; }
 
-.modal-box {
-    background: var(--c-surface);
-    border-radius: var(--radius-xl);
-    padding: 24px;
-    max-width: 340px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    box-shadow: var(--shadow-lg);
-    animation: slideUp 0.2s ease both;
-}
+.modal-box { display: flex; flex-direction: column; gap: 16px; align-items: center; width: 100%; max-width: 340px; padding: 24px; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); background: var(--c-surface); animation: slideUp 0.2s ease both; }
 
-.modal-box img {
-    width: 100%;
-    max-width: 260px;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    border-radius: var(--radius-md);
-    border: 2px solid var(--c-border);
-    background-image:
-        linear-gradient(45deg, #e8e0d8 25%, transparent 25%),
-        linear-gradient(-45deg, #e8e0d8 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #e8e0d8 75%),
-        linear-gradient(-45deg, transparent 75%, #e8e0d8 75%);
-    background-size: 12px 12px;
-    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
-    background-color: #f5ede4;
-}
+.modal-box img { object-fit: contain; width: 100%; max-width: 260px; aspect-ratio: 1 / 1; border: 2px solid var(--c-border); border-radius: var(--radius-md); background-color: #f5ede4; background-image:
+    linear-gradient(45deg, #e8e0d8 25%, transparent 25%),
+    linear-gradient(-45deg, #e8e0d8 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e8e0d8 75%),
+    linear-gradient(-45deg, transparent 75%, #e8e0d8 75%); background-size: 12px 12px; background-position: 0 0, 0 6px, 6px -6px, -6px 0; }
 
-.modal-actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-}
+.modal-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; width: 100%; }
 
-.modal-date {
-    font-size: 0.75rem;
-    color: var(--c-text-muted);
-}
+.modal-date { font-size: 0.75rem; color: var(--c-text-muted); }

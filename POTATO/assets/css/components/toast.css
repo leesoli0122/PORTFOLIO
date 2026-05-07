@@ -1,25 +1,7 @@
 /* ==============================================
-    components/toast.css
     토스트 알림
 ============================================== */
 
-.toast {
-    position: fixed;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%) translateY(0);
-    background: #3d2c2c;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    box-shadow: var(--shadow-md);
-    z-index: 2000;
-    white-space: nowrap;
-    animation: toastIn 0.2s ease both;
-}
+.toast { position: fixed; bottom: 32px; left: 50%; z-index: 2000; padding: 12px 24px; border-radius: 30px; box-shadow: var(--shadow-md); background: #3d2c2c; font-size: 0.88rem; font-weight: 700; white-space: nowrap; color: #fff; transform: translateX(-50%) translateY(0); animation: toastIn 0.2s ease both; }
 
-.toast.hidden {
-    display: none;
-}
+.toast.hidden { display: none; }
