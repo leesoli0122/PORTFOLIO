@@ -1,0 +1,267 @@
+/* ============================================================
+RESET CSS — 포켓몬 띠부띠부씰 디지털 도감
+============================================================ */
+
+/* ─── 1. CSS 변수 (Design Tokens) ─────────────────────────── */
+:root {
+    /* Color */
+    --color-0:        #000000;
+    --color-1a:       #1a1a2e;   /* 딥 네이비 (배경 기본) */
+    --color-16:       #16213e;   /* 사이드 패널 배경 */
+    --color-0f:       #0f3460;   /* 포인트 다크 블루 */
+    --color-3:        #333333;
+    --color-4:        #444444;
+    --color-5:        #555555;
+    --color-75:       #757575;
+    --color-9:        #999999;
+    --color-b:        #bbbbbb;
+    --color-d:        #dddddd;
+    --color-e:        #eeeeee;
+    --color-f2:       #f2f2f2;
+    --color-f5:       #f5f5f5;
+    --color-ff:       #ffffff;
+
+    /* Brand / Accent */
+    --color-red-eb:   #eb0000;   /* 포켓볼 레드 */
+    --color-red-c:    #cc0000;
+    --color-gold-ff:  #ffd700;   /* Master 골드 */
+    --color-gold-f:   #ffb800;
+    --color-blue-53:  #5372f0;
+    --color-blue-3b:  #3b5bdb;
+    --color-green-2:  #2ecc71;
+    --color-teal-1:   #1abc9c;
+    --color-purple-9: #9b59b6;
+    --color-orange-e: #e67e22;
+    --color-pink-e:   #e91e8c;
+
+    /* 세대별 스파인 컬러 */
+    --gen1-color:     #e53935;
+    --gen2-color:     #fb8c00;
+    --gen3-color:     #43a047;
+    --gen4-color:     #1e88e5;
+    --gen5-color:     #8e24aa;
+    --gen6-color:     #00acc1;
+    --gen7-color:     #f4511e;
+    --gen8-color:     #3949ab;
+    --gen9-color:     #00897b;
+
+    /* Semantic */
+    --color-bg:       var(--color-1a);
+    --color-surface:  var(--color-16);
+    --color-border:   rgba(255,255,255,0.08);
+    --color-text:     var(--color-ff);
+    --color-muted:    var(--color-9);
+    --color-accent:   var(--color-red-eb);
+
+    /* Font Size */
+    --font10:   0.625rem;
+    --font11:   0.6875rem;
+    --font12:   0.75rem;
+    --font13:   0.8125rem;
+    --font14:   0.875rem;
+    --font15:   0.9375rem;
+    --font16:   1rem;
+    --font18:   1.125rem;
+    --font20:   1.25rem;
+    --font22:   1.375rem;
+    --font24:   1.5rem;
+    --font28:   1.75rem;
+    --font32:   2rem;
+    --font40:   2.5rem;
+    --font48:   3rem;
+
+    /* Font Weight */
+    --font-w-300: 300;
+    --font-w-400: 400;
+    --font-w-500: 500;
+    --font-w-600: 600;
+    --font-w-700: 700;
+    --font-w-800: 800;
+    --font-w-900: 900;
+
+    /* Font Family */
+    --font-primary:  'Noto Sans KR', 'Pretendard', sans-serif;
+    --font-display:  'Black Han Sans', 'Noto Sans KR', sans-serif;
+    --font-mono:     'JetBrains Mono', 'Courier New', monospace;
+    --font-en:       'Kanit', sans-serif;
+
+    /* Spacing */
+    --space-4:    4px;
+    --space-8:    8px;
+    --space-12:   12px;
+    --space-16:   16px;
+    --space-20:   20px;
+    --space-24:   24px;
+    --space-32:   32px;
+    --space-40:   40px;
+    --space-48:   48px;
+    --space-64:   64px;
+
+    /* Border Radius */
+    --radius-4:   4px;
+    --radius-8:   8px;
+    --radius-12:  12px;
+    --radius-16:  16px;
+    --radius-full: 9999px;
+
+    /* Shadow */
+    --shadow-sm:  0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md:  0 4px 24px rgba(0,0,0,0.4);
+    --shadow-lg:  0 8px 48px rgba(0,0,0,0.6);
+    --shadow-glow-red:  0 0 20px rgba(235,0,0,0.4);
+    --shadow-glow-gold: 0 0 24px rgba(255,215,0,0.5);
+
+    /* Transition */
+    --transition-fast:   0.15s ease;
+    --transition-base:   0.3s ease;
+    --transition-slow:   0.5s ease;
+    --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Layout */
+    --max-width:      1200px;
+    --sidebar-width:  260px;
+    --header-height:  72px;
+}
+
+/* ─── 2. Box-sizing ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ─── 3. Reset ─────────────────────────────────────────────── */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+
+body {
+line-height: 1;
+}
+
+ol, ul {
+list-style: none;
+}
+
+blockquote, q {
+quotes: none;
+}
+
+blockquote::before, blockquote::after,
+q::before, q::after {
+content: '';
+content: none;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+button {
+border: none;
+background: none;
+cursor: pointer;
+font: inherit;
+color: inherit;
+}
+
+input, textarea, select {
+border: none;
+background: none;
+font: inherit;
+color: inherit;
+outline: none;
+}
+
+img, svg {
+display: block;
+max-width: 100%;
+}
+
+/* ─── 4. Base Styles ───────────────────────────────────────── */
+html {
+font-size: 16px;
+scroll-behavior: smooth;
+-webkit-text-size-adjust: 100%;
+}
+
+body {
+background-color: var(--color-bg);
+font-family: var(--font-primary);
+font-size: var(--font16);
+font-weight: var(--font-w-400);
+color: var(--color-text);
+line-height: 1.6;
+overflow-x: hidden;
+}
+
+/* ─── 5. Accessibility ─────────────────────────────────────── */
+.sr-only {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+white-space: nowrap;
+border: 0;
+}
+
+:focus-visible {
+outline: 2px solid var(--color-gold-ff);
+outline-offset: 2px;
+}
+
+/* ─── 6. Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+width: 6px;
+height: 6px;
+}
+
+::-webkit-scrollbar-track {
+background: var(--color-16);
+}
+
+::-webkit-scrollbar-thumb {
+background: var(--color-4);
+border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: var(--color-75);
+}
+
+/* ─── 7. Selection ─────────────────────────────────────────── */
+::selection {
+background: rgba(235, 0, 0, 0.3);
+color: var(--color-ff);
+}
