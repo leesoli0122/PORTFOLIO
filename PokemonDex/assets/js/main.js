@@ -46,13 +46,7 @@ const GEN_MASCOTS = {
 };
 
 /* ══════════════════════════════════════════════════════════════
-   2. POKEMON DATA (1~9세대 대표 포켓몬 샘플)
-   따로 분리
-══════════════════════════════════════════════════════════════ */
-
-
-/* ══════════════════════════════════════════════════════════════
-   3. CHOSUNG SEARCH ALGORITHM
+   2. CHOSUNG SEARCH ALGORITHM
 ══════════════════════════════════════════════════════════════ */
 const CHOSUNG_LIST = [
   'ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ',
@@ -138,7 +132,7 @@ function searchPokemon(query, filterType, filterAttr, ownedSet) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   4. LOCAL STORAGE
+   3. LOCAL STORAGE
 ══════════════════════════════════════════════════════════════ */
 function loadOwned() {
   try {
@@ -169,7 +163,7 @@ function toggleOwned(pokemonNo, ownedSet) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   5. WEB AUDIO — 효과음 (SFX)
+   4. WEB AUDIO — 효과음 (SFX)
 ══════════════════════════════════════════════════════════════ */
 let audioCtx = null;
 
@@ -239,7 +233,7 @@ function playPageFlipSound() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   6. TOAST NOTIFICATION
+   5. TOAST NOTIFICATION
 ══════════════════════════════════════════════════════════════ */
 function showToast(message, icon = '✓') {
   const container = document.getElementById('toastContainer');
@@ -257,7 +251,7 @@ function showToast(message, icon = '✓') {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   7. DOM HELPERS
+   6. DOM HELPERS
 ══════════════════════════════════════════════════════════════ */
 function getPokemonImageUrl(no) {
   // PokeAPI 공식 스프라이트 (CDN)
@@ -274,7 +268,7 @@ function getPokemonsByGen(genId) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   8. STATISTICS
+   7. STATISTICS
 ══════════════════════════════════════════════════════════════ */
 function calcStats(ownedSet) {
   const total = POKEMON_DATA.length;
@@ -292,7 +286,7 @@ function calcStats(ownedSet) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   9. RENDER — STICKER ITEM
+   8. RENDER — STICKER ITEM
 ══════════════════════════════════════════════════════════════ */
 function renderStickerItem(pokemon, isOwned, genColor) {
   const mainType = pokemon.type[0];
@@ -330,7 +324,7 @@ function renderStickerItem(pokemon, isOwned, genColor) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   10. RENDER — BOOK PAGES
+   9. RENDER — BOOK PAGES
 ══════════════════════════════════════════════════════════════ */
 function renderBookPages(genId, currentPage, ownedSet, container) {
   const genCfg = getGenConfig(genId);
@@ -391,7 +385,7 @@ function renderBookPages(genId, currentPage, ownedSet, container) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   11. RENDER — LIBRARY (책장)
+   10. RENDER — LIBRARY (책장)
 ══════════════════════════════════════════════════════════════ */
 function renderLibrary(stats, container) {
   container.innerHTML = '';
@@ -443,7 +437,7 @@ function renderLibrary(stats, container) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   12. RENDER — SIDEBAR NAV
+   11. RENDER — SIDEBAR NAV
 ══════════════════════════════════════════════════════════════ */
 function renderSidebarNav(stats, container, activeGenId) {
   container.innerHTML = '';
@@ -474,7 +468,7 @@ function renderSidebarNav(stats, container, activeGenId) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   13. RENDER — SIDEBAR STATS
+   12. RENDER — SIDEBAR STATS
 ══════════════════════════════════════════════════════════════ */
 function renderSidebarStats(stats) {
   const totalEl = document.getElementById('sidebarTotal');
@@ -488,7 +482,7 @@ function renderSidebarStats(stats) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   14. APP STATE & CONTROLLER
+   13. APP STATE & CONTROLLER
 ══════════════════════════════════════════════════════════════ */
 const App = {
   ownedSet: new Set(),
@@ -822,7 +816,27 @@ const BookShelf = {
   PER_PAGE: 15,
 
   init() {
-    this.renderShelves();
+    this.bindSvg();
+    this.bindPanel();
+  },
+
+  /**
+   * SVG 내부 .book[data-gen] 요소에 클릭 이벤트 바인딩
+   * SVG를 <object>가 아닌 inline으로 삽입 → 직접 DOM 접근 가능
+   */
+  bindSvg() {
+    // .book[data-gen] 요소에 클릭/키보드 이벤트 바인딩
+    document.querySelectorAll('.book[data-gen]').forEach(el => {
+      const genId = Number(el.getAttribute('data-gen'));
+      el.addEventListener('click',   ()  => this.openPanel(genId));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.openPanel(genId); }
+      });
+    });
+    this.updateProgressBars();
+  },
+
+  bindPanel() {
     document.getElementById('panelClose')?.addEventListener('click', () => this.closePanel());
     document.getElementById('bookPanelOverlay')?.addEventListener('click', e => {
       if (e.target === e.currentTarget) this.closePanel();
@@ -875,13 +889,21 @@ const BookShelf = {
   },
 
   renderShelves() {
-    const stats  = calcStats(App.ownedSet);
-    const shelf1 = document.getElementById('shelf1');
-    if (!shelf1) return;
+    // SVG inline 방식 — DOM 재구성 없이 진행률 바만 업데이트
+    this.updateProgressBars();
+  },
 
-    shelf1.innerHTML = '';
-    // 1~9세대 전체를 한 줄 선반에 꽂기
-    stats.genStats.forEach(gs => shelf1.appendChild(this.buildBook(gs)));
+  /**
+   * SVG 내 pbar1~pbar9 의 width를 수집률에 맞게 업데이트
+   * pbar 최대 너비: 1열 = 140, 2열 = 197 (SVG viewBox 좌표 기준)
+   */
+  updateProgressBars() {
+    const stats = calcStats(App.ownedSet);
+    stats.genStats.forEach(gs => {
+      const pct = gs.total > 0 ? gs.owned / gs.total : 0;
+      const bar = document.getElementById(`pbar${gs.id}`);
+      if (bar) bar.style.width = Math.round(pct * 100) + '%';
+    });
   },
 
   openPanel(genId) {
@@ -895,7 +917,7 @@ const BookShelf = {
 
   closePanel() {
     document.getElementById('bookPanelOverlay')?.classList.remove('is-open');
-    this.renderShelves();
+    this.updateProgressBars();
   },
 
   renderPanel() {
