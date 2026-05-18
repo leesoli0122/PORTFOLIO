@@ -7,14 +7,14 @@
     <title>포켓몬 띠부띠부씰 디지털 도감</title>
 
     <!-- S: css -->
-    <link rel="stylesheet" href="../assets/css/reset.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/bookshelf.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="bookshelf.css" />
     <!-- E: css -->
 
     <!-- S: js -->
-    <script src="../assets/js/pokemon-data.js" defer></script>
-    <script src="../assets/js/main.js" defer></script>
+    <script src="pokemon-data.js" defer></script>
+    <script src="main.js" defer></script>
     <!-- E: js -->
 </head>
 <body>
@@ -24,9 +24,9 @@
         <aside class="sidebar" id="sidebar" role="complementary" aria-label="도감 네비게이션">
 
             <!-- 로고 -->
-            <div class="sidebar__logo">
-                <span class="sidebar__logo-icon" aria-hidden="true">⊕</span>
-                <h1 class="sidebar__logo-text">
+            <div class="sidebar-logo">
+                <span class="sidebar-logo-icon" aria-hidden="true">⊕</span>
+                <h1 class="sidebar-logo-text">
                     <span>Pokémon Seal Dex</span>
                     띠부띠부씰 도감
                 </h1>
@@ -34,30 +34,30 @@
 
             <!-- 전체 수집 현황 -->
             <section class="global-progress" aria-label="전체 수집 현황">
-                <div class="global-progress__header">
-                    <span class="global-progress__label">전체 수집률</span>
-                    <span class="global-progress__pct" id="sidebarPct" aria-live="polite">0%</span>
+                <div class="global-progress-header">
+                    <span class="global-progress-label">전체 수집률</span>
+                    <span class="global-progress-pct" id="sidebarPct" aria-live="polite">0%</span>
                 </div>
-                <span class="global-progress__bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="전체 수집률">
-                    <span class="global-progress__fill" id="sidebarBarFill" style="width:0%"></span>
+                <span class="global-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="전체 수집률">
+                    <span class="global-progress-fill" id="sidebarBarFill" style="width:0%"></span>
                 </span>
             </section>
 
             <!-- 통계 -->
-            <section class="sidebar__stats" aria-label="수집 통계">
-                <div class="sidebar__stat-item">
-                    <span class="sidebar__stat-label">보유</span>
-                    <span class="sidebar__stat-value" id="sidebarOwned">0</span>
+            <section class="sidebar-stats" aria-label="수집 통계">
+                <div class="sidebar-stat-item">
+                    <span class="sidebar-stat-label">보유</span>
+                    <span class="sidebar-stat-value" id="sidebarOwned">0</span>
                 </div>
-                <div class="sidebar__stat-item">
-                    <span class="sidebar__stat-label">전체</span>
-                    <span class="sidebar__stat-value" id="sidebarTotal">0</span>
+                <div class="sidebar-stat-item">
+                    <span class="sidebar-stat-label">전체</span>
+                    <span class="sidebar-stat-value" id="sidebarTotal">0</span>
                 </div>
             </section>
 
             <!-- 세대 네비게이션 -->
-            <nav class="sidebar__nav" aria-label="세대별 도감">
-                <p class="sidebar__nav-title">도감 목록</p>
+            <nav class="sidebar-nav" aria-label="세대별 도감">
+                <p class="sidebar-nav-title">도감 목록</p>
                 <div id="sidebarNav" role="list">
                     <!-- JS로 렌더링 -->
                 </div>
@@ -70,46 +70,34 @@
         <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
 
         <!-- 모바일 사이드바 토글 버튼 -->
-        <button class="sidebar-toggle" id="sidebarToggle"
-                aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">
-            ☰
-        </button>
+        <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">☰</button>
 
-        <main class="contentWrap">
+        <main class="content-wrap">
 
             <!-- S: 헤더 (검색 + 필터) -->
             <header class="site-header" role="banner">
 
                 <div class="search-wrap" role="search">
                     <label for="searchInput" class="sr-only">포켓몬 검색 (이름 또는 초성 입력)</label>
-                    <span class="search-wrap__icon" aria-hidden="true">🔍</span>
-                    <input
-                        type="search"
-                        class="search-wrap__input"
-                        id="searchInput"
-                        name="search"
-                        placeholder="이름 또는 초성 검색 (예: ㅍㅋㅊ → 피카츄)"
-                        autocomplete="off"
-                        spellcheck="false"
-                        aria-label="포켓몬 검색"
-                    />
-                    <button class="search-wrap__clear" id="searchClear" type="button" aria-label="검색어 지우기">✕</button>
+                    <span class="search-wrap-icon" aria-hidden="true">🔍</span>
+                    <input type="search" class="search-wrap-input" id="searchInput" name="search" placeholder="이름 또는 초성 검색 (예: ㅍㅋㅊ → 피카츄)" autocomplete="off" spellcheck="false" aria-label="포켓몬 검색" />
+                    <button class="search-wrap-clear" id="searchClear" type="button" aria-label="검색어 지우기">✕</button>
                 </div>
 
                 <div class="filter-chips" role="group" aria-label="필터 옵션">
-                    <span style="font-size:var(--font12);color:var(--color-muted);margin-right:4px;">보기:</span>
+                    <span class="filter-label">보기:</span>
                     <button class="chip is-active" data-filter="all" data-filter-group="status" type="button" aria-pressed="true">전체</button>
                     <button class="chip" data-filter="owned" data-filter-group="status" type="button" aria-pressed="false">보유</button>
                     <button class="chip" data-filter="unowned" data-filter-group="status" type="button" aria-pressed="false">미보유</button>
 
-                    <span style="font-size:var(--font12);color:var(--color-muted);margin-left:var(--space-8);margin-right:4px;">속성:</span>
-                    <button class="chip is-active" data-filter="all"    data-filter-group="attr" type="button" aria-pressed="true">전체</button>
-                    <button class="chip" data-filter="불꽃"   data-filter-group="attr" type="button" aria-pressed="false">🔥불꽃</button>
-                    <button class="chip"           data-filter="물"     data-filter-group="attr" type="button" aria-pressed="false">💧물</button>
-                    <button class="chip"           data-filter="풀"     data-filter-group="attr" type="button" aria-pressed="false">🌿풀</button>
-                    <button class="chip"           data-filter="전기"   data-filter-group="attr" type="button" aria-pressed="false">⚡전기</button>
-                    <button class="chip"           data-filter="에스퍼" data-filter-group="attr" type="button" aria-pressed="false">🔮에스퍼</button>
-                    <button class="chip"           data-filter="드래곤" data-filter-group="attr" type="button" aria-pressed="false">🐉드래곤</button>
+                    <span class="filter-label filter-label-gap">속성:</span>
+                    <button class="chip is-active" data-filter="all" data-filter-group="attr" type="button" aria-pressed="true">전체</button>
+                    <button class="chip" data-filter="불꽃" data-filter-group="attr" type="button" aria-pressed="false">🔥불꽃</button>
+                    <button class="chip" data-filter="물" data-filter-group="attr" type="button" aria-pressed="false">💧물</button>
+                    <button class="chip" data-filter="풀" data-filter-group="attr" type="button" aria-pressed="false">🌿풀</button>
+                    <button class="chip" data-filter="전기" data-filter-group="attr" type="button" aria-pressed="false">⚡전기</button>
+                    <button class="chip" data-filter="에스퍼" data-filter-group="attr" type="button" aria-pressed="false">🔮에스퍼</button>
+                    <button class="chip" data-filter="드래곤" data-filter-group="attr" type="button" aria-pressed="false">🐉드래곤</button>
                 </div>
 
             </header>
@@ -123,15 +111,12 @@
 
                     <header class="library-header">
                         <div>
-                            <h2 class="library-header__title">
+                            <h2 class="library-header-title">
                                 <span>My Sticker Collection</span>
                                 나의 도감
                             </h2>
                         </div>
-                        <p class="library-header__desc">
-                            도감을 클릭해 스티커북을 펼쳐보세요.<br />
-                            스티커를 클릭하면 수집 상태가 기록됩니다.
-                        </p>
+                        <p class="library-header-desc">도감을 클릭해 스티커북을 펼쳐보세요.<br />스티커를 클릭하면 수집 상태가 기록됩니다.</p>
                     </header>
 
                     <!-- 나무 책장 UI -->
@@ -139,94 +124,119 @@
 
                         <!-- ── 1열 선반 (1~5세대) ── -->
                         <ul class="shelf-row" role="list" aria-label="1~5세대 도감">
-
                             <li class="book" data-gen="1" role="button" tabindex="0" aria-label="1세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [1세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen1">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G1</span>
+                                        <span class="book-cover-title">1세대</span>
+                                        <span class="book-cover-sub">Red · Blue</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar1"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar1"></div></div>
                             </li>
-
                             <li class="book" data-gen="2" role="button" tabindex="0" aria-label="2세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [2세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen2">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G2</span>
+                                        <span class="book-cover-title">2세대</span>
+                                        <span class="book-cover-sub">Gold · Silver</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar2"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar2"></div></div>
                             </li>
-
                             <li class="book" data-gen="3" role="button" tabindex="0" aria-label="3세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [3세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen3">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G3</span>
+                                        <span class="book-cover-title">3세대</span>
+                                        <span class="book-cover-sub">Ruby · Sapphire</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar3"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar3"></div></div>
                             </li>
-
                             <li class="book" data-gen="4" role="button" tabindex="0" aria-label="4세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [4세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen4">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G4</span>
+                                        <span class="book-cover-title">4세대</span>
+                                        <span class="book-cover-sub">Diamond · Pearl</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar4"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar4"></div></div>
                             </li>
-
                             <li class="book" data-gen="5" role="button" tabindex="0" aria-label="5세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [5세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen5">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G5</span>
+                                        <span class="book-cover-title">5세대</span>
+                                        <span class="book-cover-sub">Black · White</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar5"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar5"></div></div>
                             </li>
-
                         </ul>
                         <div class="shelf-plank" role="presentation"></div>
 
                         <!-- ── 2열 선반 (6~9세대) ── -->
                         <ul class="shelf-row" role="list" aria-label="6~9세대 도감">
-
                             <li class="book" data-gen="6" role="button" tabindex="0" aria-label="6세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [6세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen6">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G6</span>
+                                        <span class="book-cover-title">6세대</span>
+                                        <span class="book-cover-sub">X · Y</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar6"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar6"></div></div>
                             </li>
-
                             <li class="book" data-gen="7" role="button" tabindex="0" aria-label="7세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [7세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen7">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G7</span>
+                                        <span class="book-cover-title">7세대</span>
+                                        <span class="book-cover-sub">Sun · Moon</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar7"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar7"></div></div>
                             </li>
-
                             <li class="book" data-gen="8" role="button" tabindex="0" aria-label="8세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [8세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen8">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G8</span>
+                                        <span class="book-cover-title">8세대</span>
+                                        <span class="book-cover-sub">Sword · Shield</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar8"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar8"></div></div>
                             </li>
-
                             <li class="book" data-gen="9" role="button" tabindex="0" aria-label="9세대 도감 열기">
-                                <div class="book__cover">
-                                    <!-- [9세대] 여기에 CSS로 표지 디자인 -->
+                                <div class="book-cover book-cover-gen9">
+                                    <div class="book-cover-stripe book-cover-stripe-top"></div>
+                                    <div class="book-cover-body">
+                                        <span class="book-cover-gen">G9</span>
+                                        <span class="book-cover-title">9세대</span>
+                                        <span class="book-cover-sub">Scarlet · Violet</span>
+                                    </div>
+                                    <div class="book-cover-stripe book-cover-stripe-bottom"></div>
                                 </div>
-                                <div class="book__progress-bar">
-                                    <div class="book__progress-fill" id="pbar9"></div>
-                                </div>
+                                <div class="book-progress-bar"><div class="book-progress-fill" id="pbar9"></div></div>
                             </li>
-
                         </ul>
                         <div class="shelf-plank" role="presentation"></div>
 
@@ -235,53 +245,26 @@
                 </section>
                 <!-- ── /책장 뷰 ── -->
 
-                <!-- ── 스티커북 뷰 ── -->
-                <section class="book-view" id="bookView" aria-label="포켓몬 스티커북" aria-live="polite">
-
-                    <nav class="book-breadcrumb" aria-label="현재 위치">
-                        <button id="bcBack" type="button">나의 도감</button>
-                        <span class="book-breadcrumb__sep" aria-hidden="true">›</span>
-                        <span class="book-breadcrumb__current" id="bcCurrent" aria-current="page">1세대</span>
-                    </nav>
-
-                    <div class="sticker-book" role="region" aria-label="스티커북 페이지">
-                        <div class="book-pages" id="bookPages">
-                            <!-- JS로 렌더링 -->
-                        </div>
-                    </div>
-
-                </section>
-                <!-- ── /스티커북 뷰 ── -->
-
                 <!-- ── 펼쳐진 책 팝업 ── -->
-                <div class="panel-overlay" id="bookPanelOverlay"
-                     role="dialog" aria-modal="true" aria-labelledby="panelTitle">
-
+                <div class="panel-overlay" id="bookPanelOverlay" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
                     <div class="sticker-panel">
 
                         <!-- 왼쪽 커버 -->
                         <div class="book-cover-left" id="bookCoverLeft">
                             <span class="cover-gen-label" id="coverGenLabel">G1</span>
-
                             <div class="cover-title-wrap">
                                 <h2 class="cover-title" id="panelTitle">1세대</h2>
                                 <p class="cover-subtitle" id="panelSub">Red &amp; Blue</p>
                             </div>
-
-                            <img class="cover-mascot" id="coverMascot"
-                                 src="" alt="" loading="lazy"
-                                 onerror="this.style.display='none'" />
-
-                            <!-- 수집 현황 -->
+                            <img class="cover-mascot" id="coverMascot" src="" alt="" loading="lazy" onerror="this.style.display='none'" />
                             <div class="cover-stats">
-                                <div class="cover-stats__nums">
-                                    <span class="cover-stats__owned" id="panelOwned" aria-live="polite">0</span>
-                                    <span class="cover-stats__sep">/</span>
-                                    <span class="cover-stats__total" id="panelTotal">0</span>
+                                <div class="cover-stats-nums">
+                                    <span class="cover-stats-owned" id="panelOwned" aria-live="polite">0</span>
+                                    <span class="cover-stats-sep">/</span>
+                                    <span class="cover-stats-total" id="panelTotal">0</span>
                                 </div>
-                                <p class="cover-stats__pct" id="panelPct">0% 수집</p>
-                                <div class="cover-progress-bar" role="progressbar"
-                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <p class="cover-stats-pct" id="panelPct">0% 수집</p>
+                                <div class="cover-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                                     <div class="cover-progress-fill" id="panelBarFill" style="width:0%"></div>
                                 </div>
                             </div>
@@ -293,24 +276,18 @@
                         <!-- 오른쪽 페이지 -->
                         <div class="book-page-right">
                             <header class="page-header">
-                                <span class="page-header__gen" id="pageHeaderGen">1세대 도감</span>
-                                <div class="page-header__right">
-                                    <span class="page-header__count" id="pageHeaderCount">0 / 0</span>
-                                    <button class="panel-close" id="panelClose"
-                                            type="button" aria-label="닫기">✕</button>
+                                <span class="page-header-gen" id="pageHeaderGen">1세대 도감</span>
+                                <div class="page-header-right">
+                                    <span class="page-header-count" id="pageHeaderCount">0 / 0</span>
+                                    <button class="panel-close" id="panelClose" type="button" aria-label="닫기">✕</button>
                                 </div>
                             </header>
-
-                            <ul class="panel-sticker-grid" id="panelStickerGrid"
-                                aria-label="포켓몬 스티커 목록"></ul>
-
+                            <ul class="panel-sticker-grid" id="panelStickerGrid" aria-label="포켓몬 스티커 목록"></ul>
                             <footer class="panel-footer">
-                                <span class="panel-footer__info" id="panelPageInfo">1 / 1 페이지</span>
+                                <span class="panel-footer-info" id="panelPageInfo">1 / 1 페이지</span>
                                 <div class="panel-page-nav">
-                                    <button class="nav-btn" id="panelPrevBtn"
-                                            type="button" aria-label="이전 페이지" disabled>◀</button>
-                                    <button class="nav-btn" id="panelNextBtn"
-                                            type="button" aria-label="다음 페이지" disabled>▶</button>
+                                    <button class="nav-btn" id="panelPrevBtn" type="button" aria-label="이전 페이지" disabled>◀</button>
+                                    <button class="nav-btn" id="panelNextBtn" type="button" aria-label="다음 페이지" disabled>▶</button>
                                 </div>
                             </footer>
                         </div>
@@ -321,17 +298,14 @@
 
                 <!-- ── 검색 결과 뷰 ── -->
                 <section class="view-section" id="searchResultView" aria-label="검색 결과" aria-live="polite">
-
                     <header class="search-result-header">
-                        <h2 class="search-result-header__title">검색 결과</h2>
-                        <span class="search-result-header__count" id="searchResultCount" aria-label="검색 결과 수">0</span>
-                        <span style="font-size:var(--font13);color:var(--color-muted);">개</span>
+                        <h2 class="search-result-title">검색 결과</h2>
+                        <span class="search-result-count" id="searchResultCount" aria-label="검색 결과 수">0</span>
+                        <span class="search-result-unit">개</span>
                     </header>
-
                     <ul class="search-result-grid" id="searchResultGrid" aria-label="검색된 포켓몬 목록">
                         <!-- JS로 렌더링 -->
                     </ul>
-
                 </section>
                 <!-- ── /검색 결과 뷰 ── -->
 
@@ -344,8 +318,7 @@
     <!-- /wrap -->
 
     <!-- S: 토스트 컨테이너 -->
-    <div class="toast-container" id="toastContainer"
-         role="status" aria-live="polite" aria-label="알림"></div>
+    <div class="toast-container" id="toastContainer" role="status" aria-live="polite" aria-label="알림"></div>
     <!-- E: 토스트 컨테이너 -->
 
     <!-- S: 스크롤 탑 버튼 -->

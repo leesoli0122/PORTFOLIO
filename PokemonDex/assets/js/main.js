@@ -290,7 +290,7 @@ function calcStats(ownedSet) {
 ══════════════════════════════════════════════════════════════ */
 function renderStickerItem(pokemon, isOwned, genColor) {
   const mainType = pokemon.type[0];
-  const typeList = pokemon.type.map(t => `<span class="sticker-item__type" data-type="${t}">${t}</span>`).join('');
+  const typeList = pokemon.type.map(t => `<span class="sticker-item-type" data-type="${t}">${t}</span>`).join('');
   const imgUrl = getPokemonImageUrl(pokemon.no);
 
   const el = document.createElement('li');
@@ -303,11 +303,11 @@ function renderStickerItem(pokemon, isOwned, genColor) {
   el.style.setProperty('--gen-color', genColor);
 
   el.innerHTML = `
-    <span class="sticker-item__no">#${String(pokemon.no).padStart(3,'0')}</span>
-    <span class="sticker-item__check" aria-hidden="true">✓</span>
-    <div class="sticker-item__img-wrap">
+    <span class="sticker-item-no">#${String(pokemon.no).padStart(3,'0')}</span>
+    <span class="sticker-item-check" aria-hidden="true">✓</span>
+    <div class="sticker-item-img-wrap">
       <img
-        class="sticker-item__img"
+        class="sticker-item-img"
         src="${imgUrl}"
         alt="${pokemon.name}"
         loading="lazy"
@@ -316,7 +316,7 @@ function renderStickerItem(pokemon, isOwned, genColor) {
         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'%3E%3Ccircle cx=\'40\' cy=\'40\' r=\'30\' fill=\'%23ddd\'/%3E%3Ctext x=\'40\' y=\'45\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'10\'%3E?%3C/text%3E%3C/svg%3E'"
       />
     </div>
-    <span class="sticker-item__name">${pokemon.name}</span>
+    <span class="sticker-item-name">${pokemon.name}</span>
     <div>${typeList}</div>
   `;
 
@@ -347,7 +347,7 @@ function renderBookPages(genId, currentPage, ownedSet, container) {
   leftPage.innerHTML = `
     <div class="book-page__header">
       <span class="book-page__gen-label">${genCfg.label} — ${genCfg.subtitle}</span>
-      <span class="book-page__count">${leftOwned} / ${leftPokemons.length}</span>
+      <span class="book-page-count">${leftOwned} / ${leftPokemons.length}</span>
     </div>
   `;
   const leftGrid = document.createElement('ul');
@@ -358,7 +358,7 @@ function renderBookPages(genId, currentPage, ownedSet, container) {
 
   // Page nav
   const navEl = document.createElement('div');
-  navEl.className = 'book-page__nav';
+  navEl.className = 'book-page-nav';
   navEl.innerHTML = `
     <button class="page-nav-btn" id="prevPageBtn" aria-label="이전 페이지" ${currentPage <= 1 ? 'disabled' : ''}>◀</button>
     <span class="book-page__page-num">${currentPage} / ${totalPages}</span>
@@ -373,7 +373,7 @@ function renderBookPages(genId, currentPage, ownedSet, container) {
   rightPage.innerHTML = `
     <div class="book-page__header">
       <span class="book-page__gen-label">${genCfg.label}</span>
-      <span class="book-page__count">${rightOwned} / ${rightPokemons.length}</span>
+      <span class="book-page-count">${rightOwned} / ${rightPokemons.length}</span>
     </div>
   `;
   const rightGrid = document.createElement('ul');
@@ -442,7 +442,7 @@ function renderLibrary(stats, container) {
 function renderSidebarNav(stats, container, activeGenId) {
   container.innerHTML = '';
   const allBtn = document.createElement('button');
-  allBtn.className = `sidebar__nav-item ${!activeGenId ? 'is-active' : ''}`;
+  allBtn.className = `sidebar-nav-item ${!activeGenId ? 'is-active' : ''}`;
   allBtn.dataset.action = 'showLibrary';
   allBtn.setAttribute('aria-label', '전체 책장 보기');
   allBtn.innerHTML = `
@@ -454,7 +454,7 @@ function renderSidebarNav(stats, container, activeGenId) {
 
   stats.genStats.forEach(gs => {
     const btn = document.createElement('button');
-    btn.className = `sidebar__nav-item ${gs.isMaster ? 'is-master' : ''} ${activeGenId === gs.id ? 'is-active' : ''}`;
+    btn.className = `sidebar-nav-item ${gs.isMaster ? 'is-master' : ''} ${activeGenId === gs.id ? 'is-active' : ''}`;
     btn.dataset.gen = gs.id;
     btn.dataset.action = 'openGen';
     btn.setAttribute('aria-label', `${gs.label} 도감 - ${gs.pct}% 수집`);
@@ -501,6 +501,7 @@ const App = {
     this.bindFilterEvents();
     this.bindScrollTop();
     this.bindSidebarToggle();
+    // 책장 UI 초기화 (BookShelf는 DOMContentLoaded 이후 별도 init)
   },
 
   renderAll(activeGenId = null) {
@@ -510,45 +511,17 @@ const App = {
     const sidebarNav = document.getElementById('sidebarNav');
     if (sidebarNav) renderSidebarNav(stats, sidebarNav, activeGenId);
 
-    const shelfEl = document.getElementById('libraryShelf');
-    if (shelfEl) renderLibrary(stats, shelfEl);
+    // 책장 진행률 바 업데이트 (HTML 하드코딩 책장과 연동)
+    BookShelf.updateProgressBars();
   },
 
   openGen(genId) {
-    this.currentGenId = genId;
-    this.currentPage  = 1;
+    // 책장 클릭과 동일하게 모달 팝업으로 통일
+    BookShelf.openPanel(genId);
 
-    // View 전환
-    document.getElementById('libraryView')?.classList.remove('is-active');
-    document.getElementById('searchResultView')?.classList.remove('is-active');
-    const bookView = document.getElementById('bookView');
-    if (bookView) {
-      bookView.classList.add('is-active');
-    }
-
-    // Breadcrumb
-    const genCfg = getGenConfig(genId);
-    const bcCurrent = document.getElementById('bcCurrent');
-    if (bcCurrent) bcCurrent.textContent = genCfg.label;
-
-    const bookPages = document.getElementById('bookPages');
-    if (bookPages) {
-      bookPages.style.opacity = '0';
-      playPageFlipSound();
-      renderBookPages(genId, 1, this.ownedSet, bookPages);
-      requestAnimationFrame(() => {
-        bookPages.style.transition = 'opacity 0.4s ease';
-        bookPages.style.opacity = '1';
-      });
-    }
-
-    this.renderAll(genId);
-    this.bindStickerEvents();
-    this.bindPageNavEvents();
-
-    // Active chip on sidebar
-    document.querySelectorAll('.sidebar__nav-item').forEach(el => el.classList.remove('is-active'));
-    document.querySelector(`.sidebar__nav-item[data-gen="${genId}"]`)?.classList.add('is-active');
+    // 사이드바 active 표시만 업데이트
+    document.querySelectorAll('.sidebar-nav-item').forEach(el => el.classList.remove('is-active'));
+    document.querySelector(`.sidebar-nav-item[data-gen="${genId}"]`)?.classList.add('is-active');
   },
 
   showLibrary() {
@@ -559,14 +532,13 @@ const App = {
     if (searchInput) searchInput.value = '';
     document.querySelector('.search-wrap')?.classList.remove('has-value');
 
-    document.getElementById('bookView')?.classList.remove('is-active');
     document.getElementById('searchResultView')?.classList.remove('is-active');
     document.getElementById('libraryView')?.classList.add('is-active');
 
     this.renderAll(null);
 
-    document.querySelectorAll('.sidebar__nav-item').forEach(el => el.classList.remove('is-active'));
-    document.querySelector('.sidebar__nav-item[data-action="showLibrary"]')?.classList.add('is-active');
+    document.querySelectorAll('.sidebar-nav-item').forEach(el => el.classList.remove('is-active'));
+    document.querySelector('.sidebar-nav-item[data-action="showLibrary"]')?.classList.add('is-active');
   },
 
   goToPage(direction) {
@@ -608,7 +580,7 @@ const App = {
       el.classList.toggle('is-owned', isNowOwned);
       el.classList.toggle('is-unowned', !isNowOwned);
       el.setAttribute('aria-pressed', isNowOwned ? 'true' : 'false');
-      el.setAttribute('aria-label', `${el.querySelector('.sticker-item__name')?.textContent} - ${isNowOwned ? '보유 중' : '미보유'}`);
+      el.setAttribute('aria-label', `${el.querySelector('.sticker-item-name')?.textContent} - ${isNowOwned ? '보유 중' : '미보유'}`);
       el.classList.add('is-placing');
       el.addEventListener('animationend', () => el.classList.remove('is-placing'), { once: true });
     }
@@ -642,7 +614,7 @@ const App = {
       if (!grid) return;
       const items = grid.querySelectorAll('.sticker-item');
       const owned = [...items].filter(el => el.classList.contains('is-owned')).length;
-      const countEl = page.querySelector('.book-page__count');
+      const countEl = page.querySelector('.book-page-count');
       if (countEl) countEl.textContent = `${owned} / ${items.length}`;
     });
   },
@@ -661,7 +633,6 @@ const App = {
     const results = searchPokemon(query, this.filterType, this.filterAttr, this.ownedSet);
 
     document.getElementById('libraryView')?.classList.remove('is-active');
-    document.getElementById('bookView')?.classList.remove('is-active');
     const resultView = document.getElementById('searchResultView');
     if (resultView) resultView.classList.add('is-active');
 
@@ -698,22 +669,22 @@ const App = {
   },
 
   bindDynamicEvents() {
-    // Library card click
-    document.getElementById('libraryShelf')?.addEventListener('click', e => {
-      const card = e.target.closest('.book-card');
-      if (!card) return;
-      this.openGen(Number(card.dataset.gen));
+    // 책장 book 클릭 (HTML 하드코딩 요소 직접 바인딩)
+    document.getElementById('shelfUnit')?.addEventListener('click', e => {
+      const book = e.target.closest('.book[data-gen]');
+      if (!book) return;
+      this.openGen(Number(book.dataset.gen));
     });
-    document.getElementById('libraryShelf')?.addEventListener('keydown', e => {
+    document.getElementById('shelfUnit')?.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
-        const card = e.target.closest('.book-card');
-        if (card) { e.preventDefault(); this.openGen(Number(card.dataset.gen)); }
+        const book = e.target.closest('.book[data-gen]');
+        if (book) { e.preventDefault(); this.openGen(Number(book.dataset.gen)); }
       }
     });
 
     // Sidebar nav click
     document.getElementById('sidebarNav')?.addEventListener('click', e => {
-      const btn = e.target.closest('.sidebar__nav-item');
+      const btn = e.target.closest('.sidebar-nav-item');
       if (!btn) return;
       if (btn.dataset.action === 'showLibrary') { this.showLibrary(); }
       else if (btn.dataset.action === 'openGen') { this.openGen(Number(btn.dataset.gen)); }
@@ -805,7 +776,13 @@ const App = {
 /* ══════════════════════════════════════════════════════════════
    16. BOOT
 ══════════════════════════════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => App.init());
+document.addEventListener('DOMContentLoaded', () => {
+  App.init();
+  // BookShelf는 App 초기화 후 실행하여 App.ownedSet 참조 보장
+  if (document.getElementById('shelfUnit')) {
+    BookShelf.init();
+  }
+});
 
 /* ══════════════════════════════════════════════════════════════
    17. BOOKSHELF RENDER — 나무 책장 UI (레퍼런스 이미지 기반)
@@ -821,18 +798,10 @@ const BookShelf = {
   },
 
   /**
-   * SVG 내부 .book[data-gen] 요소에 클릭 이벤트 바인딩
-   * SVG를 <object>가 아닌 inline으로 삽입 → 직접 DOM 접근 가능
+   * 책장 초기화: 진행률 바 업데이트
+   * 클릭 이벤트는 App.bindDynamicEvents()에서 shelfUnit에 위임 처리
    */
   bindSvg() {
-    // .book[data-gen] 요소에 클릭/키보드 이벤트 바인딩
-    document.querySelectorAll('.book[data-gen]').forEach(el => {
-      const genId = Number(el.getAttribute('data-gen'));
-      el.addEventListener('click',   ()  => this.openPanel(genId));
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.openPanel(genId); }
-      });
-    });
     this.updateProgressBars();
   },
 
@@ -1013,12 +982,4 @@ const BookShelf = {
   },
 };
 
-/* ══════════════════════════════════════════════════════════════
-   18. BOOKSHELF BOOT (기존 App.init 이후 실행)
-══════════════════════════════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
-  // 책장 UI 초기화 (shelf1/shelf2 요소가 있을 때만)
-  if (document.getElementById('shelf1')) {
-    BookShelf.init();
-  }
-});
+/* (BookShelf boot은 16번 섹션 BOOT에서 통합 실행) */
