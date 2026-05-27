@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <title>React UI Guide Worklist</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { min-width: 1200px; padding: 40px; background: #f8fafc; font-family: Arial, sans-serif; font-size: 14px; color: #111827; line-height: 1.5; }
+        .work-wrap { width: 100%; }
+        .work-head { margin: 0 0 24px; }
+        .work-tit { margin: 0 0 8px; font-size: 28px; font-weight: 700; color: #111827; line-height: 36px; }
+        .work-txt { font-size: 14px; color: #64748b; line-height: 22px; }
+        .work-info { display: flex; gap: 8px; margin: 0 0 24px; }
+        .work-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #e0f2fe; font-size: 12px; font-weight: 700; color: #0369a1; line-height: 18px; }
+        .work-table { width: 100%; border-collapse: collapse; background: #fff; table-layout: fixed; }
+        .work-table th { padding: 12px 10px; border: 1px solid #dbe3ef; background: #334155; font-size: 13px; font-weight: 700; color: #fff; text-align: center; line-height: 20px; }
+        .work-table td { padding: 10px; border: 1px solid #dbe3ef; background: #fff; font-size: 13px; color: #334155; text-align: left; line-height: 20px; vertical-align: top; }
+        .work-table .cell-num { width: 60px; text-align: center; }
+        .work-table .cell-status { width: 100px; text-align: center; }
+        .work-table .cell-date { width: 120px; text-align: center; }
+        .work-table .cell-path { color: #2563eb; }
+        .state-ready { display: inline-block; padding: 3px 8px; border-radius: 999px; background: #f1f5f9; font-size: 12px; font-weight: 700; color: #475569; line-height: 18px; }
+        .state-ing { display: inline-block; padding: 3px 8px; border-radius: 999px; background: #dbeafe; font-size: 12px; font-weight: 700; color: #1d4ed8; line-height: 18px; }
+        .state-done { display: inline-block; padding: 3px 8px; border-radius: 999px; background: #dcfce7; font-size: 12px; font-weight: 700; color: #15803d; line-height: 18px; }
+    </style>
+</head>
+<body>
+    <div class="work-wrap">
+        <div class="work-head">
+            <h1 class="work-tit">React UI Guide Worklist</h1>
+            <p class="work-txt">퍼블리싱하던 IA/워크리스트 방식으로 React 컴포넌트 제작 현황을 관리합니다.</p>
+        </div>
+
+        <div class="work-info">
+            <span class="work-badge">React</span>
+            <span class="work-badge">Vite</span>
+            <span class="work-badge">UI Component</span>
+        </div>
+
+        <table class="work-table">
+            <caption style="display:none;">React UI Guide Worklist</caption>
+            <colgroup>
+                <col style="width:60px;">
+                <col style="width:140px;">
+                <col style="width:180px;">
+                <col style="width:180px;">
+                <col>
+                <col style="width:120px;">
+                <col style="width:120px;">
+                <col style="width:220px;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>분류</th>
+                    <th>컴포넌트</th>
+                    <th>파일 위치</th>
+                    <th>학습 포인트</th>
+                    <th>상태</th>
+                    <th>완료일</th>
+                    <th>메모</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="cell-num">1</td>
+                    <td>Basic</td>
+                    <td><a href="/button" class="work-link">Button</a></td>
+                    <td class="cell-path">src/components/ui/Button</td>
+                    <td>컴포넌트, props, children, onClick</td>
+                    <td class="cell-status"><span class="state-ready">대기</span></td>
+                    <td class="cell-date">-</td>
+                    <td>첫 번째 실습 컴포넌트</td>
+                </tr>
+                <tr>
+                    <td class="cell-num">2</td>
+                    <td>Form</td>
+                    <td><a href="/input" class="work-link">Input</a></td>
+                    <td class="cell-path">src/components/ui/Input</td>
+                    <td>value, onChange, controlled component</td>
+                    <td class="cell-status"><span class="state-ready">대기</span></td>
+                    <td class="cell-date">-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="cell-num">3</td>
+                    <td>Form</td>
+                    <td><a href="/checkbox" class="work-link">Checkbox</a></td>
+                    <td class="cell-path">src/components/ui/Checkbox</td>
+                    <td>checked, boolean state</td>
+                    <td class="cell-status"><span class="state-ready">대기</span></td>
+                    <td class="cell-date">-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="cell-num">4</td>
+                    <td>Navigation</td>
+                    <td><a href="/tabs" class="work-link">Tabs</a></td>
+                    <td class="cell-path">src/components/ui/Tabs</td>
+                    <td>state, map 렌더링, 조건부 렌더링</td>
+                    <td class="cell-status"><span class="state-ready">대기</span></td>
+                    <td class="cell-date">-</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="cell-num">5</td>
+                    <td>Overlay</td>
+                    <td><a href="/modal" class="work-link">Modal</a></td>
+                    <td class="cell-path">src/components/ui/Modal</td>
+                    <td>open state, 조건부 렌더링, useEffect</td>
+                    <td class="cell-status"><span class="state-ready">대기</span></td>
+                    <td class="cell-date">-</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
