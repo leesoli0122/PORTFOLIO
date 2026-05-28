@@ -1,0 +1,170 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .roadmap { padding: 1.5rem 0; }
+  .phase-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+  .phase-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+  .phase-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .phase-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+  .phase-block { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 12px; background: var(--color-background-primary); }
+  .phase-block.active { border: 1.5px solid #378ADD; }
+  .component-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-top: 12px; }
+  .comp-chip { padding: 6px 10px; border-radius: var(--border-radius-md); font-size: 12px; color: var(--color-text-secondary); border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-secondary); cursor: pointer; transition: all 0.15s; text-align: center; }
+  .comp-chip:hover { border-color: #378ADD; color: #185FA5; background: #E6F1FB; }
+  .comp-chip.done { background: #EAF3DE; color: #3B6D11; border-color: #C0DD97; }
+  .comp-chip.current { background: #E6F1FB; color: #185FA5; border-color: #378ADD; font-weight: 500; }
+  .concept-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .concept-tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+  .tag-blue { background: #E6F1FB; color: #0C447C; }
+  .tag-green { background: #EAF3DE; color: #27500A; }
+  .tag-amber { background: #FAEEDA; color: #633806; }
+  .tag-coral { background: #FAECE7; color: #712B13; }
+  .tag-purple { background: #EEEDFE; color: #3C3489; }
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.25rem 0; }
+  .today-badge { display: inline-flex; align-items: center; gap: 6px; background: #E6F1FB; color: #185FA5; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; }
+  .diff-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+  .diff-table th { padding: 6px 10px; background: var(--color-background-secondary); color: var(--color-text-secondary); font-weight: 500; text-align: left; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .diff-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: top; }
+  .diff-table td:first-child { color: var(--color-text-secondary); width: 40%; }
+  .arrow-col { width: 20px; text-align: center; color: var(--color-text-secondary); }
+  .section-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .mission-box { background: #FAEEDA; border-radius: var(--border-radius-md); padding: 12px 14px; margin-top: 10px; border-left: 3px solid #BA7517; }
+  .mission-title { font-size: 12px; font-weight: 500; color: #633806; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .mission-txt { font-size: 12px; color: #854F0B; line-height: 1.6; }
+  .start-btn { display: inline-flex; align-items: center; gap: 6px; background: #185FA5; color: white; border: none; border-radius: var(--border-radius-md); padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; margin-top: 1rem; transition: background 0.15s; }
+  .start-btn:hover { background: #0C447C; }
+</style>
+
+<div class="roadmap">
+  <h2 class="sr-only">퍼블리셔를 위한 React 학습 로드맵</h2>
+
+  <div class="today-badge">
+    <i class="ti ti-map-2" aria-hidden="true"></i>
+    퍼블리셔 → React 전환 로드맵
+  </div>
+
+  <p class="section-label">사고방식 전환 포인트</p>
+  <table class="diff-table" style="margin-bottom: 1.5rem;">
+    <tr><th>jQuery 방식</th><th class="arrow-col"></th><th>React 방식</th></tr>
+    <tr><td>DOM을 직접 조작한다<br><code style="font-size:11px">$('.btn').addClass('active')</code></td><td class="arrow-col">→</td><td>state를 바꾸면 화면이 자동으로 바뀐다<br><code style="font-size:11px">setIsActive(true)</code></td></tr>
+    <tr><td>HTML을 먼저 만들고 JS로 제어</td><td class="arrow-col">→</td><td>JS(컴포넌트) 안에 HTML(JSX)이 들어간다</td></tr>
+    <tr><td>전역 이벤트 바인딩<br><code style="font-size:11px">$('.modal').on('click', ...)</code></td><td class="arrow-col">→</td><td>컴포넌트별 이벤트 처리<br><code style="font-size:11px">onClick={handleClick}</code></td></tr>
+    <tr><td>CSS 클래스를 직접 add/remove</td><td class="arrow-col">→</td><td>state에 따라 className을 조건부로 결정</td></tr>
+  </table>
+
+  <hr class="divider">
+  <p class="section-label">단계별 학습 커리큘럼</p>
+
+  <div class="phase-block active">
+    <div class="phase-header">
+      <div class="phase-num" style="background:#E6F1FB; color:#0C447C;">1</div>
+      <div>
+        <div class="phase-title">React 기초 재정비 <span style="font-size:11px; color:#185FA5; margin-left:6px;">← 지금 여기</span></div>
+        <div class="phase-sub">JSX, 컴포넌트, props, state, 이벤트</div>
+      </div>
+    </div>
+    <div class="concept-row">
+      <span class="concept-tag tag-blue">JSX 문법</span>
+      <span class="concept-tag tag-blue">함수형 컴포넌트</span>
+      <span class="concept-tag tag-blue">props 전달</span>
+      <span class="concept-tag tag-blue">useState</span>
+      <span class="concept-tag tag-blue">onClick 이벤트</span>
+    </div>
+    <div class="component-grid" style="margin-top:12px;">
+      <div class="comp-chip current">Button</div>
+      <div class="comp-chip">Input</div>
+      <div class="comp-chip">Checkbox</div>
+    </div>
+    <div class="mission-box">
+      <div class="mission-title"><i class="ti ti-flag" aria-hidden="true"></i> 오늘 미션</div>
+      <div class="mission-txt">Button 컴포넌트를 만들고, variant(primary/secondary/danger) props로 스타일이 바뀌게 해보기</div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-num" style="background:#EAF3DE; color:#27500A;">2</div>
+      <div>
+        <div class="phase-title">상태 기반 UI 컴포넌트</div>
+        <div class="phase-sub">조건부 렌더링, map, form 제어</div>
+      </div>
+    </div>
+    <div class="concept-row">
+      <span class="concept-tag tag-green">조건부 렌더링</span>
+      <span class="concept-tag tag-green">map 렌더링</span>
+      <span class="concept-tag tag-green">controlled input</span>
+      <span class="concept-tag tag-green">form 핸들링</span>
+    </div>
+    <div class="component-grid" style="margin-top:12px;">
+      <div class="comp-chip">Radio</div>
+      <div class="comp-chip">Select</div>
+      <div class="comp-chip">Toggle</div>
+      <div class="comp-chip">Pagination</div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-num" style="background:#FAEEDA; color:#633806;">3</div>
+      <div>
+        <div class="phase-title">오버레이 & 인터랙션 컴포넌트</div>
+        <div class="phase-sub">useEffect, Portal, 외부 클릭 감지</div>
+      </div>
+    </div>
+    <div class="concept-row">
+      <span class="concept-tag tag-amber">useEffect</span>
+      <span class="concept-tag tag-amber">useRef</span>
+      <span class="concept-tag tag-amber">Portal</span>
+      <span class="concept-tag tag-amber">keydown 이벤트</span>
+    </div>
+    <div class="component-grid" style="margin-top:12px;">
+      <div class="comp-chip">Modal</div>
+      <div class="comp-chip">Tooltip</div>
+      <div class="comp-chip">Toast</div>
+      <div class="comp-chip">Dropdown</div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-num" style="background:#EEEDFE; color:#3C3489;">4</div>
+      <div>
+        <div class="phase-title">복합 컴포넌트 & 커스텀 훅</div>
+        <div class="phase-sub">Context, 커스텀 훅, 컴포넌트 합성</div>
+      </div>
+    </div>
+    <div class="concept-row">
+      <span class="concept-tag tag-purple">useContext</span>
+      <span class="concept-tag tag-purple">커스텀 훅</span>
+      <span class="concept-tag tag-purple">컴포넌트 합성</span>
+    </div>
+    <div class="component-grid" style="margin-top:12px;">
+      <div class="comp-chip">Accordion</div>
+      <div class="comp-chip">Tabs</div>
+      <div class="comp-chip">Form Validation</div>
+      <div class="comp-chip">약관 동의 UI</div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-num" style="background:#FAECE7; color:#712B13;">5</div>
+      <div>
+        <div class="phase-title">UI 라이브러리 완성</div>
+        <div class="phase-sub">Storybook 구조, 접근성, 다크모드</div>
+      </div>
+    </div>
+    <div class="concept-row">
+      <span class="concept-tag tag-coral">ARIA 속성</span>
+      <span class="concept-tag tag-coral">다크모드 토큰</span>
+      <span class="concept-tag tag-coral">검색 필터 UI</span>
+      <span class="concept-tag tag-coral">Story 구조</span>
+    </div>
+  </div>
+
+  <button class="start-btn" onclick="sendPrompt('Button 컴포넌트부터 시작해줘. 폴더 구조, SCSS, 실무 코드 전부 포함해서 설명해줘.')">
+    <i class="ti ti-player-play" aria-hidden="true"></i>
+    Button 컴포넌트부터 시작하기 ↗
+  </button>
+</div>

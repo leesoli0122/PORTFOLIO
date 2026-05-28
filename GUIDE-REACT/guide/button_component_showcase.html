@@ -1,0 +1,189 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);}
+.showcase{padding:1.5rem 0;}
+.s-section{margin-bottom:2rem;}
+.s-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem;}
+.s-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:.5rem;}
+.s-caption{font-size:12px;color:var(--color-text-secondary);margin-top:4px;}
+.divider{border:none;border-top:.5px solid var(--color-border-tertiary);margin:1.5rem 0;}
+.code-block{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);line-height:1.7;overflow-x:auto;margin-top:8px;}
+.kw{color:#185FA5;} .fn{color:#854F0B;} .str{color:#3B6D11;} .cm{color:var(--color-text-secondary);}
+.state-indicator{font-size:12px;color:var(--color-text-secondary);padding:4px 10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary);min-width:180px;}
+.state-indicator span{color:var(--color-text-info);font-weight:500;}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 1.25rem;height:40px;border:1px solid transparent;border-radius:6px;background:transparent;font-family:var(--font-sans);font-size:.875rem;font-weight:500;color:inherit;line-height:1;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s,opacity .15s,transform .1s;}
+.btn:active:not(:disabled){transform:scale(.98);}
+.btn:focus-visible{outline:2px solid #378ADD;outline-offset:2px;}
+
+.btn--primary{background:#1a6dff;color:#fff;border-color:#1a6dff;}
+.btn--primary:hover:not(:disabled){background:#1558d6;border-color:#1558d6;}
+
+.btn--secondary{background:#fff;color:#111;border-color:#d1d5db;}
+.btn--secondary:hover:not(:disabled){background:#f5f7fa;border-color:#9ca3af;}
+
+.btn--danger{background:#e53e3e;color:#fff;border-color:#e53e3e;}
+.btn--danger:hover:not(:disabled){background:#c53030;border-color:#c53030;}
+
+.btn--ghost{background:transparent;color:#1a6dff;border-color:transparent;}
+.btn--ghost:hover:not(:disabled){background:#eff4ff;border-color:#eff4ff;}
+
+.btn--outline{background:transparent;color:#1a6dff;border-color:#1a6dff;}
+.btn--outline:hover:not(:disabled){background:#eff4ff;}
+
+.btn--success{background:#2f9e44;color:#fff;border-color:#2f9e44;}
+.btn--success:hover:not(:disabled){background:#237a35;}
+
+.btn--sm{height:32px;padding:0 .875rem;font-size:.8125rem;}
+.btn--md{height:40px;padding:0 1.25rem;}
+.btn--lg{height:48px;padding:0 1.75rem;font-size:1rem;}
+.btn--xl{height:56px;padding:0 2rem;font-size:1.0625rem;}
+
+.btn:disabled,.btn--disabled{opacity:.42;cursor:not-allowed;pointer-events:none;}
+.btn--loading{pointer-events:none;opacity:.8;}
+
+.btn--full{width:100%;}
+
+.spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;flex-shrink:0;}
+.btn--primary .spinner{border-color:rgba(255,255,255,.3);border-top-color:#fff;}
+.btn--secondary .spinner{border-color:rgba(0,0,0,.15);border-top-color:#555;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.icon-btn{width:40px;height:40px;padding:0;border-radius:6px;}
+.icon-btn.btn--sm{width:32px;height:32px;}
+.icon-btn.btn--lg{width:48px;height:48px;}
+
+@media(prefers-color-scheme:dark){
+  .btn--secondary{background:#1e2028;color:#e2e8f0;border-color:#374151;}
+  .btn--secondary:hover:not(:disabled){background:#2d3141;border-color:#4b5563;}
+}
+</style>
+
+<div class="showcase">
+  <h2 class="sr-only">Button 컴포넌트 쇼케이스 — variant, size, state, 아이콘 조합 예시</h2>
+
+  <div class="s-section">
+    <div class="s-label">variant</div>
+    <div class="s-row">
+      <button class="btn btn--primary">Primary</button>
+      <button class="btn btn--secondary">Secondary</button>
+      <button class="btn btn--danger">Danger</button>
+      <button class="btn btn--ghost">Ghost</button>
+      <button class="btn btn--outline">Outline</button>
+      <button class="btn btn--success">Success</button>
+    </div>
+    <div class="s-caption">variant props 하나로 6가지 스타일 전환</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="s-section">
+    <div class="s-label">size</div>
+    <div class="s-row" style="align-items:flex-end;">
+      <button class="btn btn--primary btn--sm">Small</button>
+      <button class="btn btn--primary btn--md">Medium</button>
+      <button class="btn btn--primary btn--lg">Large</button>
+      <button class="btn btn--primary btn--xl">X-Large</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="s-section">
+    <div class="s-label">상태 (state)</div>
+    <div class="s-row">
+      <button class="btn btn--primary">기본</button>
+      <button class="btn btn--primary" disabled>Disabled</button>
+      <button class="btn btn--primary btn--loading">
+        <span class="spinner"></span>Loading
+      </button>
+      <button class="btn btn--success">
+        <i class="ti ti-check" style="font-size:15px;" aria-hidden="true"></i>완료
+      </button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="s-section">
+    <div class="s-label">아이콘 조합</div>
+    <div class="s-row">
+      <button class="btn btn--primary">
+        <i class="ti ti-plus" style="font-size:15px;" aria-hidden="true"></i>새로 만들기
+      </button>
+      <button class="btn btn--secondary">
+        <i class="ti ti-download" style="font-size:15px;" aria-hidden="true"></i>다운로드
+      </button>
+      <button class="btn btn--danger">
+        삭제<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn--outline icon-btn" aria-label="설정">
+        <i class="ti ti-settings" style="font-size:18px;" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn--ghost icon-btn btn--sm" aria-label="검색">
+        <i class="ti ti-search" style="font-size:16px;" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="s-section">
+    <div class="s-label">full width</div>
+    <div style="max-width:320px;">
+      <button class="btn btn--primary btn--full btn--lg">로그인</button>
+      <div style="height:8px;"></div>
+      <button class="btn btn--secondary btn--full">취소</button>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="s-section">
+    <div class="s-label">클릭 → state 변화 체험</div>
+    <div class="s-row" style="align-items:center;gap:16px;">
+      <button class="btn btn--primary" id="demo-btn" onclick="handleDemoClick()">저장하기</button>
+      <div class="state-indicator" id="state-display">state: <span>idle</span></div>
+    </div>
+    <div class="code-block" id="state-log">
+<span class="cm">// 버튼을 클릭해보세요</span>
+<span class="kw">const</span> [status, setStatus] = <span class="fn">useState</span>(<span class="str">'idle'</span>)</div>
+  </div>
+</div>
+
+<script>
+let demoState = 'idle';
+const states = ['idle','loading','success','idle'];
+const stateIdx = {idle:0, loading:1, success:2};
+const btn = document.getElementById('demo-btn');
+const display = document.getElementById('state-display');
+const log = document.getElementById('state-log');
+
+function handleDemoClick(){
+  if(demoState === 'loading') return;
+  demoState = 'loading';
+  update();
+  setTimeout(()=>{ demoState = 'success'; update(); }, 1400);
+  setTimeout(()=>{ demoState = 'idle'; update(); }, 2800);
+}
+
+function update(){
+  btn.className = 'btn btn--primary';
+  if(demoState === 'loading'){
+    btn.className += ' btn--loading';
+    btn.innerHTML = '<span class="spinner"></span>저장 중...';
+    display.innerHTML = 'state: <span>"loading"</span>';
+    log.innerHTML = `<span class="kw">const</span> [status, setStatus] = <span class="fn">useState</span>(<span class="str">'loading'</span>)\n<span class="cm">// → loading 스피너 표시, 버튼 비활성화</span>`;
+  } else if(demoState === 'success'){
+    btn.className += ' btn--success';
+    btn.innerHTML = '<i class="ti ti-check" style="font-size:15px;"></i>저장됨';
+    display.innerHTML = 'state: <span>"success"</span>';
+    log.innerHTML = `<span class="kw">const</span> [status, setStatus] = <span class="fn">useState</span>(<span class="str">'success'</span>)\n<span class="cm">// → 초록 체크 표시, 완료 메시지</span>`;
+  } else {
+    btn.innerHTML = '저장하기';
+    display.innerHTML = 'state: <span>"idle"</span>';
+    log.innerHTML = `<span class="kw">const</span> [status, setStatus] = <span class="fn">useState</span>(<span class="str">'idle'</span>)\n<span class="cm">// 버튼을 클릭해보세요</span>`;
+  }
+}
+</script>

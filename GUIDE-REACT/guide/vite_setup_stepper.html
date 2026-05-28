@@ -1,0 +1,330 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);font-size:13px;}
+.stepper{padding:1.5rem 0;}
+.step-nav{display:flex;gap:0;margin-bottom:1.5rem;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;}
+.step-btn{flex:1;padding:10px 4px;background:transparent;border:none;cursor:pointer;font-family:var(--font-sans);font-size:11px;font-weight:500;color:var(--color-text-secondary);border-right:.5px solid var(--color-border-tertiary);transition:background .15s,color .15s;line-height:1.4;text-align:center;}
+.step-btn:last-child{border-right:none;}
+.step-btn.active{background:#E6F1FB;color:#0C447C;}
+.step-btn .num{display:block;font-size:15px;font-weight:500;margin-bottom:2px;}
+.panel{display:none;}.panel.active{display:block;}
+.cmd-block{background:#1a1d27;border-radius:var(--border-radius-md);padding:14px 16px;margin:10px 0;font-family:var(--font-mono);font-size:12.5px;line-height:1.9;position:relative;overflow-x:auto;}
+.cmd-block .comment{color:#5c6370;}
+.cmd-block .cmd{color:#abb2bf;}
+.cmd-block .arg{color:#98c379;}
+.cmd-block .flag{color:#e5c07b;}
+.cmd-block .path{color:#61afef;}
+.file-block{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;margin:8px 0;font-family:var(--font-mono);font-size:12px;line-height:1.8;overflow-x:auto;}
+.file-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.05em;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.kw{color:#185FA5;}.str{color:#3B6D11;}.fn{color:#854F0B;}.cm{color:var(--color-text-secondary);}.sc{color:#712B13;}
+.tree{font-family:var(--font-mono);font-size:12px;line-height:2;color:var(--color-text-primary);}
+.tree .d{color:#185FA5;font-weight:500;}
+.tree .f-jsx{color:#854F0B;}
+.tree .f-scss{color:#993C1D;}
+.tree .f-js{color:#3B6D11;}
+.tree .f-cfg{color:var(--color-text-secondary);}
+.tree .note{font-family:var(--font-sans);font-size:11px;color:var(--color-text-secondary);margin-left:8px;}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;margin:2px 2px 8px;}
+.tag-must{background:#FAECE7;color:#712B13;}
+.tag-why{background:#E6F1FB;color:#0C447C;}
+.tag-tip{background:#EAF3DE;color:#27500A;}
+.divider{border:none;border-top:.5px solid var(--color-border-tertiary);margin:14px 0;}
+.row-nav{display:flex;justify-content:space-between;margin-top:1.25rem;}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);font-family:var(--font-sans);font-size:12px;font-weight:500;color:var(--color-text-primary);cursor:pointer;transition:background .15s;}
+.nav-btn:hover{background:var(--color-background-secondary);}
+.nav-btn:disabled{opacity:.35;cursor:not-allowed;}
+.section-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.06em;text-transform:uppercase;margin:14px 0 6px;}
+.warn-box{background:#FAEEDA;border-left:2px solid #BA7517;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:8px 12px;font-size:12px;color:#633806;line-height:1.6;margin:8px 0;}
+.ok-box{background:#EAF3DE;border-left:2px solid #639922;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:8px 12px;font-size:12px;color:#27500A;line-height:1.6;margin:8px 0;}
+</style>
+
+<div class="stepper">
+  <h2 class="sr-only">GUIDE-REACT Vite 프로젝트 셋업 단계별 가이드</h2>
+
+  <div class="step-nav" role="tablist">
+    <button class="step-btn active" onclick="go(0)" role="tab"><span class="num">1</span>설치</button>
+    <button class="step-btn" onclick="go(1)" role="tab"><span class="num">2</span>폴더구조</button>
+    <button class="step-btn" onclick="go(2)" role="tab"><span class="num">3</span>vite설정</button>
+    <button class="step-btn" onclick="go(3)" role="tab"><span class="num">4</span>SCSS설정</button>
+    <button class="step-btn" onclick="go(4)" role="tab"><span class="num">5</span>라우팅</button>
+    <button class="step-btn" onclick="go(5)" role="tab"><span class="num">6</span>완성확인</button>
+  </div>
+
+  <div class="panel active" id="p0">
+    <div class="section-label">터미널에 순서대로 입력하세요</div>
+    <div class="cmd-block">
+<span class="comment"># 1. Vite + React 프로젝트 생성</span>
+<span class="cmd">npm create vite@latest</span> <span class="arg">GUIDE-REACT</span> <span class="flag">-- --template react</span>
+
+<span class="comment"># 2. 프로젝트 폴더로 이동</span>
+<span class="cmd">cd</span> <span class="path">GUIDE-REACT</span>
+
+<span class="comment"># 3. 기본 패키지 설치</span>
+<span class="cmd">npm install</span>
+
+<span class="comment"># 4. SCSS 설치 (퍼블리셔 필수)</span>
+<span class="cmd">npm install</span> <span class="flag">-D</span> <span class="arg">sass</span>
+
+<span class="comment"># 5. 라우팅 라이브러리 설치</span>
+<span class="cmd">npm install</span> <span class="arg">react-router-dom</span>
+
+<span class="comment"># 6. 개발 서버 실행 확인</span>
+<span class="cmd">npm run dev</span>
+    </div>
+    <div class="ok-box">브라우저에서 http://localhost:5173 열리면 설치 성공이에요.</div>
+    <div class="warn-box">Node.js가 없으면 먼저 nodejs.org에서 LTS 버전을 설치하세요. 터미널에서 <code>node -v</code>로 확인할 수 있어요.</div>
+  </div>
+
+  <div class="panel" id="p1">
+    <div class="section-label">기본 생성된 파일 정리 후 최종 구조</div>
+    <div class="tree">
+<span class="d">GUIDE-REACT/</span>
+├── <span class="f-cfg">index.html</span>         <span class="note">← 건드리지 않아도 돼요</span>
+├── <span class="f-cfg">vite.config.js</span>     <span class="note">← 경로 alias 설정할 파일</span>
+├── <span class="f-cfg">package.json</span>
+└── <span class="d">src/</span>
+    ├── <span class="f-jsx">main.jsx</span>           <span class="note">← React 앱 시작점</span>
+    ├── <span class="f-jsx">App.jsx</span>            <span class="note">← 라우팅 설정 (ia.html 역할)</span>
+    ├── <span class="d">pages/</span>             <span class="note">← views/ 역할</span>
+    │   ├── <span class="f-jsx">MainPage.jsx</span>
+    │   └── <span class="f-jsx">ComponentPage.jsx</span>  <span class="note">← 컴포넌트 쇼케이스</span>
+    ├── <span class="d">components/</span>        <span class="note">← UI 컴포넌트 모음</span>
+    │   └── <span class="d">Button/</span>
+    │       ├── <span class="f-jsx">Button.jsx</span>
+    │       ├── <span class="f-scss">Button.scss</span>
+    │       └── <span class="f-js">index.js</span>
+    ├── <span class="d">hooks/</span>             <span class="note">← 커스텀 훅 모음</span>
+    └── <span class="d">styles/</span>            <span class="note">← 전역 SCSS</span>
+        ├── <span class="f-scss">main.scss</span>      <span class="note">← 전역 스타일 진입점</span>
+        ├── <span class="f-scss">_variables.scss</span> <span class="note">← 색상·간격 변수</span>
+        ├── <span class="f-scss">_reset.scss</span>
+        ├── <span class="f-scss">_typography.scss</span>
+        └── <span class="f-scss">_mixins.scss</span>   <span class="note">← 반응형 등 반복 패턴</span>
+    </div>
+    <div class="divider"></div>
+    <div class="warn-box">Vite 생성 직후 <code>src/App.css</code>, <code>src/index.css</code>, <code>src/assets/react.svg</code>는 삭제하세요. 우리가 직접 만들 거예요.</div>
+  </div>
+
+  <div class="panel" id="p2">
+    <div class="section-label">vite.config.js — 경로 alias 설정</div>
+    <span class="tag tag-why"><i class="ti ti-help-circle" style="font-size:12px;" aria-hidden="true"></i> 왜 필요한가요?</span>
+    <div class="file-label"><i class="ti ti-file" style="font-size:14px;" aria-hidden="true"></i> vite.config.js</div>
+    <div class="file-block">
+<span class="kw">import</span> { defineConfig } <span class="kw">from</span> <span class="str">'vite'</span>
+<span class="kw">import</span> react <span class="kw">from</span> <span class="str">'@vitejs/plugin-react'</span>
+<span class="kw">import</span> path <span class="kw">from</span> <span class="str">'path'</span>
+
+<span class="kw">export default</span> <span class="fn">defineConfig</span>({
+  plugins: [<span class="fn">react</span>()],
+  resolve: {
+    alias: {
+      <span class="cm">// '@/components/Button' 이렇게 쓸 수 있어요</span>
+      <span class="cm">// '../../../components/Button' 이런 지옥 탈출</span>
+      <span class="str">'@'</span>: path.<span class="fn">resolve</span>(__dirname, <span class="str">'./src'</span>)
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        <span class="cm">// 모든 scss 파일에 변수·믹스인 자동 주입</span>
+        additionalData: <span class="str">`@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;`</span>
+      }
+    }
+  }
+})
+    </div>
+    <div class="ok-box">이제 어디서든 <code>import Button from '@/components/Button'</code> 이렇게 쓸 수 있어요. <code>../../..</code> 지옥이 끝납니다.</div>
+  </div>
+
+  <div class="panel" id="p3">
+    <div class="section-label">전역 SCSS 파일 4개 만들기</div>
+
+    <div class="file-label"><i class="ti ti-file" style="font-size:14px;" aria-hidden="true"></i> src/styles/_variables.scss</div>
+    <div class="file-block">
+<span class="cm">// ─── 색상 토큰 ───────────────────────────</span>
+$color-primary:    #1a6dff;
+$color-primary-h:  #1558d6;
+$color-danger:     #e53e3e;
+$color-success:    #2f9e44;
+$color-warning:    #f59e0b;
+$color-gray-100:   #f5f7fa;
+$color-gray-300:   #d1d5db;
+$color-gray-500:   #6b7280;
+$color-gray-900:   #111827;
+
+<span class="cm">// ─── 간격 토큰 ───────────────────────────</span>
+$spacing-xs:  4px;
+$spacing-sm:  8px;
+$spacing-md:  16px;
+$spacing-lg:  24px;
+$spacing-xl:  40px;
+
+<span class="cm">// ─── 타이포그래피 ─────────────────────────</span>
+$font-size-sm:   .8125rem;
+$font-size-md:   .875rem;
+$font-size-lg:   1rem;
+$font-size-xl:   1.125rem;
+$font-size-2xl:  1.5rem;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold:   700;
+
+<span class="cm">// ─── 레이아웃 ────────────────────────────</span>
+$border-radius-sm:  4px;
+$border-radius-md:  6px;
+$border-radius-lg:  12px;
+$transition-base:   all .2s ease;
+    </div>
+
+    <div class="file-label" style="margin-top:10px;"><i class="ti ti-file" style="font-size:14px;" aria-hidden="true"></i> src/styles/_mixins.scss</div>
+    <div class="file-block">
+<span class="cm">// ─── 반응형 브레이크포인트 ────────────────</span>
+$breakpoints: (
+  'sm':  480px,
+  'md':  768px,
+  'lg':  1024px,
+  'xl':  1280px,
+);
+
+<span class="kw">@mixin</span> <span class="fn">respond-to</span>($bp) {
+  <span class="kw">@media</span> (max-width: map-get($breakpoints, $bp)) {
+    <span class="kw">@content</span>;
+  }
+}
+
+<span class="cm">// 사용 예: @include respond-to('md') { ... }</span>
+
+<span class="cm">// ─── Flex 유틸 ───────────────────────────</span>
+<span class="kw">@mixin</span> <span class="fn">flex-center</span> {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+<span class="kw">@mixin</span> <span class="fn">flex-between</span> {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+<span class="cm">// ─── 말줄임 ─────────────────────────────</span>
+<span class="kw">@mixin</span> <span class="fn">ellipsis</span>($lines: 1) {
+  <span class="kw">@if</span> $lines == 1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } <span class="kw">@else</span> {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+    </div>
+  </div>
+
+  <div class="panel" id="p4">
+    <div class="section-label">라우팅 설정 — main.jsx + App.jsx</div>
+
+    <div class="file-label"><i class="ti ti-file" style="font-size:14px;" aria-hidden="true"></i> src/main.jsx</div>
+    <div class="file-block">
+<span class="kw">import</span> React <span class="kw">from</span> <span class="str">'react'</span>
+<span class="kw">import</span> ReactDOM <span class="kw">from</span> <span class="str">'react-dom/client'</span>
+<span class="kw">import</span> { BrowserRouter } <span class="kw">from</span> <span class="str">'react-router-dom'</span>
+<span class="kw">import</span> App <span class="kw">from</span> <span class="str">'./App'</span>
+<span class="kw">import</span> <span class="str">'./styles/main.scss'</span>   <span class="cm">← 전역 CSS 여기서 한 번만</span>
+
+ReactDOM.<span class="fn">createRoot</span>(document.<span class="fn">getElementById</span>(<span class="str">'root'</span>)).<span class="fn">render</span>(
+  &lt;BrowserRouter&gt;
+    &lt;App /&gt;
+  &lt;/BrowserRouter&gt;
+)
+    </div>
+
+    <div class="file-label" style="margin-top:10px;"><i class="ti ti-file" style="font-size:14px;" aria-hidden="true"></i> src/App.jsx — ia.html 역할</div>
+    <div class="file-block">
+<span class="kw">import</span> { Routes, Route } <span class="kw">from</span> <span class="str">'react-router-dom'</span>
+<span class="kw">import</span> MainPage <span class="kw">from</span> <span class="str">'@/pages/MainPage'</span>
+<span class="kw">import</span> ComponentPage <span class="kw">from</span> <span class="str">'@/pages/ComponentPage'</span>
+
+<span class="kw">function</span> <span class="fn">App</span>() {
+  <span class="kw">return</span> (
+    &lt;Routes&gt;
+      &lt;Route path=<span class="str">"/"</span>          element={&lt;MainPage /&gt;} /&gt;
+      &lt;Route path=<span class="str">"/components"</span> element={&lt;ComponentPage /&gt;} /&gt;
+    &lt;/Routes&gt;
+  )
+}
+
+<span class="kw">export default</span> App
+    </div>
+    <div class="ok-box">퍼블의 ia.html처럼 App.jsx에서 전체 페이지 구조를 한눈에 파악할 수 있어요.</div>
+  </div>
+
+  <div class="panel" id="p5">
+    <div class="section-label">셋업 완료 체크리스트</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div style="border:.5px solid #9FE1CB;border-radius:var(--border-radius-md);padding:12px 14px;background:var(--color-background-primary);">
+        <div style="font-size:12px;font-weight:500;color:#085041;margin-bottom:8px;display:flex;align-items:center;gap:6px;"><i class="ti ti-check" style="font-size:14px;" aria-hidden="true"></i> 설치 확인</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.8;">
+          <code>npm run dev</code> → localhost:5173<br>
+          <code>sass</code> 패키지 설치됨<br>
+          <code>react-router-dom</code> 설치됨
+        </div>
+      </div>
+      <div style="border:.5px solid #9FE1CB;border-radius:var(--border-radius-md);padding:12px 14px;background:var(--color-background-primary);">
+        <div style="font-size:12px;font-weight:500;color:#085041;margin-bottom:8px;display:flex;align-items:center;gap:6px;"><i class="ti ti-check" style="font-size:14px;" aria-hidden="true"></i> 파일 확인</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.8;">
+          <code>vite.config.js</code> alias 설정<br>
+          <code>styles/_variables.scss</code> 생성<br>
+          <code>styles/_mixins.scss</code> 생성
+        </div>
+      </div>
+      <div style="border:.5px solid #9FE1CB;border-radius:var(--border-radius-md);padding:12px 14px;background:var(--color-background-primary);">
+        <div style="font-size:12px;font-weight:500;color:#085041;margin-bottom:8px;display:flex;align-items:center;gap:6px;"><i class="ti ti-check" style="font-size:14px;" aria-hidden="true"></i> 라우팅 확인</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.8;">
+          <code>/</code> → MainPage<br>
+          <code>/components</code> → ComponentPage<br>
+          BrowserRouter 감싸기 완료
+        </div>
+      </div>
+      <div style="border:.5px solid #9FE1CB;border-radius:var(--border-radius-md);padding:12px 14px;background:var(--color-background-primary);">
+        <div style="font-size:12px;font-weight:500;color:#085041;margin-bottom:8px;display:flex;align-items:center;gap:6px;"><i class="ti ti-check" style="font-size:14px;" aria-hidden="true"></i> import 확인</div>
+        <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.8;">
+          <code>@/components/Button</code> 동작<br>
+          <code>@/styles/main.scss</code> 로드됨<br>
+          SCSS 변수 자동 주입됨
+        </div>
+      </div>
+    </div>
+    <button onclick="sendPrompt('이제 Button 컴포넌트 실제 파일 코드를 다 작성해줘. Button.jsx, Button.scss, index.js 전부.')" style="display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#185FA5;color:#fff;border:none;border-radius:var(--border-radius-md);font-family:var(--font-sans);font-size:13px;font-weight:500;cursor:pointer;">
+      다음 단계: Button 컴포넌트 파일 작성 ↗
+    </button>
+  </div>
+
+  <div class="row-nav">
+    <button class="nav-btn" id="prev-btn" onclick="move(-1)" disabled>
+      <i class="ti ti-arrow-left" style="font-size:14px;" aria-hidden="true"></i> 이전
+    </button>
+    <span id="step-indicator" style="font-size:12px;color:var(--color-text-secondary);align-self:center;">1 / 6</span>
+    <button class="nav-btn" id="next-btn" onclick="move(1)">
+      다음 <i class="ti ti-arrow-right" style="font-size:14px;" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+let cur = 0;
+const total = 6;
+function go(n) {
+  document.querySelectorAll('.panel').forEach((p,i)=>{p.classList.toggle('active',i===n);});
+  document.querySelectorAll('.step-btn').forEach((b,i)=>{b.classList.toggle('active',i===n);});
+  document.getElementById('prev-btn').disabled = n===0;
+  document.getElementById('next-btn').disabled = n===total-1;
+  document.getElementById('step-indicator').textContent = (n+1)+' / '+total;
+  cur = n;
+}
+function move(d){ go(Math.max(0,Math.min(total-1,cur+d))); }
+</script>
