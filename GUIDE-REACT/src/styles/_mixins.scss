@@ -1,0 +1,88 @@
+// ─── 반응형 브레이크포인트 ────────────────────────
+
+$breakpoints: (
+  'xs': 480px,
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px,
+);
+
+// 사용: @include respond-to('md') { ... }
+@mixin respond-to($bp) {
+  @if map-has-key($breakpoints, $bp) {
+    @media (max-width: map-get($breakpoints, $bp)) {
+      @content;
+    }
+  } @else {
+    @warn "브레이크포인트 '#{$bp}'가 없어요. xs/sm/md/lg/xl/2xl 중에 써주세요.";
+  }
+}
+
+// 최솟값 이상 (min-width)
+@mixin respond-from($bp) {
+  @media (min-width: map-get($breakpoints, $bp)) {
+    @content;
+  }
+}
+
+// ─── Flexbox 유틸 ────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// ─── 말줄임 ─────────────────────────────────────
+@mixin ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// ─── 접근성 ──────────────────────────────────────
+// 시각적으로 숨기되 스크린리더엔 읽히는 패턴
+// 퍼블리싱의 .sr-only, .blind 클래스와 같아요
+@mixin sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+// ─── 스크롤바 커스텀 ─────────────────────────────
+@mixin custom-scrollbar($size: 4px, $color: $color-gray-300) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $border-radius-full;
+    background: $color;
+  }
+}

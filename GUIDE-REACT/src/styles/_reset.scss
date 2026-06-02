@@ -1,0 +1,76 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+// ─── Reset + 기본 설정 ────────────────────────────
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    color: $color-text-primary;
+    line-height: $line-height-base;
+    background-color: $color-white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  // 링크 기본 스타일
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  // 이미지 기본값
+  img, svg, video {
+    display: block;
+    max-width: 100%;
+  }
+  
+  // 버튼 기본값 초기화
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  // 인풋 기본값
+  input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  // 리스트 기본값
+  ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  // 제목 기본값
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+  }
+  
+  p { margin: 0; }
+  
+  // 접근성: 키보드 포커스만 표시
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+  
+  // sr-only 클래스 (스크린리더 전용)
+  .sr-only { @include sr-only; }

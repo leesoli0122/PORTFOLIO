@@ -6,7 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
 
-  resove: {
+  resolve: {
     alias: {
       // ─────────────────────────────────────────────
       // '@' 를 'src/' 로 바꿔줘요.
@@ -33,5 +33,5 @@ export default defineConfig({
         `,
       },
     },
-      }
+  }
 });
