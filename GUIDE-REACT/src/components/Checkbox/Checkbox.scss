@@ -1,0 +1,94 @@
+.checkbox-wrap {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.checkbox-group {
+  display: inline-block;
+  height: 24px;
+}
+.checkbox-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: $transition-base;
+  cursor: pointer;
+  user-select: none;
+}
+
+// 커스텀 체크박스 박스
+.checkbox-box {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-sm;
+  background: $color-white;
+  transition: $transition-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 14px;
+    height: 10px;
+    background:
+      url("../../assets/images/svg/ico_check.svg") no-repeat center / cover;
+  }
+}
+
+.checkbox-txt {
+  font-size: $font-size-base;
+  color: $color-gray-900;
+}
+
+// ── 체크된 상태 ───────────────────────────────
+.is-checked {
+  .checkbox-box {
+    border-color: $color-primary;
+    background: $color-primary;
+
+    &::after {
+      // 2. display
+      display: block;
+    }
+  }
+}
+
+// ── disabled 상태 ─────────────────────────────
+.is-disabled {
+  .checkbox-label {
+    cursor: not-allowed;
+  }
+
+  .checkbox-box {
+    background: $color-gray-100;
+    border-color: $color-gray-200;
+  }
+
+  .checkbox-txt {
+    color: $color-text-disabled;
+  }
+
+  // checked + disabled
+  &.is-checked .checkbox-box {
+    background: $color-gray-300;
+    border-color: $color-gray-300;
+  }
+}
