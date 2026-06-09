@@ -3,6 +3,7 @@ import ButtonShowcase from './components/ButtonShowcase'
 import InputShowcase from './components/InputShowcase'
 import CheckboxShowcase from './components/CheckboxShowcase'
 import './ComponentPage.scss'
+import RadioShowcase from './components/RadioShowcase'
 
 // ─────────────────────────────────────────────
 // ComponentPage에 뭐가 필요하지?
@@ -19,6 +20,7 @@ const MENU_LIST = [
   { id: 'button', label: 'Button', component: <ButtonShowcase /> },
   { id: 'input', label: 'Input', component: <InputShowcase /> },
   { id: 'checkbox', label: 'Checkbox', component: <CheckboxShowcase /> },
+  { id: 'radio', label: 'Radio', component: <RadioShowcase /> },
 ]
 
 function ComponentPage() {

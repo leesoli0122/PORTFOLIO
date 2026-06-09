@@ -1,15 +1,17 @@
-.checkbox-wrap {
+// src/components/Radio/Radio.scss
+
+.radio-wrap {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
   gap: 10px;
 }
-.checkbox-group {
+.radio-group {
   display: inline-block;
   height: 24px;
 }
 
-.checkbox-input {
+.radio-input {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -20,7 +22,7 @@
   white-space: nowrap;
 }
 
-.checkbox-label {
+.radio-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -29,14 +31,14 @@
   user-select: none;
 }
 
-// 커스텀 체크박스 박스
-.checkbox-box {
+// 커스텀 라디오 원
+.radio-box {
   position: relative;
   display: inline-block;
   width: 24px;
   height: 24px;
   border: 1px solid $color-border;
-  border-radius: $border-radius-sm;
+  border-radius: 50%;
   background: $color-white;
   transition: $transition-base;
 
@@ -47,26 +49,26 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    width: 14px;
-    height: 10px;
-    background:
-      url("../../assets/images/svg/ico_check.svg") no-repeat center / cover;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $color-white;
   }
 }
 
-.checkbox-txt {
-  font-size: $font-size-base;
+.radio-txt {
+  font-size: $font-size-md;
   color: $color-gray-900;
+  line-height: 1.4;
 }
 
-// ── 체크된 상태 ───────────────────────────────
+// ── 선택된 상태 ───────────────────────────────
 .is-checked {
-  .checkbox-box {
+  .radio-box {
     border-color: $color-primary;
     background: $color-primary;
 
     &::after {
-      // 2. display
       display: block;
     }
   }
@@ -74,21 +76,20 @@
 
 // ── disabled 상태 ─────────────────────────────
 .is-disabled {
-  .checkbox-label {
+  .radio-label {
     cursor: not-allowed;
   }
 
-  .checkbox-box {
+  .radio-box {
     background: $color-gray-100;
     border-color: $color-gray-200;
   }
 
-  .checkbox-txt {
+  .radio-txt {
     color: $color-text-disabled;
   }
 
-  // checked + disabled
-  &.is-checked .checkbox-box {
+  &.is-checked .radio-box {
     background: $color-gray-300;
     border-color: $color-gray-300;
   }
