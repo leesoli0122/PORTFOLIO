@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from '@/components/Button'
 
-function ComponentPage() {
+function ButtonShowcase() {
   const [status, setStatus] = useState('idle');
 
   const handleSave = () => {

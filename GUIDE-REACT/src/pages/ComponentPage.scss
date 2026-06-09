@@ -1,0 +1,125 @@
+.component-page {
+  padding-top:50px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.component {
+  width: 100%;
+  height: 100%;
+  padding-left: 200px;
+  overflow-y: auto;
+}
+
+// ── 사이드바 ──────────────────────────────────
+.component-sidebar {
+  position: fixed;
+  top: 50px;
+  width: 200px;
+  min-width: 200px;
+  height: 100%;
+  height: calc(100% - 50px);
+  padding: 24px 0;
+  border-right: 1px solid $color-border;
+  background: $color-gray-50;
+  overflow-y: auto;
+}
+
+.component-sidebar-tit {
+  padding: 0 16px 8px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-gray-500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.component-nav-list {
+  padding: 0;
+  margin: 0;
+}
+
+.component-nav-item {
+  padding: 0 8px;
+}
+
+.component-nav-btn {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: $border-radius-md;
+  background: transparent;
+  font-size: $font-size-md;
+  font-weight: $font-weight-normal;
+  color: $color-gray-700;
+  text-align: left;
+  transition: $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-gray-200;
+    color: $color-gray-900;
+  }
+
+  &.is-active {
+    background: $color-primary-bg;
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// ── 쇼케이스 공통 스타일 ─────────────────────
+.showcase-content {
+  width: 100%;
+  padding: 40px;
+}
+
+.showcase-tit {
+  margin-bottom: 8px;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-gray-900;
+}
+
+.showcase-desc {
+  margin-bottom: 40px;
+  font-size: $font-size-md;
+  color: $color-gray-500;
+  line-height: $line-height-base;
+}
+
+.showcase-section {
+  margin-bottom: 40px;
+}
+
+.showcase-section-tit {
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid $color-border;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-gray-700;
+}
+
+.showcase-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.showcase-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+}
+
+.showcase-state-box {
+  padding: 14px 16px;
+  border-radius: $border-radius-md;
+  background: $color-gray-100;
+  font-size: $font-size-sm;
+  color: $color-gray-700;
+}

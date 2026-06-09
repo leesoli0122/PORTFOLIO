@@ -30,9 +30,9 @@ function Button({ children, variant = 'primary', size = 'md', status = 'idle', f
     <button
       type={type}
       className={cls}
-      disabled={disabled || status === 'loading'}
+      disabled={disabled || status === "loading"}
       onClick={onClick}
-      aria-busy={status === 'loading'}
+      aria-busy={status === "loading"}
       {...rest}
     >
       {renderContent()}
