@@ -25,8 +25,8 @@ function Input({
   // onChange: 입력 필드의 값이 변경될 때 호출되는 함수 (부모에게 알림)
   // for → htmlFor — for가 JS 예약어라 JSX에서는 htmlFor로 사용. class → className이랑 같은 이유
   const wrapCls = [
-    'input-wrap',
-    'is-${status}', // status에 따라 클래스 추가 (예: is-error, is-success)
+    'input-box',
+    `is-${status}`, // status에 따라 클래스 추가 (예: is-error, is-success)
     disabled ? 'is-disabled' : '',
     readOnly ? 'is-readonly' : '',
     className, // 추가 클래스 (사용자가 전달한)
@@ -43,15 +43,10 @@ function Input({
           )}
         </label>
       )}
-
-      {/* input 영역 */}
-      <div className="input-box">
-        <input type={type} id={id} value={value} onChange={onChange} placeholder={placeholder} disabled={disabled} readOnly={readOnly} aria-invalid={status === 'error'} aria-describedby={message ? `${id}-message` : undefined} />
-      </div>
-
+      <input className="input" type={type} id={id} value={value} onChange={onChange} placeholder={placeholder} disabled={disabled} readOnly={readOnly} aria-invalid={status === "error"} aria-describedby={message ? `${id}-message` : undefined} {...rest} />
       {/* 안내 메시지 - message prop 있을 때만 렌더링 */}
       {message && (
-        <p className='input-message' id={`${id}-message`} role={status === 'error' ? 'alert' : undefined}>
+        <p className="input-message" id={`${id}-message`} role={status === "error" ? "alert" : undefined}>
           {message}
         </p>
       )}
